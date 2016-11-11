@@ -2,7 +2,7 @@
   "name": "senior-thesis",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./mobile/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,17 +11,24 @@
     "url": "git+https://github.com/PuffyShirts/senior-thesis.git"
   },
   "keywords": [],
-  "author": "",
+  "author": null,
+  "private": true,
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PuffyShirts/senior-thesis/issues"
   },
   "homepage": "https://github.com/PuffyShirts/senior-thesis#readme",
+  "dependencies": {
+    "exponent": "~11.0.2",
+    "@exponent/vector-icons": "~2.0.3",
+    "react": "~15.3.2",
+    "react-native": "git+https://github.com/exponentjs/react-native#sdk-11.0.3"
+  },
   "devDependencies": {
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.6.0"
+    "eslint-plugin-react": "^6.6.0" 
   }
 }
