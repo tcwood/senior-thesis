@@ -2,18 +2,20 @@
   "name": "senior-thesis",
   "version": "1.0.0",
   "description": "",
+  "author": null,
+  "private": true,
   "main": "./mobile/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PuffyShirts/senior-thesis.git"
   },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-exponent"
+  },
   "keywords": [],
-  "author": null,
-  "private": true,
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/PuffyShirts/senior-thesis/issues"
   },
@@ -25,10 +27,16 @@
     "react-native": "git+https://github.com/exponentjs/react-native#sdk-11.0.3"
   },
   "devDependencies": {
+    "babel-jest": "^17.0.0",
+    "babel-preset-react-native": "^1.9.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.6.0" 
+    "eslint-plugin-react": "^6.6.0",
+    "jest": "^17.0.0",
+    "jest-exponent": "^0.1.3",
+    "jest-react-native": "^17.0.0",
+    "react-test-renderer": "^15.3.2"
   }
 }

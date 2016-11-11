@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is the index.js page we made!</Text>
+        <Text>Test test test</Text>
       </View>
     );
   }
