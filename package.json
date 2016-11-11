@@ -2,22 +2,9 @@
   "name": "senior-thesis",
   "version": "1.0.0",
   "description": "",
-  "main": "./mobile/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PuffyShirts/senior-thesis.git"
-  },
-  "keywords": [],
   "author": null,
   "private": true,
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PuffyShirts/senior-thesis/issues"
-  },
-  "homepage": "https://github.com/PuffyShirts/senior-thesis#readme",
+  "main": "./mobile/index.js",
   "dependencies": {
     "exponent": "~11.0.2",
     "@exponent/vector-icons": "~2.0.3",
