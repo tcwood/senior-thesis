@@ -23,6 +23,22 @@ class App extends React.Component {
     this.state = {
     };
   }
+
+
+  componentWillMount() {
+    fetch('http://127.0.0.1:3000/users')
+    .then((res) => {
+      console.log('Got it!');
+      return res.json();
+    })
+    .then((json) => {
+      console.log(json);
+    })
+    .catch((err) => {
+      console.log('Nope', err);
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
