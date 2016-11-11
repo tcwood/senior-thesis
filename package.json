@@ -24,6 +24,7 @@
     "@exponent/vector-icons": "~2.0.3",
     "eslint-plugin-react": "^6.6.0",
     "exponent": "~11.0.2",
+    "express": "^4.14.0",
     "react": "^15.3.2",
     "react-native": "git+https://github.com/exponentjs/react-native#sdk-11.0.3"
   },
