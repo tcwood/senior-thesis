@@ -1,7 +1,7 @@
 {
-  "name": "thesis",
+  "name": "thesis-project",
   "description": "An empty new project",
-  "slug": "thesis",
+  "slug": "thesis-project",
   "sdkVersion": "11.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
@@ -19,4 +19,5 @@
     "assetExts": ["ttf", "mp4"]
   },
   "entryPoint": "./mobile/index.js"
+  
 }
