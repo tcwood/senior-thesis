@@ -17,5 +17,6 @@
   },
   "packagerOpts": {
     "assetExts": ["ttf", "mp4"]
-  }
+  },
+  "entryPoint": "./mobile/index.js"
 }
