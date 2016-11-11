@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PuffyShirts/senior-thesis.git"
+  },
+  "jest": {
+    "preset": "jest-react-native"
   },
   "keywords": [],
   "author": "",
@@ -18,10 +21,19 @@
   },
   "homepage": "https://github.com/PuffyShirts/senior-thesis#readme",
   "devDependencies": {
+    "babel-jest": "^17.0.0",
+    "babel-preset-react-native": "^1.9.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.6.0"
+    "eslint-plugin-react": "^6.6.0",
+    "jest": "^17.0.0",
+    "jest-react-native": "^17.0.0",
+    "react-test-renderer": "^15.3.2"
+  },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-native": "^0.37.0"
   }
 }
