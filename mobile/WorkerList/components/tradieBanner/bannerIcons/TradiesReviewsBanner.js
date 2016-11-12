@@ -9,7 +9,7 @@ const TradiesReviewsBanner = ({ reviews, Icon }) =>
   (
     <View className="TradiesReviewsBanner">
       <Text>
-        {Icon}{ ' ' + reviews + ' reviews'}
+        {Icon}{ ' '.concat(reviews).concat(' reviews')}
       </Text>
     </View>
   );

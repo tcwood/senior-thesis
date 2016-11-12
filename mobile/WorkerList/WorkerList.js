@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import RowList from './components/tradieList/TradieList';
 import styles from './workerListStyles';
+import ModularBanner from '../reusableComponents/Banner/ModularBanner';
 
 const rowList = [
   { name: 'Kanye West', location: 'San Bernardino', expertise: 'Plumba', reviews: '9' },

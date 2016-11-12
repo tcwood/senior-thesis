@@ -1,48 +1,42 @@
 import React from 'react';
 import {
   View,
-  Text,
 } from 'react-native';
+import {
+  FontAwesome,
+} from '@exponent/vector-icons';
 import ModularBannerIcon from './ModularBannerIcon';
-import styles from '../../workerListStyles';
 
-const styles = StyleSheet.create({
-  banner: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-  },
-  tripleBanner: {
-    flex: 2,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  name: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    justifyContent: 'flex-start',
-    marginLeft: 35,
-    marginTop: 5,
-  },
-});
+const renderIcon = (name, size = 15, isSelected) =>
+  (
+    <FontAwesome
+      name={name}
+      size={size}
+      color={isSelected ? '#395b91' : '#434343'}
+    />
+  );
 
-const ModularBanner = ({ iconArr, propertyArr, name }) => {
-  const bannerArr = new Array(iconArr.length);
-  const banner = bannerArr.map((element, i) =>
-    return (
-      <ModularBannerIcon 
-        Icon={Icon(iconArr[i])}
+const ModularBanner = ({ iconArr, propertyArr, iconSize, styles, iconStyles }) => {
+  const banner = iconArr.map((icon, i) =>
+    (
+      <ModularBannerIcon
+        Icon={icon}
         text={propertyArr[i]}
+        renderIcon={renderIcon}
+        iconSize={iconSize}
+        iconStyles={iconStyles || {
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        }}
       />
-    ))
+    ),
+  );
   return (
-    <View style={styles.banner}> 
-      <Text style={styles.name}>{name}</Text>
-      <View style={styles.tripleBanner}>
-        { banner() }
-      </View>
+    <View style={styles || { flexDirection: 'row' }}>
+      { banner }
     </View>
   );
-}
+};
 export default ModularBanner;

@@ -2,15 +2,15 @@ import React from 'react';
 import {
   Text,
   View,
-  Image,
 } from 'react-native';
 
-const ModularBannerIcon = ({ text, Icon }) =>
+const ModularBannerIcon = ({ text, Icon, iconSize, renderIcon, iconStyles }) =>
   (
-    <View className="modularBanner">
+    <View style={iconStyles || { justifyContent: 'space-around' }}>
       <Text>
-      { Icon }{' ' + text }
+        { renderIcon(Icon, iconSize) }{ ' '.concat(text) }
       </Text>
     </View>
   );
+
 export default ModularBannerIcon;
