@@ -3,22 +3,24 @@ import React from 'react';
 import {
   View,
   Text,
+  Image,
+  Dimensions
 } from 'react-native';
 import RowList from './components/tradieList/TradieList';
 import styles from './workerListStyles';
-import ModularBanner from '../reusableComponents/Banner/ModularBanner';
+import mock from '../MOCK_USER_DATA.js';
 
-const rowList = [
-  { name: 'Kanye West', location: 'San Bernardino', expertise: 'Plumba', reviews: '9' },
-  { name: 'Kanye West', location: 'San Bernardino', expertise: 'Plumba', reviews: '9' },
-];
-
+const bgImg = require('../assets/bluePatternBackground.png');
+const { height, width } = Dimensions.get('window');
 
 const WorkerList = () => (
   <View>
-    <Text style={styles.title}> WorkerList </Text>
+    <Image
+      style={styles.backgroundImage, {width, height: 25 * 2.75}}
+      source={bgImg}
+    />
     <RowList
-      setOfTradies={rowList}
+      setOfTradies={mock}
     />
   </View>
 );

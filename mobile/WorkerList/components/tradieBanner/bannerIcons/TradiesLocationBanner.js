@@ -9,7 +9,7 @@ import styles from '../../../workerListStyles';
 const TradiesLocationBanner = ({ location, Icon }) =>
   // signature: text, icon, callback
   (
-    <View className="TradiesLocationBanner">      
+    <View style={{flex:1 }}>
       <Text>
               { Icon }{' ' + location }
       </Text>
