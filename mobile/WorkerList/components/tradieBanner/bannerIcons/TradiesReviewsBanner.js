@@ -5,7 +5,7 @@ import {
   Image,
 } from 'react-native';
 
-const TradiesReviewsBanner = ({ numReviews }) =>
+const TradiesReviewsBanner = ({ reviews }) =>
   (
     <View className="TradiesReviewsBanner">
       <Image
@@ -13,7 +13,7 @@ const TradiesReviewsBanner = ({ numReviews }) =>
         source={'./assets/reviewIcon.png'}
       />
       <Text>
-        { numReviews } reviews
+        { reviews + ' reviews'}
       </Text>
     </View>
   );

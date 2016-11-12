@@ -6,12 +6,12 @@ import TradiesExpertiseBanner from './bannerIcons/TradiesExpertiseBanner';
 import TradiesLocationBanner from './bannerIcons/TradiesLocationBanner';
 import TradiesReviewsBanner from './bannerIcons/TradiesReviewsBanner';
 
-const TradieBanner = () =>
+const TradieBanner = ({ expertise, location, reviews }) =>
   (
     <View className="tradieBanner"> 
-      <TradiesExpertiseBanner expertise={'Plumber'} />
-      <TradiesLocationBanner location={'San Bernadina'} />
-      <TradiesReviewsBanner numReviews={'9'} />
+      <TradiesExpertiseBanner expertise={expertise} />
+      <TradiesLocationBanner location={location} />
+      <TradiesReviewsBanner reviews={reviews} />
     </View>
   );
 export default TradieBanner;
