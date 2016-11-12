@@ -44,7 +44,7 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         <NavigationProvider router={Router}>
-          <StackNavigation initialRoute="profile" />
+          <StackNavigation initialRoute="workerList" />
           <NavigationBar />
         </NavigationProvider>
       </View>

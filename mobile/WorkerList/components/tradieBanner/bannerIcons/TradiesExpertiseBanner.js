@@ -4,16 +4,13 @@ import {
   View,
   Image,
 } from 'react-native';
+import styles from '../../../workerListStyles';
 
-const TradiesExpertiseBanner = ({ expertise }) =>
+const TradiesExpertiseBanner = ({ expertise, Icon }) =>
   (
     <View className="TradiesExpertiseBanner">
-      <Image
-        className="miniBannerIcon"
-        source={'./assets/hammerIcon.png'}
-      />
       <Text>
-        { expertise }
+      { Icon }{' ' + expertise }
       </Text>
     </View>
   );

@@ -4,17 +4,14 @@ import {
   View,
   Image,
 } from 'react-native';
+import styles from '../../../workerListStyles';
 
-const TradiesLocationBanner = ({ location }) =>
+const TradiesLocationBanner = ({ location, Icon }) =>
   // signature: text, icon, callback
   (
-    <View className="TradiesLocationBanner">
-      <Image
-        className="miniBannerIcon"
-        source={'./assets/locationPinIcon.png'}
-      />
+    <View className="TradiesLocationBanner">      
       <Text>
-        { location }
+              { Icon }{' ' + location }
       </Text>
     </View>
   );

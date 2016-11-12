@@ -4,16 +4,13 @@ import {
   View,
   Image,
 } from 'react-native';
+import styles from '../../../workerListStyles';
 
-const TradiesReviewsBanner = ({ reviews }) =>
+const TradiesReviewsBanner = ({ reviews, Icon }) =>
   (
     <View className="TradiesReviewsBanner">
-      <Image
-        className="miniBannerIcon"
-        source={'./assets/reviewIcon.png'}
-      />
       <Text>
-        { reviews + ' reviews'}
+        {Icon}{ ' ' + reviews + ' reviews'}
       </Text>
     </View>
   );
