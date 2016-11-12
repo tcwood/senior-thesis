@@ -7,33 +7,56 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
+import {
+  FontAwesome,
+} from '@exponent/vector-icons';
+
+import Recommendation from './Recommendation';
 
 const { height, width } = Dimensions.get('window');
-
+const bgImg = require('../assets/bluePatternBackground.png');
+const profPic = require('./timallen.jpg');
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    alignItems: 'stretch',
   },
   backgroundImage: {
-    flex: 1,
     resizeMode: 'cover',
     alignItems: 'center',
+    width,
   },
   profPic: {
-    borderRadius: width * 0.5 * 0.5,
-    width: width * 0.5,
-    height: width * 0.5,
+    borderRadius: width * 0.4 * 0.5,
+    width: width * 0.4,
+    height: width * 0.4,
     marginTop: 0.05 * height,
   },
+  info: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    alignItems: 'center',
+    borderWidth: 1,
+  },
   name: {
-
+    fontSize: 34,
   },
   experience: {
-
+    fontSize: 14,
+    marginTop: 10,
   },
   contact: {
-
+    color: '#006600',
+    alignItems: 'center',
+    fontSize: 20,
+    marginTop: 10,
+  },
+  recommendations: {
+    width: 0.9 * width,
+    marginTop: 20,
+  },
+  recTitle: {
+    fontSize: 20,
   },
 });
 // Picture
@@ -57,20 +80,34 @@ class Profile extends React.Component {
       <View style={styles.container}>
         <Image
           style={styles.backgroundImage}
-          source={require('../assets/bluePatternBackground.png')}
+          source={bgImg}
         >
           <Image
             style={styles.profPic}
-            source={require('./timallen.jpg')}
+            source={profPic}
           />
         </Image>
-        <Text style={styles.name}> Tim the Toolman </Text>
-        <Text style={styles.experience}>
-          This is all of my experience. I've got lots of experience. Hire me because of me and this and that and boom.
-        </Text>
-        <Text style={styles.contact}>
-          (234)567-8910
-        </Text>
+        <View style={styles.info}>
+          <Text style={styles.name}> Tim da Toolman </Text>
+          <Text style={styles.experience}>
+            This is all of my experience. I have got lots of experience.
+            Hire me because of me and this and that and boom.
+          </Text>
+          <Text style={styles.contact}>
+            <FontAwesome
+              name="phone"
+              size={20}
+              color="#006600"
+            />
+            {'  (234)567-8910'}
+          </Text>
+          <View style={styles.recommendations}>
+            <Text style={styles.recTitle}>
+              Recommendations
+            </Text>
+            <Recommendation />
+          </View>
+        </View>
       </View>
     );
   }
