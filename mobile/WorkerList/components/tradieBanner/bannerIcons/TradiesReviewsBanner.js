@@ -4,7 +4,6 @@ import {
   View,
   Image,
 } from 'react-native';
-import styles from '../../../workerListStyles';
 
 const TradiesReviewsBanner = ({ reviews, Icon }) =>
   (
