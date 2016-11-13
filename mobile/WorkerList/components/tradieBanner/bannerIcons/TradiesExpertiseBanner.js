@@ -8,7 +8,7 @@ import styles from '../../../workerListStyles';
 
 const TradiesExpertiseBanner = ({ expertise, Icon }) =>
   (
-    <View className="TradiesExpertiseBanner">
+    <View style={{flex:1 }}>
       <Text>
       { Icon }{' ' + expertise }
       </Text>

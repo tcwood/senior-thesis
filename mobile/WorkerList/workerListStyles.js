@@ -20,11 +20,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
+  backgroundImage: {
+    resizeMode: 'cover',
+    alignItems: 'center',
+  },
   tripleBanner: {
     flex: 2,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    marginLeft: 10,
   },
   title: {
     fontSize: 19,

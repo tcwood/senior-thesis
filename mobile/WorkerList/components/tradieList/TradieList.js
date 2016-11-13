@@ -12,7 +12,7 @@ const RowList = ({ setOfTradies }) => {
       (
         <RowEntry
           key={i}
-          name={tradie.name}
+          name={tradie.first_name.concat(' ').concat(tradie.last_name)}
           expertise={tradie.expertise}
           location={tradie.location}
           reviews={tradie.reviews}

@@ -7,7 +7,7 @@ import {
 
 const TradiesReviewsBanner = ({ reviews, Icon }) =>
   (
-    <View className="TradiesReviewsBanner">
+    <View style={{flex: 1}}>
       <Text>
         {Icon}{ ' '.concat(reviews).concat(' reviews')}
       </Text>
