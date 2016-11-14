@@ -1,5 +1,7 @@
 import React from 'react';
-import fakeJobData from './fakeJobData.js';
+import {
+  FontAwesome,
+} from '@exponent/vector-icons';
 import {
   View,
   Text,
@@ -7,22 +9,13 @@ import {
   Image,
   TextInput
 } from 'react-native';
-import SearchBar from './searchBar.js';
-import JobTypeFilter from './jobTypeFilter.js'
-import MapListToggle from './mapListToggle.js'
-import {
-  FontAwesome,
-} from '@exponent/vector-icons';
 
-
-// Get 'vh' for stylesheet. 1*vh represents 1% of the height of the viewport
 const Dimensions = React.Dimensions || require('Dimensions')
 const {width, height} = Dimensions.get('window');
 const vh = height/100;
 const vw = width/100;
 
-// create stylesheet object
-const jobStyles = StyleSheet.create({
+const filterJobStyles = StyleSheet.create({
   outerBox: {
     height: 10*vh,
     width: 100*vw,
@@ -59,28 +52,31 @@ const jobStyles = StyleSheet.create({
     paddingLeft: 10*vw,
     marginLeft: 10*vw,
     fontWeight: '600'
-  },
-  chevron: {
-    padding: 5,
   }
 });
 
-class JobList extends React.Component {
+export default class MapListToggle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     };
   }
   render() {
-    console.log('mapListToggle: ', MapListToggle)
     return(
-      <View>
-        <SearchBar/>
-        <JobTypeFilter/>
-        <MapListToggle/>
+      <View style={filterJobStyles.outerBox}>
+        <View style={filterJobStyles.listToggle}>
+          <Text style={filterJobStyles.buttonText}>
+            <FontAwesome name={'list'} size={15} style={filterJobStyles.buttonTextWords} color={'black'}></FontAwesome>
+            <Text style={filterJobStyles.buttonTextWordsBold}>  LIST</Text>
+          </Text>
+        </View>
+        <View style={filterJobStyles.mapToggle}>
+          <Text style={filterJobStyles.buttonText}>  
+            <FontAwesome name={'map-marker'} size={15} style={filterJobStyles.buttonTextWords} color={'gray'}></FontAwesome>
+            <Text style={filterJobStyles.buttonTextWords}> MAP</Text>
+          </Text>
+        </View>
       </View>
     )
   }
 }
-
-export default JobList;

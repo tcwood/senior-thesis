@@ -42,6 +42,7 @@ class JobTypeFilter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      toggle: 'list'
     };
   }
   render() {
