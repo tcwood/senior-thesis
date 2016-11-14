@@ -28,7 +28,7 @@ const jobStyles = StyleSheet.create({
     width: 100*vw
   },
   bluePanelHeading: {
-    marginTop: 8*vh,
+    marginTop: 5*vh,
     color: 'white',
     fontWeight:"200",
     textAlign: 'center',
@@ -45,7 +45,7 @@ const jobStyles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
   },
   rightIcon: {
-    width: 20*vw,
+    width: 25*vw,
     marginLeft: 4*vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
@@ -53,15 +53,33 @@ const jobStyles = StyleSheet.create({
     flexWrap: 'wrap', 
     alignItems: 'flex-start',
     flexDirection:'row',
-    marginTop:3*vh
+    marginTop:3*vh,
+    width: 100*vw
   },
   iconText: {
     color: 'white',
     textAlign: 'center',
     fontSize: 12
   },
-  iconFormat: {
-
+  posterImageIcon: {
+    width: 8*vh,
+    height: 8*vh,
+    marginLeft:27*vw,
+    marginRight: 2*vw,
+    borderRadius: 4*vh
+  },
+  posterNameText: {
+    color: 'white',
+    fontWeight: '200',
+    marginTop:2.5*vh
+  },
+  jobPoster: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    flexWrap: 'wrap', 
+    alignItems: 'flex-start',
+    flexDirection:'row',
+    width: 100*vh,
+    marginTop: 4*vh
   }
 });
 
@@ -99,10 +117,20 @@ class JobList extends React.Component {
             </View>
             <View style={jobStyles.rightIcon}>
               <FontAwesome name={'money'} size={15} style={jobStyles.iconFormat} color={'white'}>
-                <Text style={jobStyles.iconText}>  $32 /hour</Text>
+                <Text style={jobStyles.iconText}>   $32 /hour</Text>
               </FontAwesome>
             </View>
           </View>
+
+          <View style={jobStyles.jobPoster}>
+              <Image
+                style={jobStyles.posterImageIcon}
+                source={{uri: 'http://www.q4.co.uk/images/business-tradesmen.png'}}
+              />
+              <Text style={jobStyles.posterNameText}> John Anderson </Text>
+          </View>
+
+
         </Image>
 
       </View>
