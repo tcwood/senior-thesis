@@ -24,6 +24,7 @@ const searchStyles = StyleSheet.create({
     borderRadius: 8,
     fontWeight: "100",
     height: 4*vh,
+    fontSize: 15,
     marginRight: 10*vw,
     marginLeft: 10*vw,
     marginTop: 4*vh,
@@ -71,15 +72,14 @@ export default class searchBar extends React.Component {
       >
         <TextInput 
           style={searchStyles.searchBar}
-          placeholder='       Search for job'
+          placeholder='       Search projects'
           placeholderTextColor='white'
           onChangeText={(text) => this.hideSearchIcon(text)}
           value={this.state.searchText}
         >
-          {this.state.searchText.length > 0 ? null : <FontAwesome name={'search'} size={20} style={searchStyles.searchIcon} color={'#ffffff'}></FontAwesome>}
+          {this.state.searchText.length > 0 ? null : <FontAwesome name={'search'} size={18} style={searchStyles.searchIcon} color={'#ffffff'}></FontAwesome>}
         </TextInput>
       </Image>
     )
   }
 }
-
