@@ -23,45 +23,45 @@ const vw = width/100;
 
 // create stylesheet object
 const jobStyles = StyleSheet.create({
-  outerBox: {
-    height: 10*vh,
-    width: 100*vw,
-    backgroundColor: '#ffffff',
+  bluePanel: {
+    height: 30*vh,
+    width: 100*vw
+  },
+  bluePanelHeading: {
+    marginTop: 8*vh,
+    color: 'white',
+    fontWeight:"200",
+    textAlign: 'center',
+    fontSize: 19,
+    backgroundColor: 'rgba(0,0,0,0)'
+  },
+  leftIcon: {
+    marginLeft:17.5*vw,
+    width: 20*vw,
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
+  middleIcon: {
+    width: 25*vw,
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
+  rightIcon: {
+    width: 20*vw,
+    marginLeft: 4*vw,
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
+  iconSection: {
     flexWrap: 'wrap', 
     alignItems: 'flex-start',
     flexDirection:'row',
+    marginTop:3*vh
   },
-  listToggle: {
-    height: 10*vh,
-    width: 49.8*vw,
-    marginRight:0.2*vw,
-    backgroundColor: '#e9e9e9',
-  },
-  mapToggle: {
-    height: 10*vh,
-    width: 49.8*vw,
-    marginLeft:0.2*vw,
-    backgroundColor: '#e9e9e9',
-  },
-  buttonText: {
+  iconText: {
+    color: 'white',
     textAlign: 'center',
-    marginTop:4*vh
+    fontSize: 12
   },
-  buttonTextWords: {
-    textAlign: 'center',
-    marginTop:4*vh,
-    paddingLeft: 10*vw,
-    marginLeft: 10*vw,
-  },
-  buttonTextWordsBold: {
-    textAlign: 'center',
-    marginTop:4*vh,
-    paddingLeft: 10*vw,
-    marginLeft: 10*vw,
-    fontWeight: '600'
-  },
-  chevron: {
-    padding: 5,
+  iconFormat: {
+
   }
 });
 
@@ -72,12 +72,39 @@ class JobList extends React.Component {
     };
   }
   render() {
-    console.log('mapListToggle: ', MapListToggle)
     return(
       <View>
         <SearchBar/>
         <JobTypeFilter/>
         <MapListToggle/>
+
+        <Image
+          style={jobStyles.bluePanel}
+          source={require('../assets/blue-pattern-background.png')}
+        >
+          <Text style={jobStyles.bluePanelHeading}>
+            Shower Remodel
+          </Text>
+
+          <View style={jobStyles.iconSection}>
+            <View style={jobStyles.leftIcon}>
+              <FontAwesome name={'users'} size={15} style={jobStyles.iconFormat} color={'white'}>
+                <Text style={jobStyles.iconText}>  3 hires</Text>
+              </FontAwesome>
+            </View>
+            <View style={jobStyles.middleIcon}>
+              <FontAwesome name={'map-marker'} size={15} style={jobStyles.iconFormat} color={'white'}>
+                <Text style={jobStyles.iconText}>  San Francisco</Text>
+              </FontAwesome>
+            </View>
+            <View style={jobStyles.rightIcon}>
+              <FontAwesome name={'money'} size={15} style={jobStyles.iconFormat} color={'white'}>
+                <Text style={jobStyles.iconText}>  $32 /hour</Text>
+              </FontAwesome>
+            </View>
+          </View>
+        </Image>
+
       </View>
     )
   }
