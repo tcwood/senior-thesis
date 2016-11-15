@@ -12,7 +12,7 @@ import {
 import Banner from '../reusableComponents/Banner/ModularBanner';
 import ProfileCard from './components/ProfileCard';
 
-const bgImg = require('../assets/whiteTextureBackground.png');
+const bgImg = require('../assets/whiteTexturedBackground.png');
 const profPic = require('../Profile/timallen.jpg');
 
 const { height, width } = Dimensions.get('window');
