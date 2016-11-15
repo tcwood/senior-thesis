@@ -23,23 +23,23 @@ const whiteTile = StyleSheet.create({
   bluePanelHeading: {
     marginTop: 5*vh,
     color: 'black',
-    fontWeight:"400",
+    fontWeight:"200",
     textAlign: 'center',
     fontSize: 19,
     backgroundColor: 'rgba(0,0,0,0)'
   },
   leftIcon: {
-    marginLeft:17.5*vw,
+    marginLeft:15*vw,
     width: 20*vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
   middleIcon: {
-    width: 25*vw,
+    width: 30*vw,
     backgroundColor: 'rgba(0,0,0,0)',
+    paddingLeft:2*vw
   },
   rightIcon: {
     width: 25*vw,
-    marginLeft: 4*vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
   iconSection: {
@@ -50,7 +50,7 @@ const whiteTile = StyleSheet.create({
     width: 100*vw
   },
   iconText: {
-    color: '#797979',
+    color: 'black',
     textAlign: 'center',
     fontSize: 12
   },
@@ -60,12 +60,12 @@ const whiteTile = StyleSheet.create({
     marginLeft:27*vw,
     marginRight: 2*vw,
     borderRadius: 4*vh,
-    borderColor: '#efefef',
-    borderWidth: 1
+    borderColor: 'gray',
+    borderWidth: 0.5
   },
   posterNameText: {
     color: 'black',
-    fontWeight: '400',
+    fontWeight: '200',
     marginTop:2.5*vh
   },
   jobPoster: {
@@ -75,6 +75,12 @@ const whiteTile = StyleSheet.create({
     flexDirection:'row',
     width: 100*vh,
     marginTop: 4*vh
+  },
+  middleText: {
+    textAlign: 'center',
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 12
   }
 });
 
@@ -91,23 +97,23 @@ export default class WhiteJobTile extends React.Component {
         source={require('../assets/whiteTexturedBackground.png')}
       >
         <Text style={whiteTile.bluePanelHeading}>
-          Shower Remodel
+          {this.props.job.title}
         </Text>
 
         <View style={whiteTile.iconSection}>
           <View style={whiteTile.leftIcon}>
-            <FontAwesome name={'users'} size={15} style={whiteTile.iconFormat} color={'#797979'}>
-              <Text style={whiteTile.iconText}>  3 hires</Text>
+            <FontAwesome name={'users'} size={15} style={whiteTile.iconFormat} color={'gray'}>
+              <Text style={whiteTile.iconText}>  {this.props.job.hires} hires</Text>
             </FontAwesome>
           </View>
           <View style={whiteTile.middleIcon}>
-            <FontAwesome name={'map-marker'} size={15} style={whiteTile.iconFormat} color={'#797979'}>
-              <Text style={whiteTile.iconText}>  San Francisco</Text>
+            <FontAwesome name={'map-marker'} size={15} style={whiteTile.iconFormat} color={'gray'}>
+              <Text style={whiteTile.middleText}>  {this.props.job.location}</Text>
             </FontAwesome>
           </View>
           <View style={whiteTile.rightIcon}>
-            <FontAwesome name={'money'} size={15} style={whiteTile.iconFormat} color={'#797979'}>
-              <Text style={whiteTile.iconText}>   $32 /hour</Text>
+            <FontAwesome name={'money'} size={15} style={whiteTile.iconFormat} color={'gray'}>
+              <Text style={whiteTile.iconText}>   {this.props.job.pay}</Text>
             </FontAwesome>
           </View>
         </View>
@@ -115,9 +121,9 @@ export default class WhiteJobTile extends React.Component {
         <View style={whiteTile.jobPoster}>
             <Image
               style={whiteTile.posterImageIcon}
-              source={{uri: 'http://www.q4.co.uk/images/business-tradesmen.png'}}
+              source={{uri: this.props.job.ownerImage}}
             />
-            <Text style={whiteTile.posterNameText}> John Anderson </Text>
+            <Text style={whiteTile.posterNameText}> {this.props.job.ownerName} </Text>
         </View>
       </Image>
     )
