@@ -29,17 +29,17 @@ const blueTile = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)'
   },
   leftIcon: {
-    marginLeft:17.5*vw,
+    marginLeft:20*vw,
     width: 20*vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
   middleIcon: {
     width: 25*vw,
     backgroundColor: 'rgba(0,0,0,0)',
+    paddingLeft:2*vw
   },
   rightIcon: {
-    width: 25*vw,
-    marginLeft: 4*vw,
+    width: 35*vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
   iconSection: {
@@ -59,7 +59,9 @@ const blueTile = StyleSheet.create({
     height: 8*vh,
     marginLeft:27*vw,
     marginRight: 2*vw,
-    borderRadius: 4*vh
+    borderRadius: 4*vh,
+    borderColor: 'white',
+    borderWidth: 1.5
   },
   posterNameText: {
     color: 'white',
@@ -73,6 +75,12 @@ const blueTile = StyleSheet.create({
     flexDirection:'row',
     width: 100*vh,
     marginTop: 4*vh
+  },
+  middleText: {
+    textAlign: 'center',
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 12
   }
 });
 
@@ -83,29 +91,30 @@ export default class BlueJobTile extends React.Component {
     };
   }
   render() {
+    console.log('this.props.job.ownerImag: ', this.props.job.ownerImag)
     return(
       <Image
         style={blueTile.bluePanel}
         source={require('../assets/bluePatternBackground.png')}
       >
         <Text style={blueTile.bluePanelHeading}>
-          Shower Remodel
+          {this.props.job.title}
         </Text>
 
         <View style={blueTile.iconSection}>
           <View style={blueTile.leftIcon}>
             <FontAwesome name={'users'} size={15} style={blueTile.iconFormat} color={'white'}>
-              <Text style={blueTile.iconText}>  3 hires</Text>
+              <Text style={blueTile.iconText}>  {this.props.job.hires} hires</Text>
             </FontAwesome>
           </View>
           <View style={blueTile.middleIcon}>
             <FontAwesome name={'map-marker'} size={15} style={blueTile.iconFormat} color={'white'}>
-              <Text style={blueTile.iconText}>  San Francisco</Text>
+              <Text style={blueTile.middleText}>  {this.props.job.location}</Text>
             </FontAwesome>
           </View>
           <View style={blueTile.rightIcon}>
             <FontAwesome name={'money'} size={15} style={blueTile.iconFormat} color={'white'}>
-              <Text style={blueTile.iconText}>   $32 /hour</Text>
+              <Text style={blueTile.iconText}>   {this.props.job.pay}</Text>
             </FontAwesome>
           </View>
         </View>
@@ -113,9 +122,9 @@ export default class BlueJobTile extends React.Component {
         <View style={blueTile.jobPoster}>
             <Image
               style={blueTile.posterImageIcon}
-              source={{uri: 'http://www.q4.co.uk/images/business-tradesmen.png'}}
+              source={{uri: this.props.job.ownerImage}}
             />
-            <Text style={blueTile.posterNameText}> John Anderson </Text>
+            <Text style={blueTile.posterNameText}> {this.props.job.ownerName} </Text>
         </View>
       </Image>
     )

@@ -2,6 +2,7 @@ const fakeJobData = [
   {
     id: 1,
     title: 'Shower Remodel',
+    hires: '4',
     location: 'San Francisco',
     pay: '$32 /hour',
     ownerName: 'John Anderson',
@@ -10,6 +11,7 @@ const fakeJobData = [
   {
     id: 2,
     title: 'Bathroom Fitting',
+    hires: '2',
     location: 'Oakland',
     pay: '$24 /hour',
     ownerName: 'Steve Smith',
@@ -18,6 +20,7 @@ const fakeJobData = [
   {
     id: 3,
     title: 'Toilet Repair',
+    hires: '3',
     location: 'Mountain View',
     pay: '$28 /hour',
     ownerName: 'Bob Jones',

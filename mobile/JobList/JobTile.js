@@ -29,11 +29,11 @@ export default class JobTile extends React.Component {
     }
     if (isEven(this.props.job.id)) {
       return(
-        <BlueJobTile />
+        <BlueJobTile job={this.props.job}/>
       )
     } else {
       return(
-        <WhiteJobTile />
+        <WhiteJobTile job={this.props.job}/>
       )
     }
   }
