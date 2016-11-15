@@ -7,8 +7,10 @@ import {
   Text,
   StyleSheet,
   Image,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
+import Router from '../Router.js';
 
 const Dimensions = React.Dimensions || require('Dimensions')
 const {width, height} = Dimensions.get('window');
@@ -90,43 +92,48 @@ export default class BlueJobTile extends React.Component {
     this.state = {
     };
   }
+
+  pressJob = () => {
+    this.props.navigator.push(Router.getRoute('jobProfile', {jobInfo: this.props.job}));
+  }
+
   render() {
-    console.log('this.props.job.ownerImag: ', this.props.job.ownerImag)
     return(
-      <Image
-        style={blueTile.bluePanel}
-        source={require('../assets/bluePatternBackground.png')}
-      >
-        <Text style={blueTile.bluePanelHeading}>
-          {this.props.job.title}
-        </Text>
+      <TouchableOpacity onPress={this.pressJob}>
+        <Image
+          style={blueTile.bluePanel}
+          source={require('../assets/bluePatternBackground.png')}
+        >
+          <Text style={blueTile.bluePanelHeading}>
+            {this.props.job.title}
+          </Text>
 
-        <View style={blueTile.iconSection}>
-          <View style={blueTile.leftIcon}>
-            <FontAwesome name={'users'} size={15} style={blueTile.iconFormat} color={'white'}>
-              <Text style={blueTile.iconText}>  {this.props.job.hires} hires</Text>
-            </FontAwesome>
+          <View style={blueTile.iconSection}>
+            <View style={blueTile.leftIcon}>
+              <FontAwesome name={'users'} size={15} style={blueTile.iconFormat} color={'white'}>
+                <Text style={blueTile.iconText}>  {this.props.job.hires} hires</Text>
+              </FontAwesome>
+            </View>
+            <View style={blueTile.middleIcon}>
+              <FontAwesome name={'map-marker'} size={15} style={blueTile.iconFormat} color={'white'}>
+                <Text style={blueTile.middleText}>  {this.props.job.location}</Text>
+              </FontAwesome>
+            </View>
+            <View style={blueTile.rightIcon}>
+              <FontAwesome name={'money'} size={15} style={blueTile.iconFormat} color={'white'}>
+                <Text style={blueTile.iconText}>   {this.props.job.pay}</Text>
+              </FontAwesome>
+            </View>
           </View>
-          <View style={blueTile.middleIcon}>
-            <FontAwesome name={'map-marker'} size={15} style={blueTile.iconFormat} color={'white'}>
-              <Text style={blueTile.middleText}>  {this.props.job.location}</Text>
-            </FontAwesome>
+          <View style={blueTile.jobPoster}>
+              <Image
+                style={blueTile.posterImageIcon}
+                source={{uri: this.props.job.ownerImage}}
+              />
+              <Text style={blueTile.posterNameText}> {this.props.job.ownerName} </Text>
           </View>
-          <View style={blueTile.rightIcon}>
-            <FontAwesome name={'money'} size={15} style={blueTile.iconFormat} color={'white'}>
-              <Text style={blueTile.iconText}>   {this.props.job.pay}</Text>
-            </FontAwesome>
-          </View>
-        </View>
-
-        <View style={blueTile.jobPoster}>
-            <Image
-              style={blueTile.posterImageIcon}
-              source={{uri: this.props.job.ownerImage}}
-            />
-            <Text style={blueTile.posterNameText}> {this.props.job.ownerName} </Text>
-        </View>
-      </Image>
+        </Image>
+      </TouchableOpacity>
     )
   }
 }

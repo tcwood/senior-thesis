@@ -44,7 +44,7 @@ class JobList extends React.Component {
         <MapListToggle/>
         <ScrollView>
           {fakeJobData.map((job, i) => 
-            <JobTile job={job} key={i} /> 
+            <JobTile job={job} key={i} navigator={this.props.navigator}/> 
           )}
         </ScrollView>
       </View>
