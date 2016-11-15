@@ -5,12 +5,15 @@ import {
   Text,
   StyleSheet,
   Image,
-  TextInput
+  TextInput,
+  ScrollView
 } from 'react-native';
 import SearchBar from './searchBar.js';
 import JobTypeFilter from './jobTypeFilter.js'
 import MapListToggle from './mapListToggle.js'
-import BlueJobTile from './BlueJobTile.js'
+import JobTile from './JobTile.js'
+
+
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
@@ -23,7 +26,7 @@ const vh = height/100;
 const vw = width/100;
 
 // create stylesheet object
-const jobStyles = StyleSheet.create({
+const jobList = StyleSheet.create({
 
 });
 
@@ -39,7 +42,11 @@ class JobList extends React.Component {
         <SearchBar/>
         <JobTypeFilter/>
         <MapListToggle/>
-        <BlueJobTile/>
+        <ScrollView>
+          {fakeJobData.map((job, i) => 
+            <JobTile job={job} key={i} /> 
+          )}
+        </ScrollView>
       </View>
     )
   }

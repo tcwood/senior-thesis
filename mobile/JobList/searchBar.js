@@ -68,7 +68,7 @@ export default class searchBar extends React.Component {
     return(
       <Image
         style={searchStyles.bluePattern}
-        source={require('../assets/blue-pattern-background.png')}
+        source={require('../assets/bluePatternBackground.png')}
       >
         <TextInput 
           style={searchStyles.searchBar}
