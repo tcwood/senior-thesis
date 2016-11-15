@@ -32,13 +32,7 @@ const jobInfo = {
   mobile: '(555) 555-5555',
   ownerImage: profPic,
 };
-// more temp
-const jobText = {
-  };
-// more temp
-const jobOwner = {
- 
-};
+
 
 const Profile = () => {
   const payrate = ('$').concat(jobInfo.pay.toString().concat('/hr'));
@@ -52,7 +46,7 @@ const Profile = () => {
       >
         {/* job title here */}
         <Text style={styles.topTitle}>
-          {jobText.title || ''}
+          {jobInfo.title || ''}
         </Text>
 
         {/* banner : job type pay rate location time range vacancies */}
@@ -69,11 +63,11 @@ const Profile = () => {
             {'The Job'}
           </Text>
           <Text>
-            {jobText.description}
+            {jobInfo.description}
           </Text>
         </View>
         {/* owner profile card here */}
-        <ProfileCard jobOwner={jobOwner} picStyles={styles.contactPic} />
+        <ProfileCard jobOwner={jobInfo} picStyles={styles.contactPic} />
       </Image>
     </View>
   );
