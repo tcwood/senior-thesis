@@ -4,8 +4,11 @@ import {
   Text,
   StyleSheet,
   Dimensions,
+  TouchableHighlight,
 } from 'react-native';
-
+import {
+  FontAwesome,
+} from '@exponent/vector-icons';
 import Recommendation from './Recommendation';
 
 const { width } = Dimensions.get('window');
@@ -25,6 +28,15 @@ const RecommendationList = () => (
   <View style={styles.recommendations}>
     <Text style={styles.recTitle}>
       Recommendations
+      <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
+        <TouchableHighlight>
+          <FontAwesome
+            name="pencil-square-o"
+            size={40}
+            color={'#DCDCDC'}
+          />
+        </TouchableHighlight>
+      </View>
     </Text>
     <Recommendation />
     <Recommendation />
