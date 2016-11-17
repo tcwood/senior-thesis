@@ -8,6 +8,12 @@ import {
   FontAwesome,
 } from '@exponent/vector-icons';
 
+const Dimensions = React.Dimensions || require('Dimensions');
+
+const { width, height } = Dimensions.get('window');
+const vh = height / 100;
+const vw = width / 100;
+
 const styles = StyleSheet.create({
   name: {
     fontSize: 34,
@@ -22,11 +28,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
+  addRevueIcon: {
+    color: '#006600',
+    paddingLeft: 0 * vw,
+    paddingTop: 3 * vh,
+    fontSize: 14,
+  }
 })
 
 const MainInfo = ({name, experience, contactInfo}) => (
   <View>
-    <Text style={styles.name}> {name} </Text>
+
+    <Text style={styles.name}> {name}</Text>
     <Text style={styles.experience}>
       {experience}
     </Text>
@@ -37,6 +50,14 @@ const MainInfo = ({name, experience, contactInfo}) => (
         color="#006600"
       />
       {`     ${contactInfo}`}
+    </Text>
+    <Text style={styles.addRevueIcon}>
+      <FontAwesome
+        name="plus-circle"
+        size={20}
+        color="gray"
+      />
+         Add Revue
     </Text>
   </View>
 )
