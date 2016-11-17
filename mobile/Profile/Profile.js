@@ -50,6 +50,7 @@ class Profile extends React.Component {
       contactInfo: '(234)567-8910',
     };
     this.clickOnEdit = this.clickOnEdit.bind(this);
+    this.isPeer = this.isPeer.bind(this);
 
     // Populate arrays to send into 'ModularBanner' component which creates icons next to descriptions
     this.icons = ['wrench', 'globe', 'clock-o'];
@@ -62,11 +63,20 @@ class Profile extends React.Component {
       editMode: !this.state.editMode,
     });
   }
+  isPeer() {
+    return this.props.route.params.peerProfile;
+  }
   renderHeader() {
-    if (!this.props.route.params.peerProfile) {
-      return (<Header peer={false} clickOnEdit={this.clickOnEdit} editMode={this.state.editMode} />);
+    if (!this.isPeer()) {
+      return (<Header
+        peer={this.isPeer()}
+        clickOnEdit={this.clickOnEdit}
+        editMode={this.state.editMode} 
+      />);
     }
-    return (<Header navigator={this.props.navigator} peer={true} />);
+    return ( <Header 
+      navigator={this.props.navigator}
+      peer={this.isPeer()} />);
   }
 
   render() {
@@ -93,7 +103,7 @@ class Profile extends React.Component {
                 contactInfo={userInfo.mobile}
               />
             }
-            <RecommendationList width={width} />
+            <RecommendationList isPeer={this.isPeer} width={width} />
           </View>
         </ScrollView>
       </View>
