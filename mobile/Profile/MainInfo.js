@@ -51,14 +51,6 @@ const MainInfo = ({name, experience, contactInfo}) => (
       />
       {`     ${contactInfo}`}
     </Text>
-    <Text style={styles.addRevueIcon}>
-      <FontAwesome
-        name="plus-circle"
-        size={20}
-        color="gray"
-      />
-         Add Revue
-    </Text>
   </View>
 )
 

@@ -30,6 +30,7 @@ console.log('Running redux version');
 // ==============================
 
 const store = createStore(reducer);
+
 const AppContainer = () => (
   <Provider store={store}>
     <NavigationProvider router={router}>

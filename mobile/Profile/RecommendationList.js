@@ -10,6 +10,7 @@ import {
   FontAwesome,
 } from '@exponent/vector-icons';
 import Recommendation from './Recommendation';
+import AddRevueIcon from './AddRevueIcon'
 
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -24,25 +25,22 @@ const styles = StyleSheet.create({
 
 // Eventually will get recommendations passed in through props and map
 // over the info to create each individual recommendation
-const RecommendationList = () => (
-  <View style={styles.recommendations}>
-    <Text style={styles.recTitle}>
-      Recommendations
-      <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
-        <TouchableHighlight>
-          <FontAwesome
-            name="pencil-square-o"
-            size={40}
-            color={'#DCDCDC'}
-          />
-        </TouchableHighlight>
-      </View>
-    </Text>
-    <Recommendation />
-    <Recommendation />
-    <Recommendation />
-    <Recommendation />
-  </View>
-)
+const RecommendationList = ({isPeer, navigator}) => {
+  // console.log('props.navigator in RecommendationList', props.navigator);
+  return (
+    <View style={styles.recommendations}>
+      <Text style={styles.recTitle}>
+        Recommendations
+        <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
+        </View>
+        <AddRevueIcon isPeer={isPeer} navigator={navigator} />
+      </Text>
+      <Recommendation />
+      <Recommendation />
+      <Recommendation />
+      <Recommendation />
+    </View>
+  )
+}
 
 export default RecommendationList;

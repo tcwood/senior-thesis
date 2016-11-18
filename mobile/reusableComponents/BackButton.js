@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, View} from 'react-native';
 import { withNavigation } from '@exponent/ex-navigation';
+import Router from '../Router.js'
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
