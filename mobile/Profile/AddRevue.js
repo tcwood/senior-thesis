@@ -3,7 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  Image
+  Image,
+  TextInput
 } from 'react-native';
 import {
   FontAwesome,
@@ -45,8 +46,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 60 * vh,
     marginTop: 5 * vh,
+    fontSize: 16,
+    color: 'black',
+    paddingLeft: 3 * vw,
+    paddingRight: 3 * vw,
+    paddingTop: 1 * vh,
+    lineHeight: 100,
   },
-  submitButton: {
+  submitButtonTransparent: {
     width: 86 * vw,
     marginLeft: 7 * vw,
     marginRight: 7 * vw,
@@ -55,6 +62,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 7 * vh,
     marginTop: 2 * vh,
+  },
+  submitButtonBlue: {
+    width: 86 * vw,
+    marginLeft: 7 * vw,
+    marginRight: 7 * vw,
+    borderWidth: 1,
+    borderRadius: 5,
+    height: 7 * vh,
+    marginTop: 2 * vh,
+    backgroundColor: '#155FAB'
   },
   imageIcon: {
     height: 4 * vw,
@@ -74,25 +91,27 @@ const styles = StyleSheet.create({
   },
   recomendationHead: {
     fontSize: 23,
-    fontWeight: '200',
+    fontWeight: '400',
     color: '#616060',
     marginTop: 9 * vh,
     marginLeft: 3 * vw,
   },
-  submitText: {
+  submitTextBlue: {
     fontSize: 19,
     fontWeight: '200',
     color: '#155FAB',
     textAlign: 'center',
     marginTop: 1.5 * vh,
   },
+  submitTextWhite: {
+    fontSize: 19,
+    fontWeight: '300',
+    color: '#ffffff',
+    textAlign: 'center',
+    marginTop: 1.5 * vh,
+  },
   formText: {
-    fontSize: 16,
-    color: 'black',
-    marginLeft: 3 * vw,
-    marginRight: 3 * vw,
-    marginTop: 3 * vw,   
-    lineHeight: 30,
+
   }
 });
 
@@ -103,7 +122,24 @@ class AddRevue extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      text: ''
     };
+  }
+
+  submitButtonFormatHandler() {
+    if (this.state.text.length) {
+      return styles.submitButtonBlue
+    } else {
+      return styles.submitButtonTransparent
+    }
+  }
+
+  submitButtonFontHandler() {
+    if (this.state.text.length) {
+      return styles.submitTextWhite
+    } else {
+      return styles.submitTextBlue
+    }
   }
 
   render() {
@@ -124,14 +160,15 @@ class AddRevue extends React.Component {
           </View>
         </View>
 
-        <View style={styles.formBox}>
-          <Text style={styles.formText}>
-           This is a sentence. Hopefully it goes across two lines. Bob is a great carpenter. I worked with him in Nam.
-          </Text>
-        </View>
+        <TextInput 
+          style={styles.formBox}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+          multiline={true}>
+        </TextInput>
 
-        <View style={styles.submitButton}>
-          <Text style={styles.submitText}> SUBMIT </Text>
+        <View style={this.submitButtonFormatHandler()}>
+          <Text style={this.submitButtonFontHandler()}> SUBMIT </Text>
         </View>
       </Image>
     );
