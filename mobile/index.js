@@ -1,21 +1,40 @@
 /* eslint react/jsx-filename-extension: 0 */
-/* eslint-env browser*/
 
 import Exponent from 'exponent';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+
+import {
+  NavigationProvider,
+} from '@exponent/ex-navigation';
+
 import reducer from './reducers';
-import App from './App';
+
+// ==================================================
+// CURRENTLY USING NAVIGATION & APP FOR REDUX VERSION
+// ==================================================
+// TO SWITCH TO VANILLA UNCOMMENT BELOW:
+// import router from './Router';
+// import App from './App';
+//
+// console.log('Running vanilla');
+
+// ==============================
+// COMMENT OUT WHEN USING VANILLA
+// ==============================
+import router from './navigation/Router';
+import App from './containers/App';
+
+console.log('Running redux version');
+// ==============================
 
 const store = createStore(reducer);
-
-console.log('React', React);
-console.log('Provider', Provider);
-console.log(App);
 const AppContainer = () => (
   <Provider store={store}>
-    <App />
+    <NavigationProvider router={router}>
+      <App />
+    </NavigationProvider>
   </Provider>
 );
 
