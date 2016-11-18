@@ -9,6 +9,7 @@ import {
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
+import BackButton from '../reusableComponents/BackButton.js'
 
 const Dimensions = React.Dimensions || require('Dimensions');
 
@@ -25,17 +26,18 @@ const styles = StyleSheet.create({
   headerRow: {
     width: 100 * vw,
     height: 14 * vh,
+
     flexWrap: 'wrap', 
     alignItems: 'flex-start',
     flexDirection:'row',
   }, 
   headerText: {
     width: 70 * vw,
-    height: 20 * vh,
+    height: 10 * vh,
   }, 
   imageIconContainter: {
     width: 30 * vw,
-    height: 20 * vh,
+    height: 10 * vh,
   },
   formBox: {
     width: 86 * vw,
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     height: 60 * vh,
-    marginTop: 5 * vh,
+    marginTop: 2 * vh,
     fontSize: 16,
     color: 'black',
     paddingLeft: 3 * vw,
@@ -84,16 +86,16 @@ const styles = StyleSheet.create({
     height: 11 * vh,
     marginLeft: 8 * vw,
     marginRight: 2 * vw,
-    marginTop: 6 * vh,
+    marginTop: 3 * vh,
     borderRadius: 5.5 * vh,
     borderWidth: 1,
     borderColor: '#E6E6E6',
   },
   recomendationHead: {
     fontSize: 23,
-    fontWeight: '400',
+    fontWeight: '300',
     color: '#616060',
-    marginTop: 9 * vh,
+    marginTop: 6 * vh,
     marginLeft: 3 * vw,
   },
   submitTextBlue: {
@@ -143,11 +145,13 @@ class AddRevue extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Image
         style={ styles.background }
         source={ whiteImg }
       >
+        <BackButton navigator={this.props.navigator} text={"  Back to John's Profile"}/>
         <View style={styles.headerRow}>
           <View style={styles.imageIconContainter}>
             <Image
@@ -164,7 +168,8 @@ class AddRevue extends React.Component {
           style={styles.formBox}
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
-          multiline={true}>
+          multiline={true}
+          placeholder='Recomend John Alexander... '>
         </TextInput>
 
         <View style={this.submitButtonFormatHandler()}>

@@ -37,12 +37,20 @@ export default class BackButton extends React.Component {
     }
   }
 
+  generateBackText = () => {
+    if (this.props.text) {
+      return this.props.text
+    }
+    console.log('this.props: ', this.props)
+    return '  Go back yo'
+  }
+
   render() {
     return (
       <View>
         <Text onPress={this.goBack} style={backButton.back}>
           <FontAwesome name={'chevron-left'} left={20} color={'#3E8CF1'} size={16}></FontAwesome>
-          <Text>  Go back</Text>
+          <Text>{this.generateBackText()}</Text>
         </Text>
       </View>
     ) 
