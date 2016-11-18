@@ -25,15 +25,14 @@ const styles = StyleSheet.create({
 
 // Eventually will get recommendations passed in through props and map
 // over the info to create each individual recommendation
-const RecommendationList = ({isPeer, navigator}) => {
-  // console.log('props.navigator in RecommendationList', props.navigator);
+const RecommendationList = ({isPeer, navigator, name}) => {
   return (
     <View style={styles.recommendations}>
       <Text style={styles.recTitle}>
         Recommendations
         <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
         </View>
-        <AddRevueIcon isPeer={isPeer} navigator={navigator} />
+        <AddRevueIcon isPeer={isPeer} navigator={navigator} name={name}/>
       </Text>
       <Recommendation />
       <Recommendation />

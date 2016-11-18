@@ -83,7 +83,6 @@ class Profile extends React.Component {
 
   render() {
     const userInfo = this.props.route.params.user;
-    console.log('this.props.navigator in Profile: ', this.props.navigator)
     return (
       <View style={styles.container}>
         { this.renderHeader() }
@@ -105,7 +104,11 @@ class Profile extends React.Component {
                 contactInfo={userInfo.mobile}
               />
             }
-            <RecommendationList isPeer={this.isPeer()} navigator={this.props.navigator} />
+            <RecommendationList 
+              isPeer={this.isPeer()} 
+              navigator={this.props.navigator}
+              name={userInfo.first_name.concat(' '.concat(userInfo.last_name))}
+             />
           </View>
         </ScrollView>
       </View>

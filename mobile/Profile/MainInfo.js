@@ -28,12 +28,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
-  addRevueIcon: {
-    color: '#006600',
-    paddingLeft: 0 * vw,
-    paddingTop: 3 * vh,
-    fontSize: 14,
-  }
 })
 
 const MainInfo = ({name, experience, contactInfo}) => (

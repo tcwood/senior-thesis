@@ -19,16 +19,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const addRevueHandler = (navigator) => {
-  navigator.push(Router.getRoute('addRevue'))
+const addRevueHandler = (navigator, name) => {
+  navigator.push(Router.getRoute('addRevue', { name: name, navigator: navigator }))
 }
 
-const AddRevueIcon = ({isPeer, navigator}) => {
+const AddRevueIcon = ({isPeer, navigator, name}) => {
   // console.log('props.navigator in Icon first: ', props.navigator)
   // console.log('props in Icon second: ' )
   if (isPeer) {
     return (
-      <Text style={styles.addRevueIcon} onPress={function(){addRevueHandler(navigator)}}>
+      <Text style={styles.addRevueIcon} onPress={function(){addRevueHandler(navigator, name)}}>
         <FontAwesome
           name="plus-circle"
           size={18}

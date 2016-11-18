@@ -145,13 +145,12 @@ class AddRevue extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <Image
         style={ styles.background }
         source={ whiteImg }
       >
-        <BackButton navigator={this.props.navigator} text={"  Back to John's Profile"}/>
+        <BackButton navigator={this.props.navigator} text={"  Back to " +  this.props.name }/>
         <View style={styles.headerRow}>
           <View style={styles.imageIconContainter}>
             <Image
@@ -169,7 +168,7 @@ class AddRevue extends React.Component {
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
           multiline={true}
-          placeholder='Recomend John Alexander... '>
+          placeholder={'Recomend ' + this.props.name + '... '}>
         </TextInput>
 
         <View style={this.submitButtonFormatHandler()}>
