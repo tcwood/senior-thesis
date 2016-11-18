@@ -1,18 +1,14 @@
 const initialState = {
-  loggedIn: false,
-  profile: {},
-  username: '',
   token: '',
+  profile: null,
 };
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GRANT_ACCESS':
       return {
-        loggedIn: true,
-        profile: action.profile,
-        username: action.username,
         token: action.token,
+        profile: state.profile,
       };
     default: return state;
   }
