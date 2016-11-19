@@ -10,3 +10,5 @@ dist/
 
 ## Mac OSX ##
 .DS_Store
+
+server/.env
