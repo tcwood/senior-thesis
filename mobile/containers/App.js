@@ -55,7 +55,6 @@ class App extends React.Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('App.js did update!');
     if (!this.state.assetsReady || !this.state.dataReady) {
       return;
     }
