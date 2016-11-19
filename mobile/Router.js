@@ -3,7 +3,7 @@ import {
 } from '@exponent/ex-navigation';
 
 import ProfileScreen from './Profile/Profile';
-import AddRevue from './Profile/AddRevue';
+import AddReview from './Profile/AddReview';
 import JobListScreen from './JobList/JobList';
 import WorkerListScreen from './WorkerList/WorkerList';
 import Messages from './Messages/Messages';
@@ -16,7 +16,7 @@ import EntryScreen from './Onboarding/Entry';
 
 export default createRouter(() => ({
   profile: () => ProfileScreen,
-  addRevue: () => AddRevue,
+  addReview: () => AddReview,
   jobList: () => JobListScreen,
   jobProfile: () => JobProfileScreen,
   workerList: () => WorkerListScreen,

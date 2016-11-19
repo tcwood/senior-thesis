@@ -42,7 +42,7 @@ export default class BackButton extends React.Component {
       return this.props.text
     }
     console.log('this.props: ', this.props)
-    return '  Go back yo'
+    return '  Go back'
   }
 
   render() {

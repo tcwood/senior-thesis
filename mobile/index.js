@@ -30,6 +30,7 @@ console.log('Running redux version');
 // ==============================
 
 const store = createStore(reducer);
+console.disableYellowBox = true;
 
 const AppContainer = () => (
   <Provider store={store}>

@@ -10,7 +10,7 @@ import {
   FontAwesome,
 } from '@exponent/vector-icons';
 import Recommendation from './Recommendation';
-import AddRevueIcon from './AddRevueIcon'
+import AddReviewIcon from './AddReviewIcon'
 import fakeReviewData from './fakeReviewData'
 
 const { width } = Dimensions.get('window');
@@ -26,16 +26,21 @@ const styles = StyleSheet.create({
 
 // Eventually will get recommendations passed in through props and map
 // over the info to create each individual recommendation
-const RecommendationList = ({isPeer, navigator, name}) => {
+const RecommendationList = ({isPeer, navigator, name, userInfo}) => {
   return (
     <View style={styles.recommendations}>
       <Text style={styles.recTitle}>
         Recommendations
         <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
         </View>
-        <AddRevueIcon isPeer={isPeer} navigator={navigator} name={name}/>
+        <AddReviewIcon 
+          isPeer={isPeer} 
+          navigator={navigator} 
+          name={name}
+          userInfo={userInfo}
+        />
       </Text>
-      {fakeReviewData.map((review, i) => 
+      {fakeReviewData.reverse().map((review, i) => 
         <Recommendation 
           comment={review.comment} 
           rating={review.rating}

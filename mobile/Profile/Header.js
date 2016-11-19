@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
     alignSelf: 'flex-end',
   },
-  addRevueIcon: {
+  addReviewIcon: {
     marginTop: 10,
   }
 });

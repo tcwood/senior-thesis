@@ -81,6 +81,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log('this.props.route.params: ', this.props.route.params )
     const userInfo = this.props.route.params.user;
     return (
       <View style={styles.container}>
@@ -104,6 +105,7 @@ class Profile extends React.Component {
               />
             }
             <RecommendationList 
+              userInfo={userInfo}
               isPeer={this.isPeer()} 
               navigator={this.props.navigator}
               name={userInfo.first_name.concat(' '.concat(userInfo.last_name))}
