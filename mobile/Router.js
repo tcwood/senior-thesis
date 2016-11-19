@@ -11,6 +11,7 @@ import JobProfileScreen from './JobProfile/Profile';
 import AddJob from './JobList/AddJob/AddJob';
 import AddJobWhatWhereWhen from './JobList/AddJob/AddJobWhatWhereWhen';
 import AddJobDetails from './JobList/AddJob/AddJobDetails';
+import EntryScreen from './Onboarding/Entry';
 
 export default createRouter(() => ({
   profile: () => ProfileScreen,
@@ -22,4 +23,5 @@ export default createRouter(() => ({
   addJob: () => AddJob,
   addJobWhatWhereWhen: () => AddJobWhatWhereWhen,
   addJobDetails: () => AddJobDetails,
+  entry: () => EntryScreen,
 }));
