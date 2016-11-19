@@ -154,7 +154,7 @@ class AddReview extends React.Component {
       const newId = fakeReviewData[fakeReviewData.length - 1].id + 1;
       const reviewerName = "Sam Henderson"
       const reviewerImage = "http://res.cloudinary.com/small-change/image/upload/v1456717442/Sam_mplysz.jpg"
-      const newReview = { rating: 4, ReviewFrom: 3, reviewerName: 'Ricky Bobby', ReviewFor: 2, comment: text, reviewerImage: reviewerImage}
+      const newReview = { rating: 4, ReviewFrom: 1, reviewerName: 'Ricky Bobby', ReviewFor: 2, comment: text, reviewerImage: reviewerImage}
 
       fakeReviewData.push(newReview)
 
