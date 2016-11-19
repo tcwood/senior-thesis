@@ -63,6 +63,7 @@ export default class searchBar extends React.Component {
     this.setState({ searchText: text });
   }
   render() {
+    const rightButton = this.props.rightButton;
     return (
       <Image
         style={searchStyles.bluePattern}
@@ -78,7 +79,7 @@ export default class searchBar extends React.Component {
         >
         {this.state.searchText.length > 0 ? null : <FontAwesome name={'search'} size={18} style={searchStyles.searchIcon} color={'#ffffff'} />}
         </TextInput>
-          {this.props.leftButton()}
+          {rightButton}
         </View>
       </Image>
     );

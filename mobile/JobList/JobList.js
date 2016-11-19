@@ -21,13 +21,13 @@ class JobList extends React.Component {
     };
   }
   AddButton() {
-    return () => (<AddJobButton navigator={this.props.navigator} />);
+    return (<AddJobButton navigator={this.props.navigator} />);
   }
   render() {
     return(
       <View>
         <View>
-          <SearchBar leftButton={this.AddButton()} />
+          <SearchBar rightButton={this.AddButton()} />
         </View>
         <JobTypeFilter />
         <MapListToggle />
