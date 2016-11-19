@@ -5,7 +5,6 @@ var Job = require('../models/').Job;
 
 module.exports = {
 // Create new review
-// (first finds user by id to associate with foreign key)
   createReview(req, res) {
     Review.create(req.body).then(function(review) {
       res.json(review);
