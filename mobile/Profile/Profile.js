@@ -1,8 +1,7 @@
- import React from 'react';
-
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   View,
-  Dimensions,
   StyleSheet,
   ScrollView,
 } from 'react-native';
@@ -33,13 +32,12 @@ const styles = StyleSheet.create({
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+    console.log('profile from redux', this.props.profile);
+
     // The state is populated with profile information. It will change on edit.
     // Eventually there may need to be a submit button to trigger a PUT request to DB
     this.state = {
       editMode: false,
-      nameText: 'Tim da Toolman',
-      experienceText: 'This is all of my experience. I have got lots of experience. Hire me because of me and this and that and boom.',
-      contactInfo: '(234)567-8910',
     };
     this.clickOnEdit = this.clickOnEdit.bind(this);
     this.isPeer = this.isPeer.bind(this);
@@ -75,7 +73,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    const userInfo = this.props.route.params.user;
+    const userInfo = this.props.route.params.user || this.props.profile;
     return (
       <View style={styles.container}>
         { this.renderHeader() }
@@ -109,5 +107,12 @@ class Profile extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
+  };
+};
 
-export default Profile;
+const ProfileConnected = connect(mapStateToProps)(Profile);
+
+export default ProfileConnected;

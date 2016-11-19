@@ -1,8 +1,8 @@
 export default [
   ['name', 'FULL NAME'],
-  ['years', 'YEARS OF EXPERIENCE'],
+  ['experience', 'YEARS OF EXPERIENCE'],
   ['location', 'LOCATION'],
   ['profession', 'PROFESSION'],
-  ['contact', 'PHONE NUMBER'],
+  ['mobile', 'PHONE NUMBER'],
   ['description', 'A LITTLE ABOUT YOURSELF'],
 ];

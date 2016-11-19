@@ -7,7 +7,6 @@ import RowEntry from './RowEntry';
 import styles from '../../workerListStyles';
 
 const RowList = ({ setOfTradies, navigator }) => {
-  console.log('set of tradies passed into tradieList', setOfTradies);
   const listGen = () =>
     setOfTradies.map((user, i) =>
       (
