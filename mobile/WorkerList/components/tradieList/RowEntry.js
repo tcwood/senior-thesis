@@ -8,7 +8,7 @@ import {
 } from '@exponent/vector-icons';
 import styles from '../../workerListStyles';
 import TradieBanner from '../tradieBanner/TradieBanner';
-import Router from '../../../Router';
+import Router from '../../../navigation/Router';
 
 const renderIcon = (name, size = 15, isSelected) =>
   (

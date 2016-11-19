@@ -8,7 +8,7 @@ import {
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
-import Router from '../Router'
+import Router from '../navigation/Router'
 
 
 const styles = StyleSheet.create({

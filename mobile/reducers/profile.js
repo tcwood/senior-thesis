@@ -1,9 +1,11 @@
 const initialState = {
   name: '',
-  years: '',
-  contact: '',
-  location: '',
+  mobile: '',
+  profession: '',
   description: '',
+  experience: '',
+  location: '',
+  profilePicUrl: '',
 };
 
 const profileReducer = (state = initialState, action) => {

@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import Router from '../../Router.js';
+import Router from '../../navigation/Router.js';
 import colors from '../../constants/Colors';
 import AddJobWhatWhereWhen from './AddJobWhatWhereWhen';
 

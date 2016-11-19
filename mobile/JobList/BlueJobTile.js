@@ -9,7 +9,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Router from '../Router';
+import Router from '../navigation/Router';
 
 const Dimensions = React.Dimensions || require('Dimensions');
 

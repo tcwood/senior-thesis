@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Router from '../../Router.js';
+import Router from '../../navigation/Router.js';
 
 const { width, height } = Dimensions.get('window');
 const vh = height/100;
