@@ -11,6 +11,7 @@ import {
 } from '@exponent/vector-icons';
 import Recommendation from './Recommendation';
 import AddRevueIcon from './AddRevueIcon'
+import fakeReviewData from './fakeReviewData'
 
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -34,10 +35,17 @@ const RecommendationList = ({isPeer, navigator, name}) => {
         </View>
         <AddRevueIcon isPeer={isPeer} navigator={navigator} name={name}/>
       </Text>
-      <Recommendation />
-      <Recommendation />
-      <Recommendation />
-      <Recommendation />
+      {fakeReviewData.map((review, i) => 
+        <Recommendation 
+          comment={review.comment} 
+          rating={review.rating}
+          ReviewFor={review.ReviewFor}
+          ReviewFrom={review.ReviewFrom}
+          createdAt={review.createdAt}
+          ReviewerName={review.ReviewerName}
+          ReviewerImage={review.ReviewerImage}
+          key={i}/> 
+      )}
     </View>
   )
 }

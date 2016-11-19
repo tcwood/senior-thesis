@@ -3,7 +3,6 @@ import React from 'react';
 import {
   View,
   Text,
-  Image,
   Dimensions,
   StyleSheet,
   ScrollView,
