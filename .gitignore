@@ -3,7 +3,7 @@ bower_components/
 .exponent/*
 *.log
 .exponent/*
-/server/config.json
+server/config.json
 
 build/
 dist/
