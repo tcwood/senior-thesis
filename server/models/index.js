@@ -1,4 +1,5 @@
 /* eslint-disable */
+console.disableYellowBox = true;
 'use strict';
 
 var fs        = require('fs');

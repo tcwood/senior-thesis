@@ -21,19 +21,19 @@ class JobList extends React.Component {
     };
   }
   AddButton() {
-    return () => (<AddJobButton navigator={this.props.navigator} />);
+    return (<AddJobButton navigator={this.props.navigator} />);
   }
   render() {
     return(
       <View>
-        <View style={{ width, height: 25 * 2.75 }}>
-          <SearchBar leftButton={this.AddButton()} />
+        <View>
+          <SearchBar rightButton={this.AddButton()} />
         </View>
         <JobTypeFilter />
         <MapListToggle />
         <ScrollView>
           {fakeJobData.map((job, i) => 
-            <JobTile job={job} key={i} navigator={this.props.navigator}/> 
+            <JobTile job={job} key={i} navigator={this.props.navigator} /> 
           )}
         </ScrollView>
       </View>

@@ -30,7 +30,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      profilePicUrl: {
+        type: Sequelize.STRING
+      },
     });
   },
   down: function(queryInterface, Sequelize) {

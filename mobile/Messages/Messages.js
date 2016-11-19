@@ -1,14 +1,16 @@
 import React from 'react';
-
 import {
   View,
-  Text,
+  Image,
 } from 'react-native';
 
-const Messages = () => (
-  <View >
-    <Text> Messages </Text>
-  </View>
-);
+const Messages = () =>
+  (
+    <View >
+      <Image 
+        source={require('../assets/theBoot.png')}
+      />
+    </View>
+  );
 
 export default Messages;

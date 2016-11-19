@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TextInput,
+  View,
 
 } from 'react-native';
 
@@ -19,6 +20,7 @@ const vw = width / 100;
 const searchStyles = StyleSheet.create({
   bluePattern: {
     height: 10 * vh,
+    width,
   },
   searchBar: {
     backgroundColor: 'rgba(255,255,255,0.15)',
@@ -26,8 +28,6 @@ const searchStyles = StyleSheet.create({
     fontWeight: '100',
     height: 4 * vh,
     fontSize: 15,
-    marginRight: 10 * vw,
-    marginLeft: 10 * vw,
     marginTop: 4 * vh,
     width: 80 * vw,
     color: 'white',
@@ -63,11 +63,13 @@ export default class searchBar extends React.Component {
     this.setState({ searchText: text });
   }
   render() {
+    const rightButton = this.props.rightButton;
     return (
       <Image
         style={searchStyles.bluePattern}
         source={blueImg}
       >
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
         <TextInput
           style={searchStyles.searchBar}
           placeholder="     Search projects"
@@ -77,6 +79,8 @@ export default class searchBar extends React.Component {
         >
         {this.state.searchText.length > 0 ? null : <FontAwesome name={'search'} size={18} style={searchStyles.searchIcon} color={'#ffffff'} />}
         </TextInput>
+          {rightButton}
+        </View>
       </Image>
     );
   }
