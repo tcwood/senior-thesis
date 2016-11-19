@@ -1,47 +1,18 @@
 /* eslint-disable */
-var Sequelize = require('sequelize');
-var fs        = require('fs');
 var path      = require('path');
-var basename  = path.basename(module.filename);
-var env       = 'test';
-var config    = require(__dirname + '/../config.json')[env];
-var db        = {};
 
 var User      = require('../models/').User;
 var Review    = require('../models/').Review;
 var Job       = require('../models/').Job;
 
-// var request   = require('request');
-// var rp        = require('request-promise');
 var axios     = require('axios');
 var expect    = require('chai').expect;
 
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
-// var tables = [];
-
-/*fs
-  .readdirSync(__dirname + '/../models/')
-  .filter(function(file) {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file !== 'index.js') && (file.slice(-3) === '.js');
-  })
-  .forEach(function(file) {
-    if (file)
-    var model = sequelize['import'](path.join(__dirname + '/../models', file));
-    db[model.name] = model;
-  });
-// Create associations between models if they exist
-Object.keys(db).forEach(function(modelName) {
-  if ("associate" in db[modelName]) {
-    db[modelName].associate(db);
-    tables.push(`"${db[modelName].getTableName()}"`);
-  }
-});
-// "force: true" drops tables if they already exist before creating them
-sequelize.sync({force: true})
-*/
-
-// This sets up the connection to the db
+// Set the connection to the db
 var dbSetup = require('../models/index');
+
+//TODO: REFACTOR TESTS TO USE DATA FROM TESTHELPERS.JS SO THEY'RE LESS CHUNKY
+//TODO: CREATE MORE TESTS. LOTS OF 'EM
 
 describe('Tradesman database CRUD', function() {
   
@@ -117,6 +88,7 @@ describe('Tradesman database CRUD', function() {
   });
 
   describe('/review', function(){
+    //This test is not correct yet... But moving on to connecting front/backend for mvp
     it('Should insert posted reviews to the DB', function() {
       return axios.post('http://127.0.0.1:3000/user',
       {
@@ -147,7 +119,5 @@ describe('Tradesman database CRUD', function() {
         console.log('third test');
       });
     });
-
-    // console.log('test user length', User.findAll({}));
   });
 });
