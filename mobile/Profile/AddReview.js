@@ -148,8 +148,6 @@ class AddReview extends React.Component {
   }
 
   handleSubmit(text, navigator, userInfo) {
-    console.log('handleSubmit running!')
-    console.log('text: ', text)
     if (text) {
       const newId = fakeReviewData[fakeReviewData.length - 1].id + 1;
       const ReviewerName = "Sam Henderson"

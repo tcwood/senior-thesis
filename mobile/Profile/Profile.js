@@ -81,7 +81,6 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log('this.props.route.params: ', this.props.route.params )
     const userInfo = this.props.route.params.user;
     return (
       <View style={styles.container}>
