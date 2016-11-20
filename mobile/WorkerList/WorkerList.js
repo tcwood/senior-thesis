@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 import RowList from './components/tradieList/TradieList';
-import mock from '../MOCK_USER_DATA';
 import SearchBar from '../JobList/searchBar';
 import JobTypeFilter from '../JobList/jobTypeFilter';
 

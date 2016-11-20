@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Dimensions,
   TouchableHighlight,
-  Text,
 } from 'react-native';
 import {
   FontAwesome,
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
-  } 
+  },
 });
 
 
@@ -76,7 +75,7 @@ const showBackButton = (navigator, peer) => {
   return null;
 };
 
-const Header = ({navigator, userPic, peer, clickOnEdit, editMode }) => (
+const Header = ({ navigator, userPic, peer, clickOnEdit, editMode }) => (
   <Image
     style={styles.backgroundImage}
     source={bgImg}
@@ -85,7 +84,7 @@ const Header = ({navigator, userPic, peer, clickOnEdit, editMode }) => (
       { showBackButton(navigator, peer) }
     </View>
     {editMode &&
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Image
         style={[styles.profPic, styles.overlay]}
         source={userPic || profPic}

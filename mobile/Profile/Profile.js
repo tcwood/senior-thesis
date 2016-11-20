@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    console.log('profile from redux', this.props.profile);
 
     // The state is populated with profile information. It will change on edit.
     // Eventually there may need to be a submit button to trigger a PUT request to DB
@@ -54,9 +53,11 @@ class Profile extends React.Component {
       editMode: !this.state.editMode,
     });
   }
+
   isPeer() {
     return this.props.route.params.peerProfile;
   }
+
   renderHeader() {
     // if you are looking at your own page, show edit icon
     if (!this.isPeer()) {
@@ -67,9 +68,11 @@ class Profile extends React.Component {
       />);
     }
     // if you are looking at someone elses profile page, don't show edit icon
-    return (<Header
-      navigator={this.props.navigator}
-      peer={this.isPeer()} />);
+    return (
+      <Header
+        navigator={this.props.navigator}
+        peer={this.isPeer()}
+      />);
   }
 
   render() {
@@ -107,6 +110,14 @@ class Profile extends React.Component {
     );
   }
 }
+
+Profile.propTypes = {
+  profile: React.PropTypes.object,
+  navigator: React.PropTypes.object,
+  route: React.PropTypes.object,
+};
+
+
 const mapStateToProps = (state) => {
   return {
     profile: state.profile,
