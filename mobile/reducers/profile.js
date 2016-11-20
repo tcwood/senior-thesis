@@ -6,6 +6,7 @@ const initialState = {
   experience: '',
   location: '',
   profilePicUrl: '',
+  id: null,
 };
 
 const profileReducer = (state = initialState, action) => {
