@@ -151,12 +151,13 @@ class AddReview extends React.Component {
 
   handleSubmit(text, navigator, userInfo) {
     if (text) {
-      const newId = fakeReviewData[fakeReviewData.length - 1].id + 1;
+      console.log('userInfo in handleSubmit: ', userInfo)
+      const newId = userInfo.Reviews.length > 0 ? userInfo.Reviews[userInfo.Reviews.length - 1].id + 1 : 1
       const reviewerName = "Sam Henderson"
       const reviewerImage = "http://res.cloudinary.com/small-change/image/upload/v1456717442/Sam_mplysz.jpg"
-      const newReview = { rating: 4, ReviewFrom: 1, reviewerName: 'Ricky Bobby', ReviewFor: 2, comment: text, reviewerImage: reviewerImage}
+      const newReview = { rating: 4, ReviewFrom: 1, reviewerName: 'Ricky Bobby', ReviewFor: userInfo.id, comment: text, reviewerImage: reviewerImage}
 
-      fakeReviewData.push(newReview)
+      userInfo.Reviews.push(newReview)
 
       axios.post('http://localhost:3000/review', newReview)
       .then(function (response) {

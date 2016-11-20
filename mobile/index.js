@@ -34,9 +34,7 @@ console.log('Running redux version');
 console.disableYellowBox = true;
 
 const logger = store => next => action => {
-  console.log('dispatching', action);
   let result = next(action);
-  console.log('next state', store.getState());
   return result;
 };
 

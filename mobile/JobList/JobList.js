@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 8,
-    marginTop: 0.7 * width,
-  }
+    marginTop: 0.5 * width,
+  },
 })
 
 class JobList extends React.Component {
