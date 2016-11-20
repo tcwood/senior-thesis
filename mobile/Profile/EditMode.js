@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   StyleSheet,
@@ -21,13 +22,15 @@ const styles = StyleSheet.create({
 class EditInfo extends React.Component {
   constructor(props) {
     super(props);
+
+    // console.log('profile from edit component', this.props.profile);
     // These will reflect default text values shown in input boxes
     // Right now, changes to these aren't reflected back in profile...
     // They will eventually trigger a PUT request to the db which will then render back on profile
     this.state = {
-      nameText: 'Tim da Toolman',
-      experienceText: 'This is all of my experience. I have got lots of experience. Hire me because of me and this and that and boom.',
-      contactInfo: '(234)567-8910',
+      nameText: '',
+      experienceText: '',
+      contactInfo: '',
     };
   }
 
@@ -37,23 +40,36 @@ class EditInfo extends React.Component {
         <TextInput
           style={styles.editTextBox}
           onChangeText={nameText => this.setState({ nameText })}
-          value={this.state.nameText}
+          value={this.props.profile.name}
         />
         <TextInput
           style={[styles.editTextBox, { height: 80 }]}
           onChangeText={experienceText => this.setState({ experienceText })}
-          value={this.state.experienceText}
+          value={this.props.profile.description}
           multiline
         />
         <TextInput
           style={styles.editTextBox}
           onChangeText={contactInfo => this.setState({ contactInfo })}
-          value={this.state.contactInfo}
+          value={this.props.profile.mobile}
         />
       </View>
     );
   }
 }
 
-export default EditInfo;
+EditInfo.propTypes = {
+  profile: React.PropTypes.object,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
+  };
+};
+
+const EditInfoConnected = connect(mapStateToProps)(EditInfo);
+
+
+export default EditInfoConnected;
 
