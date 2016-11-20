@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class Actions {
   static grantAccess(token) {
     return {
@@ -13,6 +15,21 @@ export default class Actions {
         const profile = getState().profile;
         console.log('[TODO]: upload the following profile to the server', profile);
         // upload profile to the server.
+
+        axios.post('http://127.0.0.1:3000/user/', {
+          name: profile.name,
+          profession: profile.profession,
+          description: profile.description,
+          experience: profile.experience,
+          location: profile.location,
+          mobile: profile.mobile,
+        })
+        .then((response) => {
+          console.log('response from onboarding POST', response);
+        })
+        .catch((error) => {
+          console.log('error posting new user in database', error);
+        });
       }
     };
   }
