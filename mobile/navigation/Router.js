@@ -11,7 +11,6 @@ import {
 import NavigationBar from './NavigationBar';
 import EntryScreen from '../containers/Entry';
 import SignUpScreen from '../containers/SignUp';
-
 import ProfileScreen from '../Profile/Profile';
 import JobListScreen from '../JobList/JobList';
 import WorkerListScreen from '../WorkerList/WorkerList';
@@ -20,6 +19,7 @@ import JobProfileScreen from '../JobProfile/Profile';
 import AddJob from '../JobList/AddJob/AddJob';
 import AddJobWhatWhereWhen from '../JobList/AddJob/AddJobWhatWhereWhen';
 import AddJobDetails from '../JobList/AddJob/AddJobDetails';
+import AddReview from '../Profile/AddReview';
 
 export default createRouter(() => ({
   navigationBar: () => NavigationBar,
@@ -31,6 +31,7 @@ export default createRouter(() => ({
   workerList: () => WorkerListScreen,
   messages: () => Messages,
   addJob: () => AddJob,
+  addReview: () => AddReview,
   addJobWhatWhereWhen: () => AddJobWhatWhereWhen,
   addJobDetails: () => AddJobDetails,
 }));

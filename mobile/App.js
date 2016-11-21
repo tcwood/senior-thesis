@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import NavigationBar from './NavigationBar';
 import Entry from './Onboarding/Entry';
 import SignUp from './Onboarding/SignUp';
-import Router from './Router';
+import Router from './navigation/Router';
 
 const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({

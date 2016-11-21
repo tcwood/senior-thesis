@@ -113,7 +113,8 @@ class Profile extends React.Component {
               isPeer={this.isPeer()} 
               navigator={this.props.navigator}
               name={userInfo.name}
-             />
+              reviews={userInfo.Reviews}
+            />
           </View>
         </ScrollView>
       </View>

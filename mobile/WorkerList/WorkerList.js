@@ -40,7 +40,6 @@ class WorkerList extends React.Component {
         <Text> Loading </Text>
       );
     }
-
     return (
       <View>
         <View>

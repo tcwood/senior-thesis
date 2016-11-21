@@ -119,6 +119,7 @@ app.get('/s3-uploader', (req, res) => {
       }
       res.send(JSON.stringify(result));
       res.end();
+
     }
   });
 })
