@@ -124,7 +124,7 @@ class Entry extends React.Component {
         </View>
 
         <View style={styles.buttonBox}>
-          <TouchableOpacity style={styles.bttn} onPress={this.SIGNIN}>
+          <TouchableOpacity style={styles.bttn} onPress={this.signin}>
             <Text style={{ color: colors.primary }}> SIGNIN </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.bttn} onPress={this.signup}>
