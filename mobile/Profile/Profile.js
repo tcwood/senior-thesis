@@ -51,7 +51,6 @@ class Profile extends React.Component {
     this.setUserInfoToUpdate = this.setUserInfoToUpdate.bind(this);
    // Populate arrays to send into 'ModularBanner' component which creates icons next to descriptions
     this.icons = ['wrench', 'globe', 'clock-o'];
-    this.descriptions = ['handyman', 'Earth', '385 years'];
   }
 
   // Toggles edit mode for rendering text boxes or regular info
@@ -69,7 +68,6 @@ class Profile extends React.Component {
   clickOnEdit() {
     if (this.state.editMode) {
       // trigger post request with this.state.userInfoToUpdate
-      console.log('SHOWING TRAVVVIS', this.state.userInfoToUpdate);
     }
     this.setState({
       editMode: !this.state.editMode,
@@ -79,7 +77,8 @@ class Profile extends React.Component {
 
   render() {
     const userInfo = this.props.route.params.user || this.props.profile;
-    profilePicUrl = userInfo.profilePicUrl;
+    const profilePicUrl = userInfo.profilePicUrl;
+    console.log(profilePicUrl)
     return (
       <View style={styles.container}>
         <Header

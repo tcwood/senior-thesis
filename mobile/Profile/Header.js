@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
 
 const bgImg = require('../assets/bluePatternBackground.png');
 // Link from profPic will eventually need to be passed in as a prop...
-const defaultPic = require('./timallen.jpg');
 
 const showEdit = (navigator, peer, clickOnEdit, editMode) => {
   // if youre looking at your own profile, show edit button
@@ -88,7 +87,7 @@ const Header = ({setUserInfoToUpdate, userInfoToUpdate, navigator, userPic, peer
     <View style={{ flex: 1 }}>
       <Image
         style={[styles.profPic, styles.overlay]}
-        source={{uri: userPic}}
+        source={{ uri: userPic }}
       >
         <AddPhoto 
           setUserInfoToUpdate={setUserInfoToUpdate}
@@ -100,7 +99,7 @@ const Header = ({setUserInfoToUpdate, userInfoToUpdate, navigator, userPic, peer
       <View style={{ flex: 1 }}>
         <Image
           style={styles.profPic}
-          source={{uri: userPic}}
+          source={{ uri: userPic }}
         />
       </View>
     }
