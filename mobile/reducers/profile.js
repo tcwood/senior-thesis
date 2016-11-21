@@ -5,7 +5,7 @@ const initialState = {
   description: '',
   experience: '',
   location: '',
-  profilePicUrl: 'https://s3.amazonaws.com/puffyshirts/mcp_profile_img-300x300.gif',
+  profilePicUrl: 'https://s3.amazonaws.com/puffyshirts/missing-profile.jpg',
   id: null,
 };
 
