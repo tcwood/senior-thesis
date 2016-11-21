@@ -20,6 +20,7 @@ import JobProfileScreen from '../JobProfile/Profile';
 import AddJob from '../JobList/AddJob/AddJob';
 import AddJobWhatWhereWhen from '../JobList/AddJob/AddJobWhatWhereWhen';
 import AddJobDetails from '../JobList/AddJob/AddJobDetails';
+import AddReview from '../Profile/AddReview'
 
 export default createRouter(() => ({
   navigationBar: () => NavigationBar,
@@ -31,6 +32,7 @@ export default createRouter(() => ({
   workerList: () => WorkerListScreen,
   messages: () => Messages,
   addJob: () => AddJob,
+  addReview: () => AddReview,
   addJobWhatWhereWhen: () => AddJobWhatWhereWhen,
   addJobDetails: () => AddJobDetails,
 }));

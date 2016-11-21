@@ -13,7 +13,7 @@ import {
 } from '@exponent/vector-icons';
 import BackButton from '../reusableComponents/BackButton.js'
 import fakeReviewData from './fakeReviewData.js'
-import Router from '../Router.js'
+import Router from '../navigation/Router.js'
 
 
 const Dimensions = React.Dimensions || require('Dimensions');
