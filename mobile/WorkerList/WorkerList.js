@@ -25,7 +25,6 @@ class WorkerList extends React.Component {
     const context = this;
     axios.get('http://127.0.0.1:3000/user/')
       .then((response) => {
-        console.log('success! getUsers: ', response)
         context.setState({
           response: response.data,
         });
