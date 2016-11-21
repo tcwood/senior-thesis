@@ -21,6 +21,7 @@ export default class Actions {
           experience: profile.experience,
           location: profile.location,
           mobile: profile.mobile,
+          profilePicUrl: profile.profilePicUrl,
         })
         .then((response) => {
           console.log('response from onboarding POST', response.data.id);

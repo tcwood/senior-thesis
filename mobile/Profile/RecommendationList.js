@@ -71,7 +71,6 @@ const RecommendationList = ({isPeer, navigator, name, userInfo, reviews}) => {
       </View>
     )
   }
-  
 }
 
 export default RecommendationList;
