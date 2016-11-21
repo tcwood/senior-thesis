@@ -40,7 +40,7 @@ const RecommendationList = ({isPeer, navigator, name, userInfo}) => {
           userInfo={userInfo}
         />
       </Text>
-      {fakeReviewData.reverse().map((review, i) => 
+      {fakeReviewData.map((review, i) => 
         <Recommendation 
           comment={review.comment} 
           rating={review.rating}
