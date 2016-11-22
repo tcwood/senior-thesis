@@ -3,17 +3,15 @@ import {
   View,
   ScrollView,
   ActivityIndicator,
-  StyleSheet
+  StyleSheet,
+  Dimensions,
 } from 'react-native';
-import fakeJobData from './fakeJobData';
+import axios from 'axios';
 import SearchBar from './searchBar';
 import JobTypeFilter from './jobTypeFilter';
 import MapListToggle from './mapListToggle';
 import JobTile from './JobTile';
 import AddJobButton from './AddJob/AddJobButton';
-import axios from 'axios'
-
-const Dimensions = React.Dimensions || require('Dimensions');
 
 const { width } = Dimensions.get('window');
 

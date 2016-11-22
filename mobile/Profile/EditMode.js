@@ -60,7 +60,8 @@ class EditInfo extends React.Component {
 }
 
 EditInfo.propTypes = {
-  profile: React.PropTypes.object,
+  userInfoToUpdate: React.PropTypes.object,
+  setUserInfoToUpdate: React.PropTypes.func,
 };
 
 const mapStateToProps = (state) => {

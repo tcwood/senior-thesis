@@ -1,24 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import {
   View,
-  Text,
-  Dimensions,
   StyleSheet,
   ScrollView,
-  TouchableHighlight,
-  TextInput,
 } from 'react-native';
-import {
-  FontAwesome,
-} from '@exponent/vector-icons';
 import Header from './Header';
 import MainInfo from './MainInfo';
 import EditInfo from './EditMode';
 import RecommendationList from './RecommendationList';
 import ModularBanner from '../reusableComponents/Banner/ModularBanner';
 
-const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
@@ -49,7 +42,7 @@ class Profile extends React.Component {
     this.clickOnEdit = this.clickOnEdit.bind(this);
     this.isPeer = this.isPeer.bind(this);
     this.setUserInfoToUpdate = this.setUserInfoToUpdate.bind(this);
-   // Populate arrays to send into 'ModularBanner' component which creates icons next to descriptions
+    // Populate arrays to send into 'ModularBanner' component deleting icons next to descriptions
     this.icons = ['wrench', 'globe', 'clock-o'];
   }
 
@@ -68,6 +61,32 @@ class Profile extends React.Component {
   clickOnEdit() {
     if (this.state.editMode) {
       // trigger post request with this.state.userInfoToUpdate
+      console.log('req url', `http://127.0.0.1:3000/user/${this.props.profile.id}`);
+      console.log('userInfoLog', this.state.userInfoToUpdate);
+
+      axios.put(`http://127.0.0.1:3000/user/${this.props.profile.id}`, {
+        name: this.state.userInfoToUpdate.name,
+        description: this.state.userInfoToUpdate.description,
+        mobile: this.state.userInfoToUpdate.mobile,
+        profilePicUrl: this.state.userInfoToUpdate.profilePicUrl,
+      })
+      .then((results) => {
+        // TODO: Inside of here, need to send a dispatch to update store w/ new profile info
+        // Also, make it so location, experience, profession are editable
+        console.log('PUT success', results);
+        console.log('userInfoToUpdate', this.state.userInfoToUpdate);
+        const { dispatch } = this.props;
+        dispatch({
+          type: 'UPDATE_PROFILE',
+          diff: {
+            name: this.state.userInfoToUpdate.name,
+            description: this.state.userInfoToUpdate.description,
+            mobile: this.state.userInfoToUpdate.mobile,
+            profilePicUrl: this.state.userInfoToUpdate.profilePicUrl,
+          },
+        });
+      })
+      .catch(err => console.log('PUT error', err));
     }
     this.setState({
       editMode: !this.state.editMode,
