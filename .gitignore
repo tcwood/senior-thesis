@@ -2,6 +2,7 @@ node_modules/
 bower_components/
 .exponent/*
 *.log
+*.swp
 .exponent/*
 server/config.json
 
