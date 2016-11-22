@@ -30,6 +30,8 @@ app.listen(app.get('port'), function() {
 //   require('dotenv').config()
 // }
 
+require('dotenv').config({path: __dirname + '/.env'});
+
 const S3_BUCKET = process.env.S3_BUCKET;
 const S3_KEY = process.env.S3_KEY;
 const S3_SECRET =process.env.S3_SECRET
