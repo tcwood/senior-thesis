@@ -8,6 +8,13 @@ var Job       = require('../models/').Job;
 var axios     = require('axios');
 var expect    = require('chai').expect;
 
+var {
+  users,
+  reviews,
+  jobs,
+  urls
+} = require('./testHelpers');
+
 // Set the connection to the db
 var dbSetup = require('../models/index');
 
@@ -60,6 +67,7 @@ describe('Tradesman database CRUD', function() {
 
   describe('/user', function(){
     it('Should insert users into the DB', function() {
+      console.log('user from helper', users.user1);
       return axios.post('http://127.0.0.1:3000/user',
       {
         name:'Mario',
