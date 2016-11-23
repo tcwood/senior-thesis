@@ -36,12 +36,12 @@ describe('Tradesman database CRUD', function() {
         $or: [
           { name:
             {
-              $eq: 'Mario'
+              $eq: 'mario'
             } 
           },
           { name:
             {
-              $eq: 'Luigi'
+              $eq: 'luigi'
             } 
           }
         ]
@@ -67,27 +67,12 @@ describe('Tradesman database CRUD', function() {
 
   describe('/user', function(){
     it('Should insert users into the DB', function() {
-      console.log('user from helper', users.user1);
-      return axios.post('http://127.0.0.1:3000/user',
-      {
-        name:'Mario',
-        profession:'plumber',
-        description:'Itsss a meeeee, Marrrioooo',
-        experience: 25,
-        location:'N64'
+      return axios.post(urls.createUser, users.user1)
+      .then( function(res) {
+        return axios.post(urls.createUser, users.user2);
       })
       .then( function(res) {
-        return axios.post('http://127.0.0.1:3000/user',
-        {
-          name:'Luigi',
-          profession:'electrician',
-          description:'Im the best in the west!',
-          experience: 23,
-          location:'N64'
-        })
-      })
-      .then( function(res) {
-        return User.findAll({})
+        return User.findAll({});
       })
       .then((users)=> {
         expect(users.length).to.equal(2);

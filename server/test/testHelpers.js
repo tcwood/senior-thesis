@@ -32,7 +32,7 @@ exports.users = {
     username: "mario",
     password: "1",
     profession: "plumber",
-    description: "doing it bigger and better",
+    description: "It'sss a meeeee, Marioooo!!",
     experience: 5,
     location: "berkeley",
     mobile: "(234)567-8910",
