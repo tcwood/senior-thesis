@@ -40,10 +40,7 @@ export default class Actions {
     return (dispatch, getState) => {
       axios.get(`${settings.SERVER}/user/`)
       .then((response) => {
-<<<<<<< 2ebccb50b73a02214dd9095461a03075b456f4ac
-=======
         console.log('got all users on startup');
->>>>>>> Refactor job list to be more redux-y
         if (response.data.length > 0) {
           dispatch({
             type: 'UPDATE_WORKERLIST',
@@ -135,12 +132,7 @@ export default class Actions {
   static updateWorkerList() {
     return (dispatch, getState) => {
       const latest = getState().workerList.latest;
-<<<<<<< 2ebccb50b73a02214dd9095461a03075b456f4ac
       axios.get(`${settings.SERVER}/latest/${latest}`)
-=======
-      console.log('the latest worker', latest);
-      axios.get(`http://127.0.0.1:3000/${latest}`)
->>>>>>> Refactor job list to be more redux-y
       .then((response) => {
         if (response.data.length > 0) {
           dispatch({
