@@ -95,10 +95,11 @@ class WhiteJobTile extends React.Component {
   }
 
   pressJob() {
-    this.props.navigator();
+    this.props.pressJob();
   }
 
   render() {
+    const url = this.props.job.User.profilePicUrl || 'https://s3.amazonaws.com/puffyshirts/missing-profile.jpg';
     return (
       <TouchableOpacity onPress={this.pressJob}>
         <Image
@@ -130,7 +131,7 @@ class WhiteJobTile extends React.Component {
           <View style={whiteTile.jobPoster}>
             <Image
               style={whiteTile.posterImageIcon}
-              source={{ uri: this.props.job.User.profilePicUrl }}
+              source={{ uri: url }}
             />
             <Text style={whiteTile.posterNameText}> {this.props.job.User.name} </Text>
           </View>
@@ -142,7 +143,7 @@ class WhiteJobTile extends React.Component {
 
 WhiteJobTile.propTypes = {
   job: React.PropTypes.object,
-  // navigator: React.PropTypes.object,
+  pressJob: React.PropTypes.func,
 };
 
 export default WhiteJobTile;
