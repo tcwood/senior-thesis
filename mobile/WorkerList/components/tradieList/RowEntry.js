@@ -2,13 +2,20 @@ import React from 'react';
 import {
   View,
   TouchableOpacity,
+  Image,
+  StyleSheet,
+  Dimensions,
 } from 'react-native';
-import styles from '../../workerListStyles';
-import TradieBanner from '../tradieBanner/TradieBanner';
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
-import Router from '../../../Router.js';
+import styles from '../../workerListStyles';
+import TradieBanner from '../tradieBanner/TradieBanner';
+import Router from '../../../navigation/Router';
+
+const { width, height } = Dimensions.get('window');
+const vh = height / 100;
+const vw = width / 100;
 
 const renderIcon = (name, size = 15, isSelected) =>
   (
@@ -19,6 +26,23 @@ const renderIcon = (name, size = 15, isSelected) =>
     />
   );
 
+const rowStlyes = StyleSheet.create({
+  posterImageIcon: {
+    width: 11 * vh,
+    height: 11 * vh,
+    marginLeft: 3 * vw,
+    marginRight: 2 * vw,
+    marginTop: 3 * vh,
+    borderRadius: 5.5 * vh,
+    borderWidth: 1,
+    borderColor: '#E6E6E6',
+  },
+  row: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+});
+
 
 const TradieRow = ({ navigator, userInfo }) => {
   const pressUser = () => {
@@ -26,21 +50,19 @@ const TradieRow = ({ navigator, userInfo }) => {
   };
   return (
     <TouchableOpacity onPress={pressUser}>
-      <View className="tradieRow" style={styles.row}>
-
-      <View style={styles.rightRow}>
-        <View style={styles.rowUserPic}>
-          {renderIcon('user-circle', 45)}
-        </View>
-        <TradieBanner 
-          expertise={userInfo.expertise}
+      <View className="tradieRow" style={rowStlyes.row}>
+        <Image
+          style={rowStlyes.posterImageIcon}
+          source={{ uri: userInfo.profilePicUrl }}
+        />
+        <TradieBanner
+          expertise={userInfo.profession}
           location={userInfo.location}
-          reviews={userInfo.reviews}
+          reviews={userInfo.Reviews.length}
           styles={styles}
           Icon={renderIcon}
-          name={userInfo.first_name.concat(' ').concat(userInfo.last_name)}
+          name={userInfo.name}
         />
-      </View>
       </View>
     </TouchableOpacity>
   );

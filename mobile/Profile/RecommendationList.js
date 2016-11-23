@@ -10,6 +10,7 @@ import {
   FontAwesome,
 } from '@exponent/vector-icons';
 import Recommendation from './Recommendation';
+import AddReviewIcon from './AddReviewIcon'
 
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -24,25 +25,51 @@ const styles = StyleSheet.create({
 
 // Eventually will get recommendations passed in through props and map
 // over the info to create each individual recommendation
-const RecommendationList = () => (
-  <View style={styles.recommendations}>
-    <Text style={styles.recTitle}>
-      Recommendations
-      <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
-        <TouchableHighlight>
-          <FontAwesome
-            name="pencil-square-o"
-            size={40}
-            color={'#DCDCDC'}
+const RecommendationList = ({isPeer, navigator, name, userInfo, reviews}) => {
+  if (reviews) {
+    return (
+      <View style={styles.recommendations}>
+        <Text style={styles.recTitle}>
+          Recommendations
+          <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
+          </View>
+          <AddReviewIcon 
+            isPeer={isPeer} 
+            navigator={navigator} 
+            name={name}
+            userInfo={userInfo}
           />
-        </TouchableHighlight>
+        </Text>
+        {reviews.map((review, i) => 
+          <Recommendation 
+            comment={review.comment} 
+            rating={review.rating}
+            ReviewFor={review.ReviewFor}
+            ReviewFrom={review.ReviewFrom}
+            createdAt={review.createdAt}
+            reviewerName={review.reviewerName}
+            reviewerImage={review.reviewerImage}
+            key={i}/> 
+        )}
       </View>
-    </Text>
-    <Recommendation />
-    <Recommendation />
-    <Recommendation />
-    <Recommendation />
-  </View>
-)
+    )
+  } else {
+    return (
+      <View style={styles.recommendations}>
+        <Text style={styles.recTitle}>
+          Recommendations
+          <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
+          </View>
+          <AddReviewIcon 
+            isPeer={isPeer} 
+            navigator={navigator} 
+            name={name}
+            userInfo={userInfo}
+          />
+        </Text>
+      </View>
+    )
+  }
+}
 
 export default RecommendationList;

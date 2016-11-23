@@ -13,7 +13,6 @@ import Banner from '../reusableComponents/Banner/ModularBanner';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 
 const bgImg = require('../assets/whiteTexturedBackground.png');
-const profPic = require('../Profile/timallen.jpg');
 
 const { height, width } = Dimensions.get('window');
 
@@ -30,7 +29,6 @@ const jobInfo = {
   description: 'This is the largest shipment of blackened shrimp we have had all year! The client is a returning customer. All hands on deck and dont let me down!',
   ownerName: 'Bill',
   mobile: '(555) 555-5555',
-  ownerImage: profPic,
 };
 
 
@@ -39,17 +37,18 @@ class Profile extends React.Component {
     super(props);
     this.state = {
     };
+    console.log('params.job from job profile', this.props);
   }
   render() {
-    const payrate = this.props.route.params.jobInfo.pay.toString();
+    const payrate = this.props.route.params.job.pay.toString();
     const propertyArr = [
       payrate, 
-      this.props.route.params.jobInfo.expertise,
-      this.props.route.params.jobInfo.location,
-      this.props.route.params.jobInfo.time,
-      this.props.route.params.jobInfo.hires
+      this.props.route.params.job.expertise,
+      this.props.route.params.job.location,
+      this.props.route.params.job.timeFrame,
+      this.props.route.params.job.vacancies,
     ];
-    if (jobInfo.vacancies > 1) { iconArr[4] = 'users'; }
+    // if (job.vacancies > 1) { iconArr[4] = 'users'; }
     return (
       <View style={styles.container}>
         <Image
@@ -59,7 +58,7 @@ class Profile extends React.Component {
           <BackButton navigator={this.props.navigator}/>
           {/* job title here */}
           <Text style={styles.topTitle}>
-            {this.props.route.params.jobInfo.title}
+            {this.props.route.params.job.title}
           </Text>
           {/* banner : job type pay rate location time range vacancies */}
           <Banner
@@ -75,11 +74,11 @@ class Profile extends React.Component {
               {'The Job'}
             </Text>
             <Text>
-              {this.props.route.params.jobInfo.description}
+              {this.props.route.params.job.description}
             </Text>
           </View>
           {/* owner profile card here */}
-          <ProfileCard jobOwner={this.props.route.params.jobInfo} picStyles={styles.contactPic} />
+          <ProfileCard jobOwner={this.props.route.params.job.User} picStyles={styles.contactPic} />
         </Image>
       </View>
     );

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Router from '../../Router.js';
+import Router from '../../navigation/Router.js';
 
 const { width, height } = Dimensions.get('window');
 const vh = height/100;
@@ -17,7 +17,7 @@ const vw = width/100;
 const styles = StyleSheet.create({
   add: {
     marginTop: 4*vh,
-    marginLeft: 1*vw,
+    marginLeft: 4*vw
   },
 });
 
@@ -26,8 +26,8 @@ const AddJobButton = ({ navigator }) => {
   const addJob = () =>
     navigator.push(Router.getRoute('addJob'));
   return (
-    <View>
-      <TouchableOpacity onPress={addJob} style={styles.add}>
+    <View style={styles.add}>
+      <TouchableOpacity onPress={addJob} >
         <FontAwesome 
           style={{backgroundColor: 'transparent'}}
           name={'plus'}

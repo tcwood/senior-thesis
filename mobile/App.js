@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import NavigationBar from './NavigationBar';
 import Entry from './Onboarding/Entry';
 import SignUp from './Onboarding/SignUp';
-import Router from './Router';
+import Router from './navigation/Router';
 
 const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -42,7 +42,6 @@ const whiteBg = require('./assets/whiteTexturedBackground.png');
 
 class App extends React.Component {
   constructor(props) {
-    console.log('I\'m inside App');
     super(props);
     this.renderScene = this.renderScene.bind(this);
   }
@@ -58,16 +57,17 @@ class App extends React.Component {
 
     // Persistant login via tokens?
     // const { store } = this.context;
-    // AsyncStorage.multiGet(['token', 'username'])
-    // .then((data) => {
-    //   if (data[0][1] !== null && data[1][1] !== null) {
-    //     store.dispatch({
-    //       type: 'GRANT_ACCESS',
-    //       token: data[0][1],
-    //       username: data[1][1],
-    //     });
-    //   }
-    // });
+    const { dispatch } = this.props;
+    AsyncStorage.multiGet(['token', 'username'])
+    .then((data) => {
+      if (data[0][1] !== null && data[1][1] !== null) {
+        dispatch({
+          type: 'GRANT_ACCESS',
+          token: data[0][1],
+          username: data[1][1],
+        });
+      }
+    });
 
     // Persistant login via express sessions? (yet to be investigated)
   }
@@ -103,7 +103,6 @@ class App extends React.Component {
 
   render() {
     const { token, profile, loggedIn } = this.props;
-    console.log('Props', this.props);
 
     // Crappy render? Could remove the state by always going to
     // the entry page and rerouting from there. See growler.
@@ -111,9 +110,7 @@ class App extends React.Component {
       // Render the main application
       return (
         <View style={styles.container}>
-          <NavigationProvider router={Router}>
-            <NavigationBar profile={profile} />
-          </NavigationProvider>
+          <NavigationBar profile={profile} />
         </View>
       );
     }
@@ -148,7 +145,6 @@ const mapStateToProps = (state) => {
   };
   return obj;
 };
-
 
 const AppConnected = connect(
   mapStateToProps,

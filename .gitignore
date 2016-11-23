@@ -2,10 +2,14 @@ node_modules/
 bower_components/
 .exponent/*
 *.log
+*.swp
 .exponent/*
+server/config.json
 
 build/
 dist/
 
 ## Mac OSX ##
 .DS_Store
+
+server/.env

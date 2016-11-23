@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import onboardingReducer from './onboarding';
 import profileReducer from './profile';
 import messagesReducer from './messages';
 import jobListReducer from './jobList';
@@ -9,12 +8,11 @@ import appReducer from './app';
 
 const mainReducer = combineReducers({
   app: appReducer,
-  onboardingReducer,
-  profileReducer,
+  profile: profileReducer,
+  workerList: workerListReducer,
   messagesReducer,
-  jobListReducer,
+  jobList: jobListReducer,
   jobPageReducer,
-  workerListReducer,
 });
 
 export default mainReducer;

@@ -1,26 +1,18 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import axios from 'axios';
 import {
   View,
-  Text,
-  Image,
-  Dimensions,
   StyleSheet,
   ScrollView,
-  TouchableHighlight,
-  TextInput,
 } from 'react-native';
-import {
-  FontAwesome,
-} from '@exponent/vector-icons';
-
 import Header from './Header';
 import MainInfo from './MainInfo';
 import EditInfo from './EditMode';
 import RecommendationList from './RecommendationList';
 import ModularBanner from '../reusableComponents/Banner/ModularBanner';
+import settings from '../settings';
 
-const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
@@ -41,69 +33,104 @@ const styles = StyleSheet.create({
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+
     // The state is populated with profile information. It will change on edit.
     // Eventually there may need to be a submit button to trigger a PUT request to DB
     this.state = {
       editMode: false,
-      nameText: 'Tim da Toolman',
-      experienceText: 'This is all of my experience. I have got lots of experience. Hire me because of me and this and that and boom.',
-      contactInfo: '(234)567-8910',
+      userInfoToUpdate: this.props.profile,
     };
     this.clickOnEdit = this.clickOnEdit.bind(this);
     this.isPeer = this.isPeer.bind(this);
-
-    // Populate arrays to send into 'ModularBanner' component which creates icons next to descriptions
+    this.setUserInfoToUpdate = this.setUserInfoToUpdate.bind(this);
+    // Populate arrays to send into 'ModularBanner' component deleting icons next to descriptions
     this.icons = ['wrench', 'globe', 'clock-o'];
-    this.descriptions = ['handyman', 'Earth', '385 years'];
   }
 
   // Toggles edit mode for rendering text boxes or regular info
-  clickOnEdit() {
+
+  setUserInfoToUpdate(userInfoProperty, userInfoInput) {
+    const userInfoToUpdate = this.state.userInfoToUpdate;
+    userInfoToUpdate[userInfoProperty] = userInfoInput;
     this.setState({
-      editMode: !this.state.editMode,
+      userInfoToUpdate,
     });
   }
   isPeer() {
     return this.props.route.params.peerProfile;
   }
-  renderHeader() {
-    if (!this.isPeer()) {
-      return (<Header
-        peer={this.isPeer()}
-        clickOnEdit={this.clickOnEdit}
-        editMode={this.state.editMode} 
-      />);
+  clickOnEdit() {
+    if (this.state.editMode) {
+      axios.put(`${settings.SERVER}/user/${this.props.profile.id}`, {
+        name: this.state.userInfoToUpdate.name,
+        description: this.state.userInfoToUpdate.description,
+        mobile: this.state.userInfoToUpdate.mobile,
+        profilePicUrl: this.state.userInfoToUpdate.profilePicUrl,
+      })
+      .then((results) => {
+        // TODO: Inside of here, need to send a dispatch to update store w/ new profile info
+        // Also, make it so location, experience, profession are editable
+        const { dispatch } = this.props;
+        dispatch({
+          type: 'UPDATE_PROFILE',
+          diff: {
+            name: this.state.userInfoToUpdate.name,
+            description: this.state.userInfoToUpdate.description,
+            mobile: this.state.userInfoToUpdate.mobile,
+            profilePicUrl: this.state.userInfoToUpdate.profilePicUrl,
+          },
+        });
+      })
+      .catch(err => console.log('PUT error', err));
     }
-    return ( <Header 
-      navigator={this.props.navigator}
-      peer={this.isPeer()} />);
+    this.setState({
+      editMode: !this.state.editMode,
+      userInfoToUpdate: this.state.userInfoToUpdate,
+    });
   }
 
   render() {
-    console.log('[FILE] Profile/Profile.js: Rendering!');
-    const userInfo = this.props.route.params.user;
+    const userInfo = this.props.route.params.user || this.props.profile;
+    const profilePicUrl = userInfo.profilePicUrl;
     return (
       <View style={styles.container}>
-        { this.renderHeader() }
+        <Header
+          peer={this.isPeer()}
+          clickOnEdit={this.clickOnEdit}
+          editMode={this.state.editMode}
+          navigator={this.props.navigator}
+          userInfoToUpdate={this.state.userInfoToUpdate}
+          setUserInfoToUpdate={this.setUserInfoToUpdate}
+          userPic={this.state.userInfoToUpdate.profilePicUrl || profilePicUrl}
+        />
         <ScrollView contentContainerStyle={styles.contentContainer} alwaysBounceVertical>
             <ModularBanner
               iconArr={this.icons}
-              propertyArr={[userInfo.expertise, userInfo.location, userInfo.experience_years]}
+              propertyArr={[userInfo.profession, userInfo.location, `${userInfo.experience} years`]}
               styles={styles.banner}
             />
           <View style={styles.info}>
             {/* TODO- make below banner editable on edit icon click */}
             {this.state.editMode &&
-              <EditInfo />
+              <EditInfo
+                setUserInfoToUpdate={this.setUserInfoToUpdate}
+                userInfoToUpdate={this.state.userInfoToUpdate}
+              />
             }
             {!this.state.editMode &&
               <MainInfo
-                name={userInfo.first_name.concat(' '.concat(userInfo.last_name))}
+                name={userInfo.name}
                 experience={userInfo.description}
                 contactInfo={userInfo.mobile}
               />
             }
-            <RecommendationList isPeer={this.isPeer} width={width} />
+            <RecommendationList
+              userInfo={userInfo}
+              isPeer={this.isPeer()}
+              navigator={this.props.navigator}
+              name={userInfo.name}
+              reviews={userInfo.Reviews}
+            />
           </View>
         </ScrollView>
       </View>
@@ -111,4 +138,20 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+Profile.propTypes = {
+  profile: React.PropTypes.object,
+  navigator: React.PropTypes.object,
+  route: React.PropTypes.object,
+  dispatch: React.PropTypes.func.isRequired,
+};
+
+
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
+  };
+};
+
+const ProfileConnected = connect(mapStateToProps)(Profile);
+
+export default ProfileConnected;

@@ -10,6 +10,7 @@ import {
   FontAwesome,
 } from '@exponent/vector-icons';
 import BackButton from '../reusableComponents/BackButton';
+import AddPhoto from './ProfilePhotoButton';
 
 const { width, height } = Dimensions.get('window');
 
@@ -33,14 +34,24 @@ const styles = StyleSheet.create({
     marginRight: 5,
     alignSelf: 'flex-end',
   },
+  addReviewIcon: {
+    marginTop: 10,
+  },
+  overlay: {
+    flex: 1,
+    opacity: 0.5,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 
 const bgImg = require('../assets/bluePatternBackground.png');
 // Link from profPic will eventually need to be passed in as a prop...
-const profPic = require('./timallen.jpg');
 
 const showEdit = (navigator, peer, clickOnEdit, editMode) => {
+  // if youre looking at your own profile, show edit button
   if (!peer) {
     return (
       <TouchableHighlight onPress={clickOnEdit}>
@@ -53,7 +64,9 @@ const showEdit = (navigator, peer, clickOnEdit, editMode) => {
       </TouchableHighlight>
     );
   }
+  return null;
 };
+
 
 const showBackButton = (navigator, peer) => {
   if (peer) {
@@ -62,7 +75,7 @@ const showBackButton = (navigator, peer) => {
   return null;
 };
 
-const Header = ({ navigator, userPic, peer, clickOnEdit, editMode }) => (
+const Header = ({setUserInfoToUpdate, userInfoToUpdate, navigator, userPic, peer, clickOnEdit, editMode }) => (
   <Image
     style={styles.backgroundImage}
     source={bgImg}
@@ -70,12 +83,26 @@ const Header = ({ navigator, userPic, peer, clickOnEdit, editMode }) => (
     <View style={{ flex: 1 }} >
       { showBackButton(navigator, peer) }
     </View>
+    {editMode &&
     <View style={{ flex: 1 }}>
       <Image
-        style={styles.profPic}
-        source={userPic || profPic}
-      />
+        style={[styles.profPic, styles.overlay]}
+        source={{ uri: userPic }}
+      >
+        <AddPhoto 
+          setUserInfoToUpdate={setUserInfoToUpdate}
+        />
+      </Image>
     </View>
+    }
+    {!editMode &&
+      <View style={{ flex: 1 }}>
+        <Image
+          style={styles.profPic}
+          source={{ uri: userPic }}
+        />
+      </View>
+    }
     <View style={{ flex: 1 }}>
       { showEdit(navigator, peer, clickOnEdit, editMode) }
     </View>
@@ -87,6 +114,7 @@ Header.propTypes = {
   editMode: React.PropTypes.bool,
   peer: React.PropTypes.bool,
   userPic: React.PropTypes.string,
+  navigator: React.PropTypes.object,
 };
 
 export default Header;

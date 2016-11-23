@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   StyleSheet,
@@ -21,39 +22,56 @@ const styles = StyleSheet.create({
 class EditInfo extends React.Component {
   constructor(props) {
     super(props);
+
+    // console.log('profile from edit component', this.props.profile);
     // These will reflect default text values shown in input boxes
     // Right now, changes to these aren't reflected back in profile...
     // They will eventually trigger a PUT request to the db which will then render back on profile
     this.state = {
-      nameText: 'Tim da Toolman',
-      experienceText: 'This is all of my experience. I have got lots of experience. Hire me because of me and this and that and boom.',
-      contactInfo: '(234)567-8910',
+      nameText: '',
+      experienceText: '',
+      contactInfo: '',
     };
   }
 
   render() {
+    const { setUserInfoToUpdate, userInfoToUpdate } = this.props;
     return (
       <View style={{ width }}>
         <TextInput
           style={styles.editTextBox}
-          onChangeText={nameText => this.setState({ nameText })}
-          value={this.state.nameText}
+          onChangeText={name => setUserInfoToUpdate('name', name)}
+          defaultValue={userInfoToUpdate.name}
         />
         <TextInput
           style={[styles.editTextBox, { height: 80 }]}
-          onChangeText={experienceText => this.setState({ experienceText })}
-          value={this.state.experienceText}
+          onChangeText={description => setUserInfoToUpdate('description', description)}
+          defaultValue={userInfoToUpdate.description}
           multiline
         />
         <TextInput
           style={styles.editTextBox}
-          onChangeText={contactInfo => this.setState({ contactInfo })}
-          value={this.state.contactInfo}
+          onChangeText={mobile => setUserInfoToUpdate('mobile', mobile)}
+          defaultValue={userInfoToUpdate.mobile}
         />
       </View>
     );
   }
 }
 
-export default EditInfo;
+EditInfo.propTypes = {
+  userInfoToUpdate: React.PropTypes.object,
+  setUserInfoToUpdate: React.PropTypes.func,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
+  };
+};
+
+const EditInfoConnected = connect(mapStateToProps)(EditInfo);
+
+
+export default EditInfoConnected;
 

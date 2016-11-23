@@ -14,13 +14,13 @@ export default class JobTile extends React.Component {
       return n % 2 === 0;
     }
     if (isEven(this.props.job.id)) {
-      return(
-        <BlueJobTile job={this.props.job} navigator={this.props.navigator}/>
-      )
+      return (
+        <BlueJobTile job={this.props.job} pressJob={this.props.pressJob} />
+      );
     } else {
-      return(
-        <WhiteJobTile job={this.props.job} navigator={this.props.navigator}/>
-      )
+      return (
+        <WhiteJobTile job={this.props.job} pressJob={this.props.pressJob} />
+      );
     }
   }
 }

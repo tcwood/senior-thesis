@@ -9,17 +9,15 @@ module.exports = {
           "experimentalObjectRestSpread": true,
           "jsx": true
       },
-      "sourceType": "module"
-  },
-  "rules": {
-      "react/jsx-filename-extension": "off",
-      "react/forbid-prop-types": "off"
+      "sourceType": "module",
   },
   "plugins": [
       "react",
-      "react-native"
+      "react-native",
   ],
   "rules": {
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": "off"
   }
 };

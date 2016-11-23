@@ -10,19 +10,6 @@ import {
 } from '@exponent/vector-icons';
 
 import Router from './Router';
-// placeholder for get request 
-const userInfo = {
-  "id":2,
-  "mobile": "(555)555-5555",
-  "first_name": "Angela",
-  "last_name": "Garza",
-  "experience_years": '10 years',
-  "description": "Fully-configurable demand-driven interface. Function-based optimal intranet",
-  "reviews": "9",
-  "location": "Daxing",
-  "street": "8767 Corben Terrace",
-  "expertise": "Business Systems Development Analyst",
-};
 
 export default class RootNavigation extends React.Component {
   static renderIcon(name, isSelected) {
@@ -37,7 +24,6 @@ export default class RootNavigation extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('[FILE] NavigationBar.js:', props.profile);
   }
 
   render() {
@@ -54,8 +40,6 @@ export default class RootNavigation extends React.Component {
             id="profile"
             navigatorUID="profile"
             initialRoute={Router.getRoute('profile', {
-              profile: this.props.profile,
-              user: userInfo,
               peerProfile: false })}
           />
         </TabNavigationItem>

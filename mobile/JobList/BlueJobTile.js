@@ -9,7 +9,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Router from '../Router';
+import Router from '../navigation/Router';
 
 const Dimensions = React.Dimensions || require('Dimensions');
 
@@ -96,10 +96,11 @@ export default class BlueJobTile extends React.Component {
   }
 
   pressJob() {
-    this.props.navigator.push(Router.getRoute('jobProfile', { jobInfo: this.props.job }));
+    this.props.pressJob();
   }
 
   render() {
+    const url = this.props.job.User.profilePicUrl || 'https://s3.amazonaws.com/puffyshirts/missing-profile.jpg';
     return (
       <TouchableOpacity onPress={this.pressJob}>
         <Image
@@ -113,7 +114,7 @@ export default class BlueJobTile extends React.Component {
           <View style={blueTile.iconSection}>
             <View style={blueTile.leftIcon}>
               <FontAwesome name={'users'} size={15} style={blueTile.iconFormat} color={'white'}>
-                <Text style={blueTile.iconText}> {this.props.job.hires} hires</Text>
+                <Text style={blueTile.iconText}> {this.props.job.vacancies} hires</Text>
               </FontAwesome>
             </View>
             <View style={blueTile.middleIcon}>
@@ -130,9 +131,9 @@ export default class BlueJobTile extends React.Component {
           <View style={blueTile.jobPoster}>
             <Image
               style={blueTile.posterImageIcon}
-              source={{ uri: this.props.job.ownerImage }}
+              source={{ uri: url }}
             />
-            <Text style={blueTile.posterNameText}> {this.props.job.ownerName} </Text>
+            <Text style={blueTile.posterNameText}> {this.props.job.User.name} </Text>
           </View>
         </Image>
       </TouchableOpacity>
@@ -142,5 +143,5 @@ export default class BlueJobTile extends React.Component {
 
 BlueJobTile.propTypes = {
   job: React.PropTypes.object,
-  navigator: React.PropTypes.object,
+  pressJob: React.PropTypes.func,
 };

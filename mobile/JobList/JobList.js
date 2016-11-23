@@ -1,57 +1,91 @@
+// THIS FILE IS NOT CURRENTLY BEING USED
+// THE JOB LIST IS BEING RENDERED THROUGH THE JOBLIST
+// CONTAINER AND COMPONENT IN REDUXIFIED VERSIONS INSTEAD
+
 import React from 'react';
-import fakeJobData from './fakeJobData';
 import {
   View,
-  Text,
+  ScrollView,
+  ActivityIndicator,
   StyleSheet,
-  Image,
-  TextInput,
-  ScrollView
+  Dimensions,
 } from 'react-native';
-import SearchBar from './searchBar.js';
-import JobTypeFilter from './jobTypeFilter.js'
-import MapListToggle from './mapListToggle.js'
-import JobTile from './JobTile.js'
+import axios from 'axios';
+import SearchBar from './searchBar';
+import JobTypeFilter from './jobTypeFilter';
+import MapListToggle from './mapListToggle';
+import JobTile from './JobTile';
 import AddJobButton from './AddJob/AddJobButton';
+import settings from '../settings';
 
+const { width } = Dimensions.get('window');
 
-import {
-  FontAwesome,
-} from '@exponent/vector-icons';
-
-
-// Get 'vh' for stylesheet. 1*vh represents 1% of the height of the viewport
-const Dimensions = React.Dimensions || require('Dimensions');
-const {width, height} = Dimensions.get('window');
-const vh = height/100;
-const vw = width/100;
-
-// create stylesheet object
+const styles = StyleSheet.create({
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+    marginTop: 0.5 * width,
+  },
+})
 
 class JobList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
+      jobData: [],
+      counter: 0
     };
   }
   AddButton() {
-    return () => (<AddJobButton navigator={this.props.navigator} />);
+    return (<AddJobButton navigator={this.props.navigator} />);
   }
+
+  componentDidMount() {
+    const context = this;
+    axios.get(`${settings.SERVER}/job`)
+    .then(function (response) {
+      context.setState({loading: false, jobData: response.data});
+    })
+    .catch(function (error) {
+      console.log('axios error! "catch" is running: ', error)
+    });
+  }
+
   render() {
-    return(
-      <View>
-        <View style={{ width, height: 25 * 2.75 }}>
-          <SearchBar leftButton={this.AddButton()} />
+    if (!this.state.loading) {
+      return (
+        <View>
+          <View>
+            <SearchBar rightButton={this.AddButton()} />
+          </View>
+          <JobTypeFilter />
+          <MapListToggle />
+          <ScrollView>
+            {this.state.jobData.map((job, i) => 
+              <JobTile job={job} key={i} navigator={this.props.navigator} /> 
+            )}
+          </ScrollView>
         </View>
-        <JobTypeFilter />
-        <MapListToggle />
-        <ScrollView>
-          {fakeJobData.map((job, i) => 
-            <JobTile job={job} key={i} navigator={this.props.navigator}/> 
-          )}
-        </ScrollView>
-      </View>
-    )
+      )
+    } else {
+      return (
+        <View>
+          <View>
+            <SearchBar rightButton={this.AddButton()} />
+          </View>
+          <JobTypeFilter />
+          <MapListToggle />
+          <ActivityIndicator
+            animating={this.state.animating}
+            style={[styles.centering, {height: 80}]}
+            size="large"
+            color ="black"
+          />
+        </View>
+      )
+    }
   }
 }
 
