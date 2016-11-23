@@ -96,10 +96,11 @@ export default class BlueJobTile extends React.Component {
   }
 
   pressJob() {
-    this.props.navigator();
+    this.props.pressJob();
   }
 
   render() {
+    const url = this.props.job.User.profilePicUrl || 'https://s3.amazonaws.com/puffyshirts/missing-profile.jpg';
     return (
       <TouchableOpacity onPress={this.pressJob}>
         <Image
@@ -130,7 +131,7 @@ export default class BlueJobTile extends React.Component {
           <View style={blueTile.jobPoster}>
             <Image
               style={blueTile.posterImageIcon}
-              source={{ uri: this.props.job.User.profilePicUrl }}
+              source={{ uri: url }}
             />
             <Text style={blueTile.posterNameText}> {this.props.job.User.name} </Text>
           </View>
@@ -142,5 +143,5 @@ export default class BlueJobTile extends React.Component {
 
 BlueJobTile.propTypes = {
   job: React.PropTypes.object,
-  navigator: React.PropTypes.object,
+  pressJob: React.PropTypes.func,
 };
