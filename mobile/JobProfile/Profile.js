@@ -37,17 +37,18 @@ class Profile extends React.Component {
     super(props);
     this.state = {
     };
+    console.log('params.job from job profile', this.props);
   }
   render() {
-    const payrate = this.props.route.params.jobInfo.pay.toString();
+    const payrate = this.props.route.params.job.pay.toString();
     const propertyArr = [
       payrate, 
-      this.props.route.params.jobInfo.expertise,
-      this.props.route.params.jobInfo.location,
-      this.props.route.params.jobInfo.timeFrame,
-      this.props.route.params.jobInfo.vacancies,
+      this.props.route.params.job.expertise,
+      this.props.route.params.job.location,
+      this.props.route.params.job.timeFrame,
+      this.props.route.params.job.vacancies,
     ];
-    if (jobInfo.vacancies > 1) { iconArr[4] = 'users'; }
+    // if (job.vacancies > 1) { iconArr[4] = 'users'; }
     return (
       <View style={styles.container}>
         <Image
@@ -57,7 +58,7 @@ class Profile extends React.Component {
           <BackButton navigator={this.props.navigator}/>
           {/* job title here */}
           <Text style={styles.topTitle}>
-            {this.props.route.params.jobInfo.title}
+            {this.props.route.params.job.title}
           </Text>
           {/* banner : job type pay rate location time range vacancies */}
           <Banner
@@ -73,11 +74,11 @@ class Profile extends React.Component {
               {'The Job'}
             </Text>
             <Text>
-              {this.props.route.params.jobInfo.description}
+              {this.props.route.params.job.description}
             </Text>
           </View>
           {/* owner profile card here */}
-          <ProfileCard jobOwner={this.props.route.params.jobInfo.User} picStyles={styles.contactPic} />
+          <ProfileCard jobOwner={this.props.route.params.job.User} picStyles={styles.contactPic} />
         </Image>
       </View>
     );

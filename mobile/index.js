@@ -25,6 +25,8 @@ import reducer from './reducers';
 // ==============================
 import router from './navigation/Router';
 import App from './containers/App';
+
+// console.log('Running redux version');
 // ==============================
 
 
@@ -35,8 +37,8 @@ console.disableYellowBox = true;
 // I NEED THIS FOR DEBUGGING - IT'S NOT TO FLOOD THE SCREEN
 const logger = store => next => action => {
   console.log('action:', action);
-  let result = next(action);
   console.log('next state:', store.getState());
+  const result = next(action);
   return result;
 };
 

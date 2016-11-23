@@ -9,12 +9,6 @@ export default class Actions {
     };
   }
 
-  static loadJobList() {
-    return {
-      type: 'SEOMTHING',
-    };
-  }
-
   static getToken() {
     return {
       type: 'SOMETHINGELSE',
@@ -46,6 +40,10 @@ export default class Actions {
     return (dispatch, getState) => {
       axios.get(`${settings.SERVER}/user/`)
       .then((response) => {
+<<<<<<< 2ebccb50b73a02214dd9095461a03075b456f4ac
+=======
+        console.log('got all users on startup');
+>>>>>>> Refactor job list to be more redux-y
         if (response.data.length > 0) {
           dispatch({
             type: 'UPDATE_WORKERLIST',
@@ -60,6 +58,24 @@ export default class Actions {
     };
   }
 
+  static loadJobList() {
+    return (dispatch, getState) => {
+      axios.get('http://localhost:3000/job')
+      .then((response) => {
+        if (response.data.length > 0) {
+          console.log('inside loadJobList response', response);
+          dispatch({
+            type: 'UPDATE_JOBLIST',
+            jobs: response.data,
+            // latest: response.data[0].updatedAt,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log('error loading job list from db', error);
+      });
+    }
+  }
   // Updates the profile on the store
   static updateProfile(diff, upload) {
     return (dispatch, getState) => {
@@ -119,17 +135,42 @@ export default class Actions {
   static updateWorkerList() {
     return (dispatch, getState) => {
       const latest = getState().workerList.latest;
+<<<<<<< 2ebccb50b73a02214dd9095461a03075b456f4ac
       axios.get(`${settings.SERVER}/latest/${latest}`)
+=======
+      console.log('the latest worker', latest);
+      axios.get(`http://127.0.0.1:3000/${latest}`)
+>>>>>>> Refactor job list to be more redux-y
       .then((response) => {
         if (response.data.length > 0) {
           dispatch({
             type: 'UPDATE_WORKERLIST',
             workers: response.data,
+            latest: response.data[0].updatedAt,
           });
         }
       })
       .catch((error) => {
         console.log('error updating workerlist', error);
+      });
+    };
+  }
+
+  static updateJobList() {
+    return (dispatch, getState) => {
+      // const latest = getState.jobList.latest;
+      // console.log('the latest job', latest);
+      axios.get('http://127.0.0.1:3000/job')
+      .then((response) => {
+        if (response.data.length > 0) {
+          dispatch({
+            type: 'UPDATE_JOBLIST',
+            jobs: response.data,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log('error updating joblist', error);
       });
     };
   }
