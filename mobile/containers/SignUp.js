@@ -67,7 +67,7 @@ class SignUp extends React.Component {
 
     this.populatePicker = set =>
     set.map((occupation, index) => (
-        <Picker.Item key={index}label={occupation} value={occupation} />
+      <Picker.Item key={index}label={occupation} value={occupation} />
     ));
 
     this.userInput = () => {

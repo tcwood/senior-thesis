@@ -11,12 +11,13 @@ import {
 import NavigationBar from './NavigationBar';
 import Entry from '../containers/Entry';
 import SignUp from '../containers/SignUp';
-
 import WorkerList from '../components/WorkerListScreen';
+import JobList from '../containers/CreateJobList';
+// might want to refactor JobList a little to mirror style of WorkerListScreen et al.
 
 // import WorkerList from '../WorkerList/WorkerList';
 import Profile from '../Profile/Profile';
-import JobList from '../JobList/JobList';
+// import JobList from '../JobList/JobList';
 import Messages from '../Messages/Messages';
 import JobProfile from '../JobProfile/Profile';
 import AddJob from '../JobList/AddJob/AddJob';

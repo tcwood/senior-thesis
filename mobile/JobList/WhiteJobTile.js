@@ -95,7 +95,7 @@ class WhiteJobTile extends React.Component {
   }
 
   pressJob() {
-    this.props.navigator.push(Router.getRoute('jobProfile', { jobInfo: this.props.job }));
+    this.props.navigator();
   }
 
   render() {
@@ -142,7 +142,7 @@ class WhiteJobTile extends React.Component {
 
 WhiteJobTile.propTypes = {
   job: React.PropTypes.object,
-  navigator: React.PropTypes.object,
+  // navigator: React.PropTypes.object,
 };
 
 export default WhiteJobTile;

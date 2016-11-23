@@ -5,6 +5,11 @@ const jobListReducer = (state = { jobList: [] }, action) => {
       return {
         jobList: [...state.jobList, action.newJob],
       };
+    case ('UPDATE_JOBLIST'):
+      return {
+        jobList: [...state.jobList, ...action.jobs],
+        // latest: action.latest || state.latest,
+      };
     default: return state;
   }
 };
