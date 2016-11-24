@@ -75,7 +75,7 @@ const showBackButton = (navigator, peer) => {
   return null;
 };
 
-const Header = ({setUserInfoToUpdate, userInfoToUpdate, navigator, userPic, peer, clickOnEdit, editMode }) => (
+const Header = ({setUserInfoToUpdate, userInfoToUpdate, navigator, userPic, peer, clickOnEdit, editMode, userInfo }) => (
   <Image
     style={styles.backgroundImage}
     source={bgImg}
@@ -89,7 +89,7 @@ const Header = ({setUserInfoToUpdate, userInfoToUpdate, navigator, userPic, peer
         style={[styles.profPic, styles.overlay]}
         source={{ uri: userPic }}
       >
-        <AddPhoto 
+        <AddPhoto
           setUserInfoToUpdate={setUserInfoToUpdate}
         />
       </Image>

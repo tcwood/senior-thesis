@@ -17,6 +17,7 @@ module.exports = {
   findJobs(req, res) {
     Job.findAll({include: User})
       .then(function (jobs) {
+        console.log('inside findJobs', jobs);
         res.status(200).json(jobs);
       }).catch(function (error) {
         res.status(500).json(error);

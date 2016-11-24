@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 7 * vh,
     marginTop: 2 * vh,
-    backgroundColor: '#155FAB'
+    backgroundColor: '#155FAB',
   },
   imageIcon: {
     height: 4 * vw,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   formText: {
 
-  }
+  },
 });
 
 const whiteImg = require('../assets/whiteTexturedBackground.png');
@@ -129,66 +129,71 @@ class AddReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
     };
   }
 
   submitButtonFormatHandler() {
     if (this.state.text.length) {
-      return styles.submitButtonBlue
-    } else {
-      return styles.submitButtonTransparent
+      return styles.submitButtonBlue;
     }
+    return styles.submitButtonTransparent;
   }
 
   submitButtonFontHandler() {
     if (this.state.text.length) {
-      return styles.submitTextWhite
-    } else {
-      return styles.submitTextBlue
+      return styles.submitTextWhite;
     }
+    return styles.submitTextBlue;
   }
 
-  handleSubmit(text, navigator, userInfo) {
+  handleSubmit(text, navigator, userInfo, currentLoggedInUser) {
     if (text) {
-      const newId = userInfo.Reviews.length > 0 ? userInfo.Reviews[userInfo.Reviews.length - 1].id + 1 : 1
-      const reviewerName = "Sam Henderson"
-      const reviewerImage = "http://res.cloudinary.com/small-change/image/upload/v1456717442/Sam_mplysz.jpg"
-      const newReview = { rating: 4, ReviewFrom: 1, reviewerName: 'Ricky Bobby', ReviewFor: userInfo.id, comment: text, reviewerImage: reviewerImage}
+      console.log('currentLoggedInUser from AddReview', currentLoggedInUser);
+      const newId = userInfo.Reviews.length > 0 ? userInfo.Reviews[userInfo.Reviews.length - 1].id + 1 : 1;
+      const reviewerName = currentLoggedInUser.name;
+      const reviewerImage = currentLoggedInUser.profilePicUrl;
+      const newReview = {
+        rating: 4,
+        ReviewFrom: 1,
+        reviewerName,
+        ReviewFor: userInfo.id,
+        comment: text,
+        reviewerImage,
+      };
 
-      userInfo.Reviews.push(newReview)
+      userInfo.Reviews.push(newReview);
 
       axios.post(`${settings.SERVER}/review`, newReview)
-      .then(function (response) {
-      })
-      .catch(function (error) {
-      });
+      .catch(error => console.log(error));
 
-      navigator.push(Router.getRoute('profile', { peerProfile: true, user: userInfo}))
+      navigator.push(Router.getRoute('profile', { peerProfile: true, user: userInfo }));
     }
   }
 
   updateTextState(text) {
     const context = this;
-    this.setState({ text: text });
+    this.setState({ text });
   }
 
   render() {
-    const text = this.state.text
-    const context = this
-    const navigator = this.props.navigator
-    const userInfo = this.props.userInfo
+    const text = this.state.text;
+    const context = this;
+    const navigator = this.props.navigator;
+    const userInfo = this.props.userInfo;
+    const name = this.props.name;
+    const currentLoggedInUser = this.props.currentLoggedInUser;
     return (
       <Image
         style={ styles.background }
         source={ whiteImg }
       >
-        <BackButton navigator={this.props.navigator} text={"  Back to " +  this.props.name }/>
+        <BackButton navigator={this.props.navigator} text={"  Back to " + name }/>
         <View style={styles.headerRow}>
           <View style={styles.imageIconContainter}>
             <Image
               style={ styles.posterImageIcon }
-              source={{uri: 'http://www.solotradie.com/wp-content/uploads/2015/04/tradesman_laptop.jpg' }}
+              source={{ uri: 'http://www.solotradie.com/wp-content/uploads/2015/04/tradesman_laptop.jpg' }}
             />
           </View>
           <View style={styles.headerText}>
@@ -203,7 +208,7 @@ class AddReview extends React.Component {
           multiline={true}
           placeholder={'Recomend ' + this.props.name + '... '}>
         </TextInput>
-        <TouchableHighlight style={this.submitButtonFormatHandler()} onPress={function() {context.handleSubmit(text, navigator, userInfo)}}>
+        <TouchableHighlight style={this.submitButtonFormatHandler()} onPress={function() {context.handleSubmit(text, navigator, userInfo, currentLoggedInUser) }}>
           <Text style={this.submitButtonFontHandler()}> SUBMIT </Text>
         </TouchableHighlight>
 

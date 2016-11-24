@@ -113,7 +113,7 @@ class WhiteJobTile extends React.Component {
           <View style={whiteTile.iconSection}>
             <View style={whiteTile.leftIcon}>
               <FontAwesome name={'users'} size={15} style={whiteTile.iconFormat} color={'gray'}>
-                <Text style={whiteTile.iconText}> {this.props.job.vacancies} hires </Text>
+                <Text style={whiteTile.iconText}> {this.props.job.hires} hires </Text>
               </FontAwesome>
             </View>
             <View style={whiteTile.middleIcon}>
