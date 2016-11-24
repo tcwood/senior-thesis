@@ -1,14 +1,12 @@
 import React from 'react';
 import {
-  View,
-  Dimensions,
   Text,
   StyleSheet,
 } from 'react-native';
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
-import Router from '../navigation/Router'
+import Router from '../navigation/Router';
 
 
 const styles = StyleSheet.create({
@@ -19,21 +17,24 @@ const styles = StyleSheet.create({
   },
 });
 
-const addReviewHandler = (navigator, name, userInfo) => {
-  navigator.push(Router.getRoute('addReview', { name: name, navigator: navigator, userInfo: userInfo }))
-}
+const addReviewHandler = (navigator, name, userInfo, currentLoggedInUser) => {
+  navigator.push(Router.getRoute('addReview', { name: name, navigator: navigator, userInfo: userInfo, currentLoggedInUser: currentLoggedInUser }));
+};
 
-const AddReviewIcon = ({isPeer, navigator, name, userInfo}) => {
-
+const AddReviewIcon = ({ isPeer, navigator, name, userInfo, currentLoggedInUser }) => {
+  console.log('currentLoggedInUser AddReviewIcon', currentLoggedInUser);
   if (isPeer) {
     return (
-      <Text style={styles.addReviewIcon} onPress={function(){addReviewHandler(navigator, name, userInfo)}}>
+      <Text
+        style={styles.addReviewIcon}
+        onPress={() => { addReviewHandler(navigator, name, userInfo, currentLoggedInUser); }}
+      >
         <FontAwesome
           name="plus-circle"
           size={18}
           color="red"
         />
-          <Text style={styles.addReviewText}> Add Review </Text>
+        <Text style={styles.addReviewText}> Add Review </Text>
       </Text>
     );
   }

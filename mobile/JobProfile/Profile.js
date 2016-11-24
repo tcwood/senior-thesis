@@ -43,10 +43,10 @@ class Profile extends React.Component {
     const payrate = this.props.route.params.job.pay.toString();
     const propertyArr = [
       payrate, 
-      this.props.route.params.job.expertise,
+      this.props.route.params.job.profession,
       this.props.route.params.job.location,
-      this.props.route.params.job.timeFrame,
-      this.props.route.params.job.vacancies,
+      this.props.route.params.job.time,
+      this.props.route.params.job.hires,
     ];
     // if (job.vacancies > 1) { iconArr[4] = 'users'; }
     return (

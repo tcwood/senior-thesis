@@ -21,35 +21,38 @@ const styles = StyleSheet.create({
   recTitle: {
     fontSize: 20,
   },
-})
+});
 
 // Eventually will get recommendations passed in through props and map
 // over the info to create each individual recommendation
-const RecommendationList = ({isPeer, navigator, name, userInfo, reviews}) => {
+const RecommendationList = ({ isPeer, navigator, name, userInfo, reviews, currentLoggedInUser }) => {
+  console.log('recommendation list- reviews', reviews);
   if (reviews) {
     return (
       <View style={styles.recommendations}>
         <Text style={styles.recTitle}>
           Recommendations
-          <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
+          <View style={{ width: 25, height: 25, justifyContent: 'flex-end' }} >
           </View>
-          <AddReviewIcon 
-            isPeer={isPeer} 
-            navigator={navigator} 
+          <AddReviewIcon
+            isPeer={isPeer}
+            navigator={navigator}
             name={name}
             userInfo={userInfo}
+            currentLoggedInUser={currentLoggedInUser}
           />
         </Text>
-        {reviews.map((review, i) => 
-          <Recommendation 
-            comment={review.comment} 
+        {reviews.map((review, i) =>
+          <Recommendation
+            comment={review.comment}
             rating={review.rating}
             ReviewFor={review.ReviewFor}
             ReviewFrom={review.ReviewFrom}
             createdAt={review.createdAt}
             reviewerName={review.reviewerName}
             reviewerImage={review.reviewerImage}
-            key={i}/> 
+            key={i}
+          />
         )}
       </View>
     )
@@ -60,11 +63,12 @@ const RecommendationList = ({isPeer, navigator, name, userInfo, reviews}) => {
           Recommendations
           <View style={{width: 25, height: 25, justifyContent: 'flex-end'}} >
           </View>
-          <AddReviewIcon 
-            isPeer={isPeer} 
-            navigator={navigator} 
+          <AddReviewIcon
+            isPeer={isPeer}
+            navigator={navigator}
             name={name}
             userInfo={userInfo}
+            currentLoggedInUser={currentLoggedInUser}
           />
         </Text>
       </View>
