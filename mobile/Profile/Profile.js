@@ -91,7 +91,9 @@ class Profile extends React.Component {
 
   render() {
     const userInfo = this.props.route.params.user || this.props.profile;
-    const profilePicUrl = userInfo.profilePicUrl;
+    console.log('profile isPeer', this.props.route.params.peerProfile);
+    console.log('user info profilePicUrl', userInfo.profilePicUrl);
+    console.log('setUserInfoToUpdate', this.state.userInfoToUpdate.profilePicUrl);
     return (
       <View style={styles.container}>
         <Header
@@ -102,7 +104,7 @@ class Profile extends React.Component {
           userInfoToUpdate={this.state.userInfoToUpdate}
           setUserInfoToUpdate={this.setUserInfoToUpdate}
           userInfo={userInfo}
-          userPic={this.isPeer() ? userInfo.profilePicUrl : this.state.userInfoToUpdate.profilePicUrl}
+          userPic={userInfo.profilePicUrl}
         />
         <ScrollView contentContainerStyle={styles.contentContainer} alwaysBounceVertical>
           <ModularBanner
