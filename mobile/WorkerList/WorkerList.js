@@ -14,6 +14,7 @@ class WorkerList extends React.Component {
     this.state = {
       response: false,
     };
+    console.log('hey this is the worker list');
   }
 
   componentWillMount() {

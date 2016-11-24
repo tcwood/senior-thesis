@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Image,
   View,
   TouchableOpacity,
 } from 'react-native';
@@ -26,7 +27,10 @@ const Tradesman = ({ userInfo, pressUser }) => {
       <View className="tradieRow" style={styles.row}>
         <View style={styles.rightRow}>
           <View style={styles.rowUserPic}>
-            {renderIcon('user-circle', 45)}
+            <Image
+              style={styles.circularImage}
+              source={{ uri: userInfo.profilePicUrl }}
+            />
           </View>
           <TradieBanner
             expertise={userInfo.profession}

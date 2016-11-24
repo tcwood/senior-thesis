@@ -114,7 +114,7 @@ export default class BlueJobTile extends React.Component {
           <View style={blueTile.iconSection}>
             <View style={blueTile.leftIcon}>
               <FontAwesome name={'users'} size={15} style={blueTile.iconFormat} color={'white'}>
-                <Text style={blueTile.iconText}> {this.props.job.vacancies} hires</Text>
+                <Text style={blueTile.iconText}> {this.props.job.hires} hires</Text>
               </FontAwesome>
             </View>
             <View style={blueTile.middleIcon}>
