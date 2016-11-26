@@ -118,4 +118,11 @@ export default class Actions {
       });
     };
   }
+
+  static changeJobFilter(filter) {
+    return {
+      type: 'CHANGE_FILTER',
+      filter,
+    };
+  }
 }

@@ -51,37 +51,26 @@ const searchStyles = StyleSheet.create({
   },
 });
 
-export default class searchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchText: '',
-    };
-  }
-
-  hideSearchIcon(text) {
-    this.setState({ searchText: text });
-  }
-  render() {
-    const rightButton = this.props.rightButton;
-    return (
-      <Image
-        style={searchStyles.bluePattern}
-        source={blueImg}
-      >
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+const searchBar = ({rightButton, changeFilter, filter}) => {
+  return (
+    <Image
+      style={searchStyles.bluePattern}
+      source={blueImg}
+    >
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <TextInput
           style={searchStyles.searchBar}
           placeholder="     Search projects"
           placeholderTextColor="white"
-          onChangeText={text => this.hideSearchIcon(text)}
-          value={this.state.searchText}
+          onChangeText={changeFilter}
+          value={filter}
         >
-        {this.state.searchText.length > 0 ? null : <FontAwesome name={'search'} size={18} style={searchStyles.searchIcon} color={'#ffffff'} />}
+          {filter.length > 0 ? null : <FontAwesome name={'search'} size={18} style={searchStyles.searchIcon} color={'#ffffff'} />}
         </TextInput>
-          {rightButton}
-        </View>
-      </Image>
-    );
-  }
-}
+        {rightButton}
+      </View>
+    </Image>
+  );
+};
+
+export default searchBar;

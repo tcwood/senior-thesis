@@ -3,9 +3,14 @@ import Router from '../navigation/Router';
 import JobList from '../components/JobList';
 import Actions from '../actions/index';
 
+const getFilteredJobs = (jobs, filter) => {
+  return jobs.filter((job) => { return (job.title.indexOf(filter) >= 0); });
+};
+
 const mapStateToProps = (state) => {
   return {
-    jobs: state.jobList.jobList,
+    jobs: getFilteredJobs(state.jobList.jobList, state.jobList.filter),
+    filter: state.jobList.filter,
   };
 };
 
@@ -18,6 +23,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   updateJobs: () => {
     dispatch(Actions.updateJobList());
+  },
+  changeFilter: (filter) => {
+    console.log('calling change filter!');
+    dispatch(Actions.changeJobFilter(filter));
   },
 });
 

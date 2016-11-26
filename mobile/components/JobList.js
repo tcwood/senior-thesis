@@ -49,12 +49,13 @@ class JobList extends React.Component {
   }
 
   render() {
-    const { jobs, goToJob } = this.props;
+    const { jobs, goToJob, filter, changeFilter } = this.props;
+    // Warning: this line will always be false. ![] is still false, ![anything] is also false
     const loading = !jobs;
     return (
       <View>
         <View>
-          <SearchBar rightButton={this.AddButton()} />
+          <SearchBar filter={filter} changeFilter={changeFilter} rightButton={this.AddButton()} />
         </View>
         <JobTypeFilter />
         <MapListToggle />
@@ -83,6 +84,8 @@ class JobList extends React.Component {
 
 JobList.propTypes = {
   updateJobs: React.PropTypes.func.isRequired,
+  changeFilter: React.PropTypes.func.isRequired,
+  filter: React.PropTypes.string.isRequired,
   jobs: React.PropTypes.array.isRequired,
   goToJob: React.PropTypes.func.isRequired,
   navigator: React.PropTypes.object,
