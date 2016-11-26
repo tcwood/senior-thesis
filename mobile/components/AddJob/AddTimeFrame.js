@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import colors from '../../constants/Colors';
+import BackButton from '../../reusableComponents/BackButton';
 
 const CalendarPicker = require('react-native-calendar-picker');
 
@@ -41,6 +42,7 @@ class AddTimeFrame extends React.Component {
 
     return (
       <View style={styles.container}>
+        <BackButton navigator={methods.navigator} />
         <Text>{timeContext}: { this.state.date.toString() } </Text>
         <CalendarPicker
           selectedDate={this.state.date}
