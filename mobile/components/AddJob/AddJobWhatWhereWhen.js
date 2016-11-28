@@ -9,7 +9,6 @@ import colors from '../../constants/Colors';
 import BackButton from '../../reusableComponents/BackButton';
 import AutoCompleteLocation from './AutoCompleteLocation'
 
-
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
   const userInput = (jobType, placeHolder) => {
     return (
