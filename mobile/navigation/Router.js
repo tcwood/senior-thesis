@@ -21,7 +21,7 @@ import AddJobDetails from '../components/AddJob/AddJobDetails';
 
 import Profile from '../Profile/Profile';
 // import JobList from '../JobList/JobList';
-import Messages from '../Messages/Messages';
+import Messages from '../components/Messages';
 import JobProfile from '../JobProfile/Profile';
 import AddReview from '../Profile/AddReview';
 

@@ -11,6 +11,15 @@ const io = require('socket.io')(http);
 app.use(bodyParser.json());
 
 
+io.on('connection', function(socket){
+  console.log('A user connected');
+
+  socket.on('disconnect', function(){
+    console.log('A user disconnectd');
+  });
+});
+
+
 // Routes
 const routes = require('./routes/index.js');
 
