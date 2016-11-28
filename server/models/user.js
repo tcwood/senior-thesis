@@ -14,10 +14,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
         User.hasMany(models.Job);
         User.hasMany(models.Review, {foreignKey: 'ReviewFrom'});
         User.hasMany(models.Review, {foreignKey: 'ReviewFor'});  
+        User.hasMany(models.Message);
       }
     },
     freezeTableName: true

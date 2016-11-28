@@ -14,6 +14,10 @@ app.use(bodyParser.json());
 io.on('connection', function(socket){
   console.log('A user connected');
 
+  socket.on('message', function(msg){
+    console.log('here is the submitted message', msg);
+  });
+
   socket.on('disconnect', function(){
     console.log('A user disconnectd');
   });
