@@ -10,7 +10,7 @@ const mainReducer = combineReducers({
   app: appReducer,
   profile: profileReducer,
   workerList: workerListReducer,
-  messagesReducer,
+  messages: messagesReducer,
   jobList: jobListReducer,
   jobPageReducer,
 });
