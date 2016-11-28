@@ -13,6 +13,19 @@ import BackButton from '../../reusableComponents/BackButton';
 import AutoCompleteLocation from './AutoCompleteLocation';
 
 const { width, height } = Dimensions.get('window');
+const condenseAddress = (address) => {
+  let counter = 0;
+  let result;
+  address.split('').forEach( (character, index) => {
+    if (character === ',') {
+      counter += 1;
+    }
+    if (counter === 2 && character === ',') {
+      result = index;
+    }
+  });
+  return address.split('').slice(0, result).join('');
+};
 
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
   const userInput = (jobType, placeHolder) => {

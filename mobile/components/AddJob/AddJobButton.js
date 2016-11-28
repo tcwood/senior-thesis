@@ -31,7 +31,8 @@ const AddJobButton = ({ navigator }) => {
     navigator.push(Router.getRoute('addJob'));
   };
   return (
-      <TouchableOpacity onPress={addJob} style={styles.add}>
+    <View style={styles.add}>
+      <TouchableOpacity onPress={addJob} >
         <FontAwesome
           style={{ backgroundColor: 'transparent' }}
           name={'plus'}
@@ -41,6 +42,7 @@ const AddJobButton = ({ navigator }) => {
         />
         <Text style={{ backgroundColor: 'transparent', color: 'white' }}>Add Job</Text>
       </TouchableOpacity>
+    </View>
   );
 };
 
