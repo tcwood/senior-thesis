@@ -131,4 +131,19 @@ export default class Actions {
       filter,
     };
   }
+
+  static newMessage(message) {
+    return (dispatch, getState) => {
+      axios.put(`${settings.SERVER}/message`)
+      .then(() => {
+        dispatch({
+          type: 'ADD_MESSAGE',
+          message,
+        });
+      })
+      .catch((error) => {
+        console.log('error adding new message', error);
+      });
+    };
+  }
 }
