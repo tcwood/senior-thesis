@@ -94,4 +94,3 @@ AutoCompleteLocation.propTypes = {
   methods: React.PropTypes.object.isRequired,
 };
 
-export default AutoCompleteLocation;

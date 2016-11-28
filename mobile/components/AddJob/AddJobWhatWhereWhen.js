@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import colors from '../../constants/Colors';
 import BackButton from '../../reusableComponents/BackButton';
+<<<<<<< HEAD
 import AutoCompleteLocation from './AutoCompleteLocation';
 
 const { width, height } = Dimensions.get('window');
@@ -26,6 +27,10 @@ const condenseAddress = (address) => {
   });
   return address.split('').slice(0, result).join('');
 };
+=======
+import AutoCompleteLocation from './AutoCompleteLocation'
+
+>>>>>>> pulled AutoCompleteLocationForm out into its own component to minimise merge conflicts later
 
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
   const userInput = (jobType, placeHolder) => {
