@@ -49,6 +49,7 @@ class Messages extends React.Component {
     this.state = {
       message: '',
     };
+
     // Right now, just using local host for testing... switch to dynamic link
     // later
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -58,15 +59,23 @@ class Messages extends React.Component {
 
   handleSubmit() {
     // this.socket.emit('message', this.state.message);
+    console.log('this.props.profile in Messages', this.props.profile);
+    this.props.newMessage({
+      chatId: 1,
+      text: this.state.message,
+      UserId: this.props.profile.id,
+    });
+
     this.setState({
       message: '',
     });
   }
 
   render() {
+    console.log('testing props in messages render');
     return (
       <View style={styles.container}>
-        <Text> Hello World of Messaging! </Text>
+        <Text> Hello World of Messaging!!! </Text>
         <View style={styles.sendRow}>
           <TextInput
             style={styles.inputText}
@@ -87,5 +96,11 @@ class Messages extends React.Component {
     );
   }
 }
+
+Messages.propTypes = {
+  newMessage: React.PropTypes.func.isRequired,
+  profile: React.PropTypes.object.isRequired,
+};
+
 export default Messages;
 

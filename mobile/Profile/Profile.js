@@ -93,7 +93,6 @@ class Profile extends React.Component {
 
   render() {
     const userInfo = this.props.route.params.user || this.props.profile;
-    console.log('UserInfo - Jobs:', userInfo.Jobs);
     return (
       <View style={styles.container}>
         <Header

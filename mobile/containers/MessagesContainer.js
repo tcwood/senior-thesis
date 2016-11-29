@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import Messages from '../components/Messages';
 import Actions from '../actions/index';
 
-// const mapStateToProps = (state) => {
-//   return {
-//     // Will want to input list of users / profiles for chat list
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
+    // Will want to input list of users / profiles for chat list
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   // haven't done any sort of testing if this works yet, will likely need to add
@@ -24,8 +25,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const MessagesContainer = connect(
-  // mapStateToProps,
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Messages);
 

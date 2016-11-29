@@ -76,7 +76,7 @@ export default class Actions {
         UserId: getState().profile.id,
       };
 
-      console.log('Posting:', jobDetails.from);
+      // console.log('Posting:', jobDetails.from);
       axios.post(`${settings.SERVER}/job/`, newJob)
       .then(() => {
         dispatch({ type: 'ADD_JOB', job: newJob });
@@ -134,13 +134,13 @@ export default class Actions {
 
   static newMessage(message) {
     return (dispatch, getState) => {
-      axios.put(`${settings.SERVER}/message`)
-      .then(() => {
-        dispatch({
-          type: 'ADD_MESSAGE',
-          message,
-        });
-      })
+      axios.post(`${settings.SERVER}/message`, message)
+      // .then(() => {
+      //   dispatch({
+      //     type: 'ADD_MESSAGE',
+      //     message,
+      //   });
+      // })
       .catch((error) => {
         console.log('error adding new message', error);
       });
