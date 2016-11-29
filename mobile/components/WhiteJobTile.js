@@ -32,7 +32,8 @@ const whiteTile = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
   },
   leftIcon: {
-    marginLeft: 10 * vw,
+    // marginLeft: 10 * vw,
+    marginLeft: 6 * vw,
     width: 20 * vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
@@ -40,6 +41,9 @@ const whiteTile = StyleSheet.create({
     width: 40 * vw,
     backgroundColor: 'rgba(0,0,0,0)',
     paddingLeft: 2 * vw,
+    // width: 44 * vw,
+    // backgroundColor: 'rgba(0,0,0,0)',
+    // paddingLeft: 0 * vw,
     textAlign: 'center',
     flex:1,
     alignItems:'center' 
