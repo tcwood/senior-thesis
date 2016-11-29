@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
+
 export default class RootNavigation extends React.Component {
   constructor(props) {
     super(props);

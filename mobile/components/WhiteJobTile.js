@@ -30,7 +30,6 @@ const whiteTile = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
   },
   leftIcon: {
-    // marginLeft: 10 * vw,
     marginLeft: 6 * vw,
     width: 20 * vw,
     backgroundColor: 'rgba(0,0,0,0)',
