@@ -49,9 +49,9 @@ class Messages extends React.Component {
     this.state = {
       message: '',
     };
-    console.log('test to see if route passed into messages', props.route);
-    // Right now, just using local host for testing... switch to dynamic link
-    // later
+    console.log('Test in Messages to see peer passed through', this.props.peer);
+    // Right now, just using local host for testing... switch to ${settings.SERVER}/
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.socket = io('http://localhost:3000', { transports: ['websocket'] });
     // can use socket throughout this module by referencing this.socket.io
@@ -71,10 +71,12 @@ class Messages extends React.Component {
   }
 
   render() {
-    console.log('testing props in messages render');
+    console.log('testing messageList in messages render', this.props.messageList);
     return (
       <View style={styles.container}>
         <Text> Hello World of Messaging!!! </Text>
+        {this.props.messageList &&
+          this.props.messageList.map(msg => (<Text> {msg} </Text>))}
         <View style={styles.sendRow}>
           <TextInput
             style={styles.inputText}
@@ -99,6 +101,7 @@ class Messages extends React.Component {
 Messages.propTypes = {
   newMessage: React.PropTypes.func.isRequired,
   profile: React.PropTypes.object.isRequired,
+  messageList: React.PropTypes.array,
 };
 
 export default Messages;

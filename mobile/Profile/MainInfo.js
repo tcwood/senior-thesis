@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
 // userInfo and ownInfo are different when looking at a peer's profile.
 // these are used when a new chat is created
-const MainInfo = ({ peer, userInfo, ownInfo, navigator }) => {
+const MainInfo = ({ peer, userInfo, ownInfo, navigator, goToChat }) => {
   const handlePhoneClick = () => {
     Linking.canOpenURL(userInfo.mobile).then((supported) => {
       if (supported) {
@@ -64,6 +64,10 @@ const MainInfo = ({ peer, userInfo, ownInfo, navigator }) => {
       Participant1: userInfo.id,
       Participant2: ownInfo.id,
     };
+
+    // hmmm... won't really need goToChat unless the users already have chat together
+    // goToChat(res.data.id, userInfo, []);
+
     axios.post(`${settings.SERVER}/chat`, chatInfo)
     .then((res) => {
       navigator.push(Router.getRoute('messages', res));
@@ -100,6 +104,8 @@ MainInfo.propTypes = {
   peer: React.PropTypes.bool,
   userInfo: React.PropTypes.object,
   ownInfo: React.PropTypes.object,
+  goToChat: React.PropTypes.func,
+  navigator: React.PropTypes.object,
 };
 
 export default MainInfo;

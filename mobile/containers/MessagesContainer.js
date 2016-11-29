@@ -6,6 +6,9 @@ import Actions from '../actions/index';
 const mapStateToProps = (state) => {
   return {
     profile: state.profile,
+    chatId: state.messages.chatId,
+    peer: state.messages.chatPeer,
+    messageList: state.messages.messageList,
     // Will want to input list of users / profiles for chat list
   };
 };

@@ -130,15 +130,26 @@ export default class Actions {
     };
   }
 
+  static goToChat(chatId, chatPeer, messageList = []) {
+    return (dispatch) => {
+      dispatch({
+        type: 'GO_TO_CHAT',
+        chatId,
+        chatPeer,
+        messageList,
+      });
+    };
+  }
+
   static newMessage(message) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
       axios.post(`${settings.SERVER}/message`, message)
       .then((res) => {
         console.log('[action index] message posted to db', res);
-      //   dispatch({
-      //     type: 'ADD_MESSAGE',
-      //     message,
-      //   });
+        dispatch({
+          type: 'ADD_MESSAGE',
+          message,
+        });
       })
       .catch((error) => {
         console.log('error adding new message', error);

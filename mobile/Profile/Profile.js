@@ -14,6 +14,7 @@ import EditInfo from './EditMode';
 import RecommendationList from './RecommendationList';
 import ModularBanner from '../reusableComponents/Banner/ModularBanner';
 import settings from '../settings';
+import Actions from '../actions/index';
 
 const styles = StyleSheet.create({
   container: {
@@ -125,7 +126,7 @@ class Profile extends React.Component {
                 userInfo={userInfo}
                 ownInfo={this.props.profile}
                 peer={this.isPeer()}
-                newChat={this.props.newChat}
+                goToChat={this.props.goToChat}
                 navigator={this.props.navigator}
               />
             }
@@ -152,7 +153,7 @@ Profile.propTypes = {
   navigator: React.PropTypes.object,
   route: React.PropTypes.object,
   dispatch: React.PropTypes.func,
-  newChat: React.PropTypes.func,
+  goToChat: React.PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -161,6 +162,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ProfileConnected = connect(mapStateToProps)(Profile);
+// goToChat might only be useful when there is already a chat b/t users
+const mapDispatchToProps = dispatch => ({
+  goToChat: (chatId, chatPeer, messageList) => {
+    dispatch(Actions.goToChat(chatId, chatPeer, messageList));
+  },
+});
+
+const ProfileConnected = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 export default ProfileConnected;
