@@ -85,13 +85,6 @@ export default class Actions {
     };
   }
 
-  static newChat(selfInfo, peerInfo) {
-    return (dispatch, getState) => {
-      console.log('SelfInfo from action', selfInfo);
-      console.log('peerInfo from action', peerInfo);
-    };
-  }
-
   // Updates the workerlist on the store
   static updateWorkerList() {
     return (dispatch, getState) => {
@@ -134,6 +127,18 @@ export default class Actions {
     return {
       type: 'CHANGE_FILTER',
       filter,
+    };
+  }
+
+  static newChat(selfInfo, peerInfo) {
+    return (dispatch, getState) => {
+      const chatInfo = {
+        Participant1: selfInfo.id,
+        Participant2: peerInfo.id,
+      };
+      axios.post(`${settings.SERVER}/chat`, chatInfo)
+      .then(results => console.log('sucessfully POST new chat', results))
+      .catch(err => console.log('err', err));
     };
   }
 

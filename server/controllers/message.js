@@ -6,8 +6,6 @@ var Message = require('../models/').Message;
 var db = require('../models/');
 
 module.exports = {
-// Create new job
-// (first finds user by id to associate with foreign key)
   createMessage(req, res) {
     Message.create(req.body).then(function(message) {
       res.status(201).json(message);

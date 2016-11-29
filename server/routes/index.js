@@ -5,6 +5,7 @@ var router = express.Router();
 var userController = require('../controllers/user');
 var reviewController = require('../controllers/review');
 var jobController = require('../controllers/job');
+var chatController = require('../controllers/chat');
 var messageController = require('../controllers/message');
 
 // USERS
@@ -37,7 +38,8 @@ router.get('/job/:id', jobController.findSpecificJob);
 // Update job
 router.put('/job/:id', jobController.updateJob);
 
-//MESSAGES
+//CHATS AND MESSAGES
+router.post('/chat', chatController.createChat);
 // Create a new message
 router.post('/message', messageController.createMessage);
 
