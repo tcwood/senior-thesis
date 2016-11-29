@@ -23,5 +23,3 @@ Sam
         Sort job postings by most recently created
         Centre map on current location
         Format Components
-
-        

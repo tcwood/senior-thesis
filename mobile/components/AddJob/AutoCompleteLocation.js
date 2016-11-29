@@ -23,7 +23,6 @@ const AutoCompleteLocation = (props) => {
   const addJobDetail = props.methods.addJobDetail;
   return (
     <GooglePlacesAutocomplete
-<<<<<<< HEAD
       placeholder="Where?"
       id="location"
       minLength={1}
@@ -58,7 +57,7 @@ const AutoCompleteLocation = (props) => {
       }}
       currentLocation={true}
       currentLocationLabel="Current location"
-      nearbyPlacesAPI='GooglePlacesSearch'
+      nearbyPlacesAPI="GooglePlacesSearch"
     />
   );
 };

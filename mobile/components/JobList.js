@@ -71,7 +71,8 @@ class JobList extends React.Component {
                 job={job}
                 key={i}
                 index={i}
-                pressJob={() => { goToJob(job.id, userId === job.User.id); }}
+                // pressJob={() => { goToJob(job.id, userId === job.User.id); }}
+                pressJob={() => { goToJob(job); }}
               />))}
           </ScrollView>
         }
