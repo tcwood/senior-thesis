@@ -17,8 +17,12 @@ import Router from './Router';
 
 const styles = StyleSheet.create({
   bar: {
+<<<<<<< HEAD
     backgroundColor: '#f0f0f0',
     borderWidth: 0,
+=======
+    backgroundColor: '#F6F6F6',
+>>>>>>> UI change to navbar
   },
   content: {
     flex: 1,
@@ -27,10 +31,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
+<<<<<<< HEAD
     marginTop: 1,
   },
   wholebar: {
   },
+=======
+    marginTop:1,
+  }
+>>>>>>> UI change to navbar
 });
 
 export default class RootNavigation extends React.Component {
@@ -45,6 +54,7 @@ export default class RootNavigation extends React.Component {
         <FontAwesome
           name={name}
           size={32}
+          // size={35}
           color={color}
         />
         <Text style={styles.text}>
