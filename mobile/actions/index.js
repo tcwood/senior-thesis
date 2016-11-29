@@ -133,12 +133,13 @@ export default class Actions {
   static newMessage(message) {
     return (dispatch, getState) => {
       axios.post(`${settings.SERVER}/message`, message)
-      // .then(() => {
+      .then((res) => {
+        console.log('[action index] message posted to db', res);
       //   dispatch({
       //     type: 'ADD_MESSAGE',
       //     message,
       //   });
-      // })
+      })
       .catch((error) => {
         console.log('error adding new message', error);
       });

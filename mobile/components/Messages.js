@@ -49,7 +49,7 @@ class Messages extends React.Component {
     this.state = {
       message: '',
     };
-
+    console.log('test to see if route passed into messages', props.route);
     // Right now, just using local host for testing... switch to dynamic link
     // later
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,9 +59,8 @@ class Messages extends React.Component {
 
   handleSubmit() {
     // this.socket.emit('message', this.state.message);
-    console.log('this.props.profile in Messages', this.props.profile);
     this.props.newMessage({
-      chatId: 1,
+      ChatId: this.props.route.params.data.id,
       text: this.state.message,
       UserId: this.props.profile.id,
     });
