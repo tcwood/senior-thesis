@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     width: width * 0.7,
   },
 });
+
 const condenseAddress = (address) => {
   let counter = 0;
   let result;
@@ -63,7 +64,7 @@ const AutoCompleteLocation = ({methods}) => {
       minLength={1}
       autoFocus={false}
       listViewDisplayed="auto"
-      fetchDetails
+      fetchDetails={true}
       onPress={(data) => {
         const address = condenseAddress(data.description);
         Geocoder.setApiKey('AIzaSyAxN1YpDLDVGxkvu5WjCloa_CYYG_nLh7Q');
@@ -82,6 +83,14 @@ const AutoCompleteLocation = ({methods}) => {
         language: 'en',
         types: 'geocode',
       }}
+      styles={{
+        description: {
+          fontWeight: 'bold',
+        },
+        predefinedPlacesDescription: {
+          color: '#1faadb',
+        },
+      }}
       currentLocation={false}
       currentLocationLabel="Current location"
       nearbyPlacesAPI="GooglePlacesSearch"
@@ -94,3 +103,4 @@ AutoCompleteLocation.propTypes = {
   methods: React.PropTypes.object.isRequired,
 };
 
+export default AutoCompleteLocation;
