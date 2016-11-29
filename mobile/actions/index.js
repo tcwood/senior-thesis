@@ -130,18 +130,6 @@ export default class Actions {
     };
   }
 
-  static newChat(selfInfo, peerInfo) {
-    return (dispatch, getState) => {
-      const chatInfo = {
-        Participant1: selfInfo.id,
-        Participant2: peerInfo.id,
-      };
-      axios.post(`${settings.SERVER}/chat`, chatInfo)
-      .then(results => console.log('sucessfully POST new chat', results))
-      .catch(err => console.log('err', err));
-    };
-  }
-
   static newMessage(message) {
     return (dispatch, getState) => {
       axios.post(`${settings.SERVER}/message`, message)

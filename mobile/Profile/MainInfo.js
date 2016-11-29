@@ -10,6 +10,9 @@ import {
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
+import axios from 'axios';
+import settings from '../settings';
+import Router from '../navigation/Router';
 
 const { width } = Dimensions.get('window');
 
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
 
 // userInfo and ownInfo are different when looking at a peer's profile.
 // these are used when a new chat is created
-const MainInfo = ({ peer, newChat, userInfo, ownInfo }) => {
+const MainInfo = ({ peer, newChat, userInfo, ownInfo, navigator }) => {
   const handlePhoneClick = () => {
     Linking.canOpenURL(userInfo.mobile).then((supported) => {
       if (supported) {
@@ -57,7 +60,15 @@ const MainInfo = ({ peer, newChat, userInfo, ownInfo }) => {
   };
 
   const handleChatClick = () => {
-    newChat(ownInfo, userInfo);
+    const chatInfo = {
+      Participant1: userInfo.id,
+      Participant2: ownInfo.id,
+    };
+    axios.post(`${settings.SERVER}/chat`, chatInfo)
+    .then((res) => {
+      navigator.push(Router.getRoute('messages', res));
+    })
+    .catch(err => console.log('err', err));
   };
 
   return (
@@ -83,6 +94,13 @@ const MainInfo = ({ peer, newChat, userInfo, ownInfo }) => {
       </View>
     </View>
   );
+};
+
+MainInfo.propTypes = {
+  peer: React.PropTypes.bool,
+  newChat: React.PropTypes.func,
+  userInfo: React.PropTypes.object,
+  ownInfo: React.PropTypes.object,
 };
 
 export default MainInfo;
