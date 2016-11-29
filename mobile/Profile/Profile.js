@@ -92,6 +92,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log('from profile isPeer', this.props.route.params.peerProfile);
     const userInfo = this.props.route.params.user || this.props.profile;
     return (
       <View style={styles.container}>
@@ -124,6 +125,7 @@ class Profile extends React.Component {
                 name={userInfo.name}
                 experience={userInfo.description}
                 contactInfo={userInfo.mobile}
+                peer={this.isPeer()}
               />
             }
             <ScrollableTabView>
