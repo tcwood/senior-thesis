@@ -15,6 +15,8 @@ import RecommendationList from './RecommendationList';
 import ModularBanner from '../reusableComponents/Banner/ModularBanner';
 import settings from '../settings';
 
+import Actions from '../actions/index';
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
@@ -126,6 +128,7 @@ class Profile extends React.Component {
                 experience={userInfo.description}
                 contactInfo={userInfo.mobile}
                 peer={this.isPeer()}
+                newChat={this.props.newChat}
               />
             }
             <ScrollableTabView>
@@ -150,7 +153,8 @@ Profile.propTypes = {
   profile: React.PropTypes.object,
   navigator: React.PropTypes.object,
   route: React.PropTypes.object,
-  dispatch: React.PropTypes.func.isRequired,
+  dispatch: React.PropTypes.func,
+  newChat: React.PropTypes.func,
 };
 
 
@@ -160,6 +164,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ProfileConnected = connect(mapStateToProps)(Profile);
+const mapDispatchToProps = dispatch => ({
+  newChat: (selfId, peerId) => dispatch(Actions.newChat(selfId, peerId)),
+});
+
+const ProfileConnected = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 export default ProfileConnected;

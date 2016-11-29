@@ -75,8 +75,6 @@ export default class Actions {
         profession: jobDetails.profession,
         UserId: getState().profile.id,
       };
-
-      // console.log('Posting:', jobDetails.from);
       axios.post(`${settings.SERVER}/job/`, newJob)
       .then(() => {
         dispatch({ type: 'ADD_JOB', job: newJob });
@@ -84,6 +82,12 @@ export default class Actions {
       .catch((error) => {
         console.log('error posting new job to database', error.message);
       });
+    };
+  }
+
+  static newChat(selfId, peerId) {
+    return (dispatch, getState) => {
+      console.log('Im in the newChat action!!');
     };
   }
 

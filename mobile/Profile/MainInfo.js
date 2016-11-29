@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const MainInfo = ({ name, experience, contactInfo, peer }) => {
+const MainInfo = ({ name, experience, contactInfo, peer, newChat }) => {
   const handlePhoneClick = () => {
     Linking.canOpenURL(contactInfo).then((supported) => {
       if (supported) {
@@ -53,9 +53,11 @@ const MainInfo = ({ name, experience, contactInfo, peer }) => {
       }
     });
   };
-  const handleChatClick = () => {
 
+  const handleChatClick = () => {
+    newChat();
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.name}> {name}</Text>
