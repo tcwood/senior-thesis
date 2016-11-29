@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
 // userInfo and ownInfo are different when looking at a peer's profile.
 // these are used when a new chat is created
-const MainInfo = ({ peer, newChat, userInfo, ownInfo, navigator }) => {
+const MainInfo = ({ peer, userInfo, ownInfo }) => {
   const handlePhoneClick = () => {
     Linking.canOpenURL(userInfo.mobile).then((supported) => {
       if (supported) {
