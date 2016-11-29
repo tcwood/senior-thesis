@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   bar: {
     backgroundColor: '#f0f0f0',
     borderWidth: 0,
-    backgroundColor: '#F6F6F6',
   },
   content: {
     flex: 1,
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 1,
-  }
+  },
 });
 
 
@@ -45,7 +44,6 @@ export default class RootNavigation extends React.Component {
         <FontAwesome
           name={name}
           size={32}
-          // size={35}
           color={color}
         />
         <Text style={styles.text}>
