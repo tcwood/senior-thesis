@@ -43,26 +43,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const MainInfo = ({ name, experience, contactInfo, peer, newChat }) => {
+const MainInfo = ({ name, experience, contactInfo, peer, newChat, userInfo, ownInfo }) => {
   const handlePhoneClick = () => {
-    Linking.canOpenURL(contactInfo).then((supported) => {
+    Linking.canOpenURL(userInfo.mobile).then((supported) => {
       if (supported) {
-        Linking.openURL(contactInfo);
+        Linking.openURL(userInfo.mobile);
       } else {
-        console.log(`Don't know how to open URI: ${contactInfo}`);
+        console.log(`Don't know how to open URI: ${userInfo.mobile}`);
       }
     });
   };
 
   const handleChatClick = () => {
-    newChat();
+    newChat(ownInfo, userInfo);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.name}> {name}</Text>
+      <Text style={styles.name}> {userInfo.name}</Text>
       <Text style={styles.experience}>
-        {experience}
+        {userInfo.description}
       </Text>
       <View style={styles.contact}>
         <Text style={styles.phoneNumber} onPress={handlePhoneClick}>
@@ -71,7 +71,7 @@ const MainInfo = ({ name, experience, contactInfo, peer, newChat }) => {
             size={20}
             color="#006600"
           />
-          {` ${contactInfo}`}
+          {` ${userInfo.mobile}`}
         </Text>
         { peer &&
         <TouchableOpacity style={styles.chatButton} onPress={handleChatClick}>

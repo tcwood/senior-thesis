@@ -85,9 +85,10 @@ export default class Actions {
     };
   }
 
-  static newChat(selfId, peerId) {
+  static newChat(selfInfo, peerInfo) {
     return (dispatch, getState) => {
-      console.log('Im in the newChat action!!');
+      console.log('SelfInfo from action', selfInfo);
+      console.log('peerInfo from action', peerInfo);
     };
   }
 

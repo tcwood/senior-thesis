@@ -124,6 +124,8 @@ class Profile extends React.Component {
             }
             {!this.state.editMode &&
               <MainInfo
+                userInfo={userInfo}
+                ownInfo={this.props.profile}
                 name={userInfo.name}
                 experience={userInfo.description}
                 contactInfo={userInfo.mobile}
@@ -165,7 +167,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  newChat: (selfId, peerId) => dispatch(Actions.newChat(selfId, peerId)),
+  newChat: (selfInfo, peerInfo) => dispatch(Actions.newChat(selfInfo, peerInfo)),
 });
 
 const ProfileConnected = connect(mapStateToProps, mapDispatchToProps)(Profile);
