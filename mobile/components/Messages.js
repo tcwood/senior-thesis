@@ -4,7 +4,6 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Dimensions,
   ScrollView,
   Image,
 } from 'react-native';
@@ -19,6 +18,9 @@ import {
 
 import io from 'socket.io-client/dist/socket.io';
 import styles from '../styles/Messages';
+import BackButton from '../reusableComponents/BackButton';
+
+const blueImg = require('../assets/bluePatternBackground.png');
 
 class Messages extends React.Component {
   constructor(props) {
@@ -26,8 +28,9 @@ class Messages extends React.Component {
     this.state = {
       message: '',
     };
+    console.log('params from message constructor', this.props.route.params);
 
-    this.chatId = this.props.chatId;
+    this.chatId = this.props.route.params.id || this.props.chatId;
     this.ownId = this.props.profile.id;
 
     // Right now, just using local host for testing... switch to ${settings.SERVER}/
@@ -38,11 +41,8 @@ class Messages extends React.Component {
 
   handleSubmit() {
     // this.socket.emit('message', this.state.message);
-    console.log('chatId from Messages handleSubmit', this.props.chatId);
-
-
     this.props.newMessage({
-      ChatId: this.props.chatId,
+      ChatId: this.chatId,
       text: this.state.message,
       UserId: this.props.profile.id,
     });
@@ -53,9 +53,14 @@ class Messages extends React.Component {
   }
 
   render() {
-    console.log('peer from messages', this.props.peer);
     return (
       <View style={styles.container}>
+        <Image
+          style={styles.bluePattern}
+          source={blueImg}
+        >
+          <BackButton navigator={this.props.navigator} />
+        </Image>
         <ScrollView
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}
@@ -65,7 +70,7 @@ class Messages extends React.Component {
             this.props.messageList.map((msg, i) => {
               const ownMsg = msg.UserId === this.ownId;
               return (
-                <View style={styles.messageRow}>
+                <View style={styles.messageRow} key={i}>
                   {!ownMsg &&
                     <Image
                       style={styles.peerMsgImage}
@@ -73,7 +78,6 @@ class Messages extends React.Component {
                     />
                   }
                   <View
-                    key={i}
                     style={[
                       (ownMsg ? styles.ownContainer : styles.peerContainer),
                       styles.message,
@@ -115,6 +119,7 @@ Messages.propTypes = {
   messageList: React.PropTypes.array,
   chatId: React.PropTypes.number,
   peer: React.PropTypes.object,
+  route: React.PropTypes.object,
 };
 
 export default Messages;

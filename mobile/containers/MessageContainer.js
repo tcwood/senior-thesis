@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import Messages from '../components/Messages';
 import Actions from '../actions/index';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     profile: state.profile,
     chatId: state.chats.chatId,
     peer: state.chats.chatPeer,
     messageList: state.chats.messageList,
     chatList: state.chats.chatList,
+    navigator: ownProps.navigator,
   };
 };
 

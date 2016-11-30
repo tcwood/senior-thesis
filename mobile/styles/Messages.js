@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
   contentContainer: {
     justifyContent: 'flex-start',
   },
+  bluePattern: {
+    height: 0.1 * height,
+    width,
+  },
   sendRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',

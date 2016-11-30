@@ -58,21 +58,28 @@ const MainInfo = ({ peer, userInfo, ownInfo, navigator, goToChat }) => {
       }
     });
   };
-
   const handleChatClick = () => {
-    const chatInfo = {
-      Participant1: userInfo.id,
-      Participant2: ownInfo.id,
-    };
-
-    // hmmm... won't really need goToChat unless the users already have chat together
-    // goToChat(res.data.id, userInfo, []);
-
-    axios.post(`${settings.SERVER}/chat`, chatInfo)
+    axios.get(`${settings.SERVER}/chat/${userInfo.id}/${ownInfo.id}`)
     .then((res) => {
-      navigator.push(Router.getRoute('messages', res));
+      // Check if there is an existing chat between users in the database
+      if (res.data.length > 0) {
+        const chat = res.data[0];
+        const peerInfo = chat.user1.id === ownInfo.id ? chat.user2 : chat.user1;
+        goToChat(chat.id, peerInfo, chat.Messages);
+        navigator.push(Router.getRoute('messages', chat));
+      // If no preexisting chat, create a new one and go to it
+      } else {
+        const chatInfo = {
+          Participant1: userInfo.id,
+          Participant2: ownInfo.id,
+        };
+        axios.post(`${settings.SERVER}/chat`, chatInfo)
+        .then((resp) => {
+          navigator.push(Router.getRoute('messages', resp.data));
+        });
+      }
     })
-    .catch(err => console.log('err', err));
+    .catch(err => console.log('error in profile MainInfo', err));
   };
 
   return (
@@ -92,7 +99,7 @@ const MainInfo = ({ peer, userInfo, ownInfo, navigator, goToChat }) => {
         </Text>
         { peer &&
         <TouchableOpacity style={styles.chatButton} onPress={handleChatClick}>
-          <Text style={{ color: 'white' }}> Start chat </Text>
+          <Text style={{ color: 'white' }}> Chat </Text>
         </TouchableOpacity>
         }
       </View>

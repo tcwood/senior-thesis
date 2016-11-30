@@ -1,8 +1,17 @@
-import { StyleSheet } from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: '#fff',
+  },
+  bluePattern: {
+    height: 0.1 * height,
+    width,
   },
   row: {
     borderRadius: 4,
