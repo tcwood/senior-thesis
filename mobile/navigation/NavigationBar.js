@@ -27,8 +27,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    marginTop:1,
-  }
+    marginTop: 1,
+  },
+  wholebar: {
+  },
 });
 
 export default class RootNavigation extends React.Component {
