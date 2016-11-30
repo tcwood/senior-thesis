@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 // import Router from '../navigation/Router';
-import Messages from '../components/Messages';
+// import Messages from '../components/Messages';
+import ChatList from '../components/ChatList';
 import Actions from '../actions/index';
 
 const mapStateToProps = (state) => {
@@ -10,7 +11,6 @@ const mapStateToProps = (state) => {
     peer: state.messages.chatPeer,
     messageList: state.messages.messageList,
     chatList: state.messages.chatList,
-    // Will want to input list of users / profiles for chat list
   };
 };
 
@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
   // haven't done any sort of testing if this works yet, will likely need to add
   // a parameter into newMessage() with correct message info object
   newMessage: msg => dispatch(Actions.newMessage(msg)),
+
+// TODO: ACUTALLY IMPLEMENT GOTOCHAT! (also look into comments below)
+  goToChat: () => dispatch(Actions.goToChat()),
 
   // Will need to update this to make reduxy, but should parallel change job list
   // goToChat: (chatObj) => {
@@ -31,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
 const MessagesContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Messages);
+)(ChatList);
 
 export default MessagesContainer;
 

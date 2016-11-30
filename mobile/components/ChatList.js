@@ -4,6 +4,7 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from '../styles/ChatList';
+import ChatTile from '../components/ChatTile';
 // import Tradesman from './Tradesman';
 
 class ChatList extends React.Component {
@@ -11,10 +12,9 @@ class ChatList extends React.Component {
   //   const { updateWorkers } = this.props;
   //   updateWorkers();
   // }
-
   render() {
     // const { users, goToWorker } = this.props;
-    const { chats, goToChat } = this.props;
+    const { chatList, goToChat } = this.props;
     return (
       <View >
         <ScrollView
@@ -22,11 +22,11 @@ class ChatList extends React.Component {
           showsVerticalScrollIndicator={false}
           alwaysBounceVertical
         >
-          {chats.map((chat, i) =>
+          {chatList.map((chat, i) =>
             (<ChatTile
               key={i}
-              chatInfo={chat}
-              pressChat={() => { goToChat(chat); }}
+              chat={chat}
+              goToChat={() => { goToChat(chat); }}
             />),
           )}
         </ScrollView>
@@ -36,7 +36,7 @@ class ChatList extends React.Component {
 }
 
 ChatList.propTypes = {
-  chats: React.PropTypes.object.isRequired,
+  chatList: React.PropTypes.object.isRequired,
   goToChat: React.PropTypes.func.isRequired,
 };
 
