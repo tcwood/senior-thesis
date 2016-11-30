@@ -50,8 +50,8 @@ class Messages extends React.Component {
       message: '',
     };
     console.log('Test in Messages to see peer passed through', this.props.peer);
+    console.log('Test in Messages to see chatList passed through', this.props.chatList);
     // Right now, just using local host for testing... switch to ${settings.SERVER}/
-    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.socket = io('http://localhost:3000', { transports: ['websocket'] });
     // can use socket throughout this module by referencing this.socket.io

@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     chatId: state.messages.chatId,
     peer: state.messages.chatPeer,
     messageList: state.messages.messageList,
+    chatList: state.messages.chatList,
     // Will want to input list of users / profiles for chat list
   };
 };
