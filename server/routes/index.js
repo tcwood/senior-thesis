@@ -39,7 +39,10 @@ router.get('/job/:id', jobController.findSpecificJob);
 router.put('/job/:id', jobController.updateJob);
 
 //CHATS AND MESSAGES
+// Create a new chat
 router.post('/chat', chatController.createChat);
+// Retrieve all chats associated with a user
+router.get('/chat/:userId', chatController.findUsersChats);
 // Create a new message
 router.post('/message', messageController.createMessage);
 

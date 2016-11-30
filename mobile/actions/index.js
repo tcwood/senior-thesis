@@ -108,7 +108,7 @@ export default class Actions {
   static updateJobList() {
     return (dispatch, getState) => {
       const latest = getState.jobList.latest;
-      axios.get('http://127.0.0.1:3000/job')
+      axios.get(`${settings.SERVER}/job`)
       .then((response) => {
         if (response.data.length > 0) {
           dispatch({
@@ -127,6 +127,20 @@ export default class Actions {
     return {
       type: 'CHANGE_FILTER',
       filter,
+    };
+  }
+
+
+// need to create routes on server for getting all chatIds associated with a user
+  static populateChatList() {
+    return (dispatch) => {
+      axios.get(`${settings.SERVER}/chat`)
+      .then(res => {
+        // now trigger a reducer to add chat lists to state...
+      })
+      .catch((error) => {
+        console.log('error retrieving users chats', error);
+      });
     };
   }
 

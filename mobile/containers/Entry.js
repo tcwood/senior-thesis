@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   View,
   Text,
@@ -91,8 +90,10 @@ class Entry extends React.Component {
         })
         .then((response) => {
           const { dispatch } = this.props;
+          // console.log('response from entry', response);
           dispatch(Actions.updateProfile(response.data));
           dispatch(Actions.grantAccess('token string generated from server'));
+          dispatch(Actions.populateChatList(response.data.id));
         })
         .catch((error) => {
           console.log('[ERROR] SignIn failed:', error.message);
@@ -108,7 +109,7 @@ class Entry extends React.Component {
       if (username !== '' && password !== '') {
         axios.get(`${settings.SERVER}/exists/${username}`)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           if (response.data) {
             this.setState({ badSignIn: false, badSignUp: true });
           } else {
