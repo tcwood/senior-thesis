@@ -163,7 +163,7 @@ export default class Actions {
         console.log('[action index] message posted to db', res);
         dispatch({
           type: 'ADD_MESSAGE',
-          message,
+          message: res.data,
         });
       })
       .catch((error) => {

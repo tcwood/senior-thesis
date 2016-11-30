@@ -8,21 +8,25 @@ const initialState = {
 const chatsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ('POPULATE_CHAT_LIST'):
-      return {
-        chatList: action.chatList,
-      };
-    // beware, GO_TO_CHAT doesn't seem to work yet...
+      return Object.assign({}, state,
+        {
+          chatList: action.chatList,
+        },
+      );
     case ('GO_TO_CHAT'):
-      console.log('inside GO_TO_CHAT reducer');
-      return {
-        chatId: action.chatId,
-        chatPeer: action.chatPeer,
-        messageList: [...action.messageList],
-      };
+      return Object.assign({}, state,
+        {
+          chatId: action.chatId,
+          chatPeer: action.chatPeer,
+          messageList: [...action.messageList],
+        },
+      );
     case ('ADD_MESSAGE'):
-      return {
-        messageList: [...state.messageList, action.message],
-      };
+      return Object.assign({}, state,
+        {
+          messageList: [...state.messageList, action.message],
+        },
+      );
     default: return state;
   }
 };

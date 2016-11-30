@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
+  Image,
 } from 'react-native';
 
 import {
@@ -65,10 +66,21 @@ const styles = StyleSheet.create({
   ownContainer: {
     backgroundColor: '#092a4c',
     alignSelf: 'flex-start',
+    marginLeft: 5,
   },
   peerContainer: {
     backgroundColor: '#eff3f9',
     alignSelf: 'flex-end',
+    marginRight: 5,
+  },
+  peerMsgImage: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+  },
+  messageRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 class Messages extends React.Component {
@@ -89,6 +101,9 @@ class Messages extends React.Component {
 
   handleSubmit() {
     // this.socket.emit('message', this.state.message);
+    console.log('chatId from Messages handleSubmit', this.props.chatId);
+
+
     this.props.newMessage({
       ChatId: this.props.chatId,
       text: this.state.message,
@@ -101,6 +116,7 @@ class Messages extends React.Component {
   }
 
   render() {
+    console.log('peer from messages', this.props.peer);
     return (
       <View style={styles.container}>
         <ScrollView
@@ -112,16 +128,24 @@ class Messages extends React.Component {
             this.props.messageList.map((msg, i) => {
               const ownMsg = msg.UserId === this.ownId;
               return (
-                <View
-                  key={i}
-                  style={[
-                    (ownMsg ? styles.ownContainer : styles.peerContainer),
-                    styles.message,
-                  ]}
-                >
-                  <Text style={ownMsg ? styles.ownMessage : styles.peerMessage}>
-                    {msg.text}
-                  </Text>
+                <View style={styles.messageRow}>
+                  {!ownMsg &&
+                    <Image
+                      style={styles.peerMsgImage}
+                      source={{ uri: this.props.peer.profilePicUrl }}
+                    />
+                  }
+                  <View
+                    key={i}
+                    style={[
+                      (ownMsg ? styles.ownContainer : styles.peerContainer),
+                      styles.message,
+                    ]}
+                  >
+                    <Text style={ownMsg ? styles.ownMessage : styles.peerMessage}>
+                      {msg.text}
+                    </Text>
+                  </View>
                 </View>
               );
             })
@@ -149,10 +173,11 @@ class Messages extends React.Component {
 }
 
 Messages.propTypes = {
-  newMessage: React.PropTypes.func.isRequired,
+  newMessage: React.PropTypes.func,
   profile: React.PropTypes.object.isRequired,
   messageList: React.PropTypes.array,
   chatId: React.PropTypes.number,
+  peer: React.PropTypes.object,
 };
 
 export default Messages;
