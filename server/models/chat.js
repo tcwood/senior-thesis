@@ -5,8 +5,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Chat.belongsTo(models.User, {foreignKey: 'Participant1'});
-        Chat.belongsTo(models.User, {foreignKey: 'Participant2'});
+        Chat.belongsTo(models.User, {foreignKey: 'Participant1', as: 'user1'});
+        Chat.belongsTo(models.User, {foreignKey: 'Participant2', as: 'user2'});
         Chat.hasMany(models.Message);
       }
     },

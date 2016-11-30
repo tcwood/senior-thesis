@@ -1,6 +1,7 @@
 /* eslint-disable */
 var Chat = require('../models/').Chat;
 var Message = require('../models/').Message;
+var User = require('../models/').User;
 var db = require('../models/');
 
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
           "Participant2": req.params.userId
         }]
       },
-      include: Message
+      include: [Message, {model: User, as: 'user1'}, {model: User, as: 'user2'}]
     })
     .then(function(chats) {
       res.status(200).json(chats);
