@@ -8,7 +8,6 @@ const getFilteredJobs = (jobs, filter) => {
     return jobs;
   }
   return jobs.filter((job) => { 
-
     return (
       job.title.toLowerCase().indexOf(filter.toLowerCase()) >= 0 || 
       job.profession.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
