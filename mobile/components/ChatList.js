@@ -13,8 +13,8 @@ class ChatList extends React.Component {
   //   updateWorkers();
   // }
   render() {
-    // const { users, goToWorker } = this.props;
-    const { chatList, goToChat } = this.props;
+    const { chatList, goToChat, profile } = this.props;
+    console.log('profile from within chatList', profile);
     return (
       <View >
         <ScrollView
@@ -27,6 +27,7 @@ class ChatList extends React.Component {
               key={i}
               chat={chat}
               goToChat={() => { goToChat(chat); }}
+              profile={profile}
             />),
           )}
         </ScrollView>
@@ -36,8 +37,9 @@ class ChatList extends React.Component {
 }
 
 ChatList.propTypes = {
-  chatList: React.PropTypes.object.isRequired,
+  chatList: React.PropTypes.array.isRequired,
   goToChat: React.PropTypes.func.isRequired,
+  profile: React.PropTypes.object,
 };
 
 export default ChatList;

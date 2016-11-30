@@ -7,30 +7,27 @@ import {
 } from 'react-native';
 import styles from '../styles/ChatList';
 
-const ChatTile = ({ chat, goToChat }) => {
-  console.log('from inside chatTile!', chat);
-  return (<Text> Hello from chat tile...! </Text>);
-  //   (<TouchableOpacity onPress={goToChat}>
-  //     <View className="tradieRow" style={styles.row}>
-  //       <View style={styles.rightRow}>
-  //         <View style={styles.rowUserPic}>
-  //           <Image
-  //             style={styles.circularImage}
-  //             source={{ uri: userInfo.profilePicUrl }}
-  //           />
-  //         </View>
-  //         <View style={styles.banner}>
-  //           <Text style={styles.name}>{userInfo.name}</Text>
-  //         </View>
-  //       </View>
-  //     </View>
-  //   </TouchableOpacity>
-  // );
+const ChatTile = ({ chat, goToChat, profile }) => {
+  const otherUser = chat.user1.id === profile.id ? chat.user2 : chat.user1;
+  return (
+    <TouchableOpacity onPress={goToChat}>
+      <View style={styles.row}>
+        <View style={styles.rowUserPic}>
+          <Image
+            style={styles.circularImage}
+            source={{ uri: otherUser.profilePicUrl }}
+          />
+        </View>
+        <Text style={styles.name}>{otherUser.name}</Text>
+      </View>
+    </TouchableOpacity>
+  );
 };
 
 ChatTile.propTypes = {
   chat: React.PropTypes.object.isRequired,
   goToChat: React.PropTypes.func.isRequired,
+  profile: React.PropTypes.object,
 };
 
 export default ChatTile;
