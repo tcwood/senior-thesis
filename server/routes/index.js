@@ -43,6 +43,8 @@ router.put('/job/:id', jobController.updateJob);
 router.post('/chat', chatController.createChat);
 // Retrieve all chats associated with a user
 router.get('/chat/:userId', chatController.findUsersChats);
+// Find and return unique chat between two users if exists
+router.get('/chat/:userId1/:userId2', chatController.findChatIfExists);
 // Create a new message
 router.post('/message', messageController.createMessage);
 

@@ -30,5 +30,37 @@ module.exports = {
     .catch(function(error) {
       res.status(500).json(error);
     })
+  },
+  // Find and return unique chat between two users if exists
+  findChatIfExists(req, res) {
+    Chat.findAll({
+      where: {
+        $or: [
+        {
+          $and: [
+            {
+              "Participant1": req.params.userId1
+            }, {
+              "Participant2": req.params.userId2
+            },
+          ]
+        }, {
+          $and: [
+            {
+              "Participant1": req.params.userId2
+            }, {
+              "Participant2": req.params.userId1
+            },
+          ]
+        }]
+      },
+      include: [Message, {model: User, as: 'user1'}, {model: User, as: 'user2'}]
+    })
+    .then(function(chat) {
+      res.status(200).json(chat);
+    })
+    .catch(function(error) {
+      res.status(500).json(error);
+    })
   }
 };
