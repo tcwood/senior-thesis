@@ -18,6 +18,7 @@ import {
 
 import io from 'socket.io-client/dist/socket.io';
 import styles from '../styles/Messages';
+import BackButton from '../reusableComponents/BackButton';
 
 const blueImg = require('../assets/bluePatternBackground.png');
 
@@ -57,7 +58,9 @@ class Messages extends React.Component {
         <Image
           style={styles.bluePattern}
           source={blueImg}
-        />
+        >
+          <BackButton navigator={this.props.navigator} />
+        </Image>
         <ScrollView
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}
