@@ -2,16 +2,22 @@ import React from 'react';
 import {
   View,
   ScrollView,
+  Image,
 } from 'react-native';
 import styles from '../styles/ChatList';
 import ChatTile from '../components/ChatTile';
-// import Tradesman from './Tradesman';
+
+const blueImg = require('../assets/bluePatternBackground.png');
 
 class ChatList extends React.Component {
   render() {
     const { chatList, goToChat, profile } = this.props;
     return (
       <View >
+        <Image
+          style={styles.bluePattern}
+          source={blueImg}
+        />
         <ScrollView
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}

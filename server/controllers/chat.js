@@ -31,7 +31,7 @@ module.exports = {
       res.status(500).json(error);
     })
   },
-  // Find and return unique chat between two users if exists
+  // Find and return unique chat between two users if exists. If doesn't exist, returns empty array
   findChatIfExists(req, res) {
     Chat.findAll({
       where: {
