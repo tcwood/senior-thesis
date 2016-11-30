@@ -14,6 +14,7 @@ import EditInfo from './EditMode';
 import RecommendationList from './RecommendationList';
 import ModularBanner from '../reusableComponents/Banner/ModularBanner';
 import settings from '../settings';
+import Actions from '../actions/index';
 
 const styles = StyleSheet.create({
   container: {
@@ -92,8 +93,8 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log('from profile isPeer', this.props.route.params.peerProfile);
     const userInfo = this.props.route.params.user || this.props.profile;
-    console.log('UserInfo - Jobs:', userInfo.Jobs);
     return (
       <View style={styles.container}>
         <Header
@@ -122,9 +123,11 @@ class Profile extends React.Component {
             }
             {!this.state.editMode &&
               <MainInfo
-                name={userInfo.name}
-                experience={userInfo.description}
-                contactInfo={userInfo.mobile}
+                userInfo={userInfo}
+                ownInfo={this.props.profile}
+                peer={this.isPeer()}
+                goToChat={this.props.goToChat}
+                navigator={this.props.navigator}
               />
             }
             <ScrollableTabView>
@@ -149,9 +152,9 @@ Profile.propTypes = {
   profile: React.PropTypes.object,
   navigator: React.PropTypes.object,
   route: React.PropTypes.object,
-  dispatch: React.PropTypes.func.isRequired,
+  dispatch: React.PropTypes.func,
+  goToChat: React.PropTypes.func,
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -159,6 +162,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ProfileConnected = connect(mapStateToProps)(Profile);
+// goToChat might only be useful when there is already a chat b/t users
+const mapDispatchToProps = dispatch => ({
+  goToChat: (chatId, chatPeer, messageList) => {
+    dispatch(Actions.goToChat(chatId, chatPeer, messageList));
+  },
+});
+
+const ProfileConnected = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 export default ProfileConnected;

@@ -4,21 +4,33 @@ const express = require('express');
 const aws = require('aws-sdk');
 const bodyParser = require('body-parser');
 
-// Routes
-
-const routes = require('./routes/index.js');
-
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+
+
+io.on('connection', function(socket){
+  console.log('A user connected');
+
+  socket.on('message', function(msg){
+    console.log('here is the submitted message', msg);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('A user disconnectd');
+  });
+});
+
+
+// Routes
+const routes = require('./routes/index.js');
 
 app.use('/', routes);
 
-// app.use('/users', require('./routes/users'));
-// app.use('/jobs', require('./routes/jobs'));
-
 app.set('port', process.env.PORT || 3000);
-app.listen(app.get('port'), function() {
+http.listen(app.get('port'), function() {
   console.log('listening on port', app.get('port'));
 });
 
@@ -52,12 +64,10 @@ var client = new Upload('puffyshirts', {
      region: 'us-east-1',
      acl: 'public-read'
    },
-  
    cleanup: {
      versions: true,
      original: false
    },
-  
    original: {
      awsImageAcl: 'public-read'
    },
@@ -126,7 +136,7 @@ app.get('/s3-uploader', (req, res) => {
       }
       res.send(JSON.stringify(result));
       res.end();
-
     }
   });
 })
+

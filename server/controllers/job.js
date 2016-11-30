@@ -8,7 +8,6 @@ module.exports = {
 // Create new job
 // (first finds user by id to associate with foreign key)
   createJob(req, res) {
-    console.log('BODY', req.body);
     Job.create(req.body).then(function(job) {
       res.status(201).json(job);
     }).catch(function (error) {
@@ -26,7 +25,6 @@ module.exports = {
       }
     })
     .then(function (jobs) {
-      console.log('about to send jobs back: ', jobs)
       res.status(200).json(jobs);
     }).catch(function (error) {
       console.log('[DB ERROR]:', error.message);

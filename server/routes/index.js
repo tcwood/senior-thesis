@@ -5,6 +5,8 @@ var router = express.Router();
 var userController = require('../controllers/user');
 var reviewController = require('../controllers/review');
 var jobController = require('../controllers/job');
+var chatController = require('../controllers/chat');
+var messageController = require('../controllers/message');
 
 // USERS
 // Create a new user
@@ -35,6 +37,14 @@ router.get('/job', jobController.findJobs);
 router.get('/job/:id', jobController.findSpecificJob);
 // Update job
 router.put('/job/:id', jobController.updateJob);
+
+//CHATS AND MESSAGES
+// Create a new chat
+router.post('/chat', chatController.createChat);
+// Retrieve all chats associated with a user
+router.get('/chat/:userId', chatController.findUsersChats);
+// Create a new message
+router.post('/message', messageController.createMessage);
 
 module.exports = router;
 

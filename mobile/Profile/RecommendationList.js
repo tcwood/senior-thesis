@@ -47,3 +47,4 @@ const RecommendationList = ({ isPeer, navigator, name, userInfo, reviews, curren
 };
 
 export default RecommendationList;
+

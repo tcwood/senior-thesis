@@ -21,7 +21,8 @@ import AddJobDetails from '../components/AddJob/AddJobDetails';
 
 import Profile from '../Profile/Profile';
 // import JobList from '../JobList/JobList';
-import Messages from '../Messages/Messages';
+import Chats from '../containers/ChatsContainer';
+import Messages from '../containers/MessageContainer';
 import JobProfile from '../JobProfile/Profile';
 import AddReview from '../Profile/AddReview';
 
@@ -33,6 +34,7 @@ export default createRouter(() => ({
   jobList: () => JobList,
   jobProfile: () => JobProfile,
   workerList: () => WorkerList,
+  chats: () => Chats,
   messages: () => Messages,
   addJob: () => AddJob,
   addReview: () => AddReview,

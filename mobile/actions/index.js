@@ -75,8 +75,6 @@ export default class Actions {
         profession: jobDetails.profession,
         UserId: getState().profile.id,
       };
-
-      console.log('Posting:', jobDetails.from);
       axios.post(`${settings.SERVER}/job/`, newJob)
       .then(() => {
         dispatch({ type: 'ADD_JOB', job: newJob });
@@ -110,7 +108,7 @@ export default class Actions {
   static updateJobList() {
     return (dispatch, getState) => {
       const latest = getState.jobList.latest;
-      axios.get('http://127.0.0.1:3000/job')
+      axios.get(`${settings.SERVER}/job`)
       .then((response) => {
         if (response.data.length > 0) {
           dispatch({
@@ -129,6 +127,48 @@ export default class Actions {
     return {
       type: 'CHANGE_FILTER',
       filter,
+    };
+  }
+
+  static populateChatList(userId) {
+    return (dispatch) => {
+      axios.get(`${settings.SERVER}/chat/${userId}`)
+      .then((res) => {
+        dispatch({
+          type: 'POPULATE_CHAT_LIST',
+          chatList: res.data,
+        });
+      })
+      .catch((error) => {
+        console.log('error retrieving users chats', error);
+      });
+    };
+  }
+
+  static goToChat(chatId, chatPeer, messageList = []) {
+    return (dispatch) => {
+      dispatch({
+        type: 'GO_TO_CHAT',
+        chatId,
+        chatPeer,
+        messageList,
+      });
+    };
+  }
+
+  static newMessage(message) {
+    return (dispatch) => {
+      axios.post(`${settings.SERVER}/message`, message)
+      .then((res) => {
+        console.log('[action index] message posted to db', res);
+        dispatch({
+          type: 'ADD_MESSAGE',
+          message: res.data,
+        });
+      })
+      .catch((error) => {
+        console.log('error adding new message', error);
+      });
     };
   }
 }
