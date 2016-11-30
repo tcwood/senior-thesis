@@ -21,7 +21,7 @@ module.exports = {
           "Participant2": req.params.userId
         }]
       },
-      // include: Message
+      include: Message
     })
     .then(function(chats) {
       res.status(200).json(chats);
