@@ -14,7 +14,6 @@ class ChatList extends React.Component {
   // }
   render() {
     const { chatList, goToChat, profile } = this.props;
-    console.log('profile from within chatList', profile);
     return (
       <View >
         <ScrollView
@@ -22,11 +21,12 @@ class ChatList extends React.Component {
           showsVerticalScrollIndicator={false}
           alwaysBounceVertical
         >
-          {chatList.map((chat, i) =>
+          {chatList &&
+            chatList.map((chat, i) =>
             (<ChatTile
               key={i}
               chat={chat}
-              goToChat={() => { goToChat(chat); }}
+              goToChat={goToChat}
               profile={profile}
             />),
           )}
@@ -37,8 +37,8 @@ class ChatList extends React.Component {
 }
 
 ChatList.propTypes = {
-  chatList: React.PropTypes.array.isRequired,
-  goToChat: React.PropTypes.func.isRequired,
+  chatList: React.PropTypes.array,
+  goToChat: React.PropTypes.func,
   profile: React.PropTypes.object,
 };
 

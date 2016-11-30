@@ -62,12 +62,12 @@ export default class RootNavigation extends React.Component {
           />
         </TabNavigationItem>
         <TabNavigationItem
-          id="messages"
+          id="chats"
           renderIcon={isSelected => RootNavigation.renderIcon('envelope', isSelected)}
         >
           <StackNavigation
-            id="messages"
-            initialRoute={Router.getRoute('messages')}
+            id="chats"
+            initialRoute={Router.getRoute('chats')}
           />
         </TabNavigationItem>
       </TabNavigation>

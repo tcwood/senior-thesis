@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import profileReducer from './profile';
-import messagesReducer from './messages';
+import chatsReducer from './messages';
 import jobListReducer from './jobList';
 import jobPageReducer from './jobPage';
 import workerListReducer from './workerList';
@@ -10,7 +10,7 @@ const mainReducer = combineReducers({
   app: appReducer,
   profile: profileReducer,
   workerList: workerListReducer,
-  messages: messagesReducer,
+  chats: chatsReducer,
   jobList: jobListReducer,
   jobPageReducer,
 });

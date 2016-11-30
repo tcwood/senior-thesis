@@ -50,7 +50,7 @@ class Messages extends React.Component {
       message: '',
     };
     console.log('Test in Messages to see peer passed through', this.props.peer);
-    console.log('Test in Messages to see chatList passed through', this.props.chatList);
+    console.log('Test in Messages to see messageList passed through', this.props.messageList);
     // Right now, just using local host for testing... switch to ${settings.SERVER}/
     this.handleSubmit = this.handleSubmit.bind(this);
     this.socket = io('http://localhost:3000', { transports: ['websocket'] });
@@ -71,12 +71,11 @@ class Messages extends React.Component {
   }
 
   render() {
-    console.log('testing messageList in messages render', this.props.messageList);
     return (
       <View style={styles.container}>
         <Text> Hello World of Messaging!!! </Text>
         {this.props.messageList &&
-          this.props.messageList.map(msg => (<Text> {msg} </Text>))}
+          this.props.messageList.map(msg => (<Text> {msg.text} </Text>))}
         <View style={styles.sendRow}>
           <TextInput
             style={styles.inputText}

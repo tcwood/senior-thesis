@@ -130,18 +130,14 @@ export default class Actions {
     };
   }
 
-
-// need to create routes on server for getting all chatIds associated with a user
   static populateChatList(userId) {
     return (dispatch) => {
       axios.get(`${settings.SERVER}/chat/${userId}`)
       .then((res) => {
-        console.log('chatList populated on signIn!', res);
         dispatch({
           type: 'POPULATE_CHAT_LIST',
           chatList: res.data,
         });
-        // now trigger a reducer to add chat lists to state...
       })
       .catch((error) => {
         console.log('error retrieving users chats', error);

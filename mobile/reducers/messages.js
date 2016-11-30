@@ -5,7 +5,7 @@ const initialState = {
   chatList: [],
 };
 
-const messagesReducer = (state = initialState, action) => {
+const chatsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ('POPULATE_CHAT_LIST'):
       return {
@@ -13,6 +13,7 @@ const messagesReducer = (state = initialState, action) => {
       };
     // beware, GO_TO_CHAT doesn't seem to work yet...
     case ('GO_TO_CHAT'):
+      console.log('inside GO_TO_CHAT reducer');
       return {
         chatId: action.chatId,
         chatPeer: action.chatPeer,
@@ -26,4 +27,4 @@ const messagesReducer = (state = initialState, action) => {
   }
 };
 
-export default messagesReducer;
+export default chatsReducer;
