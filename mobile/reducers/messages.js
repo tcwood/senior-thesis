@@ -21,7 +21,7 @@ const chatsReducer = (state = initialState, action) => {
       };
     case ('ADD_MESSAGE'):
       return {
-        messageList: [...state.messageList, action.message.text],
+        messageList: [...state.messageList, action.message],
       };
     default: return state;
   }
