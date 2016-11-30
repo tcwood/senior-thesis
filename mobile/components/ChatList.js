@@ -8,10 +8,6 @@ import ChatTile from '../components/ChatTile';
 // import Tradesman from './Tradesman';
 
 class ChatList extends React.Component {
-  // componentDidMount() {
-  //   const { updateWorkers } = this.props;
-  //   updateWorkers();
-  // }
   render() {
     const { chatList, goToChat, profile } = this.props;
     return (
