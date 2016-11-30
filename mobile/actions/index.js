@@ -65,8 +65,6 @@ export default class Actions {
   static newJob(jobDetails) {
     return (dispatch, getState) => {
 
-      console.log('jobDetails in newJob action: ', jobDetails);
-
       const newJob = {
         description: jobDetails.description,
         from: jobDetails.from,
@@ -131,19 +129,16 @@ export default class Actions {
   }
 
   static updateJobList() {
-    console.log('updateJobList running!');
     return (dispatch, getState) => {
       const latest = getState.jobList.latest;
       axios.get(`${settings.SERVER}/job`)
       .then((response) => {
         if (response.data.length > 0) {
-          console.log('jobList get request: ', response.data);
           dispatch({
             type: 'UPDATE_JOBLIST',
             jobs: response.data,
           });
         }
-        console.log('NO JOBS RETURNED FROM DB');
       })
       .catch((error) => {
         console.log('error updating joblist', error);
