@@ -7,7 +7,7 @@ var reviewController = require('../controllers/review');
 var jobController = require('../controllers/job');
 var chatController = require('../controllers/chat');
 var messageController = require('../controllers/message');
-
+var s3Uploader = require('../controllers/aws');
 // USERS
 // Create a new user
 router.post('/user', userController.createUser);
@@ -21,6 +21,8 @@ router.put('/user/:id', userController.updateUser);
 router.post('/signin', userController.signIn);
 // Attempt to sign up
 router.get('/exists/:username', userController.exists);
+// facebook attempt to sign-in
+router.get('/facebookExists/:facebookId', userController.facebookExists);
 
 // REVIEWS
 // Create a new review
@@ -47,6 +49,7 @@ router.get('/chat/:userId', chatController.findUsersChats);
 router.get('/chat/:userId1/:userId2', chatController.findChatIfExists);
 // Create a new message
 router.post('/message', messageController.createMessage);
+router.get('/s3-uploader', s3Uploader);
 
 module.exports = router;
 
