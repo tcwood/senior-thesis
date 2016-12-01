@@ -4,8 +4,13 @@ import TradesmanList from '../components/TradesmanList';
 import Actions from '../actions/index';
 
 const mapStateToProps = (state) => {
+  // pass all workers down as props (except for yourself)
+  let allUsers = state.workerList.workers;
+  const signedInUserMobile = state.profile.mobile;
+  const filteredUsers = allUsers.filter((user) => { return (user.mobile !== signedInUserMobile); });
+
   return {
-    users: state.workerList.workers,
+    users: filteredUsers,
   };
 };
 
