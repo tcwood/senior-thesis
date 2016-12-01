@@ -48,6 +48,7 @@ export default class Actions {
           location: profile.location,
           mobile: profile.mobile,
           profilePicUrl: profile.profilePicUrl,
+          facebookId: profile.facebookId,
         })
         .then((response) => {
           dispatch({
