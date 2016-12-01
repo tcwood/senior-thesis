@@ -1,11 +1,50 @@
-import { StyleSheet } from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+const vh = height / 100;
+const vw = width / 100;
 
 const styles = StyleSheet.create({
+  iconText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 12,
+  },
+  leftIcon: {
+    marginLeft: 15 * vw,
+    width: 20 * vw,
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
+  iconSection: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    marginTop: 3 * vh,
+    width: 100 * vw,
+  },
+  middleIcon: {
+    width: 30 * vw,
+    backgroundColor: 'rgba(0,0,0,0)',
+    paddingLeft: 2 * vw,
+  },
+  rightIcon: {
+    width: 25 * vw,
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
+  middleText: {
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 12,
+  },
   row: {
     borderRadius: 4,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
     height: 150,
+    justifyContent: 'center',
   },
   leftRow: {
     flexDirection: 'row',
@@ -24,7 +63,7 @@ const styles = StyleSheet.create({
   banner: {
     flex: 3,
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   backgroundImage: {
     resizeMode: 'cover',
@@ -33,9 +72,9 @@ const styles = StyleSheet.create({
   tripleBanner: {
     flex: 2,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginLeft: 10,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    marginBottom: 10,
   },
   title: {
     fontSize: 19,
@@ -44,8 +83,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 14,
     fontWeight: 'bold',
-    justifyContent: 'flex-start',
-    marginLeft: 35,
+    justifyContent: 'center',
     marginTop: 5,
   },
   activeTitle: {
