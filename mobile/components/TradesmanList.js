@@ -70,6 +70,7 @@ class TradesmanList extends React.Component {
 
   hideSearchIcon(text) {
     this.setState({ searchText: text });
+    this.props.userFilter(text)
   }
 
   render() {
@@ -87,8 +88,7 @@ class TradesmanList extends React.Component {
               placeholder="     Search projects"
               placeholderTextColor="white"
               onChangeText={
-                text => this.hideSearchIcon(text)
-                changeFilter
+                (text) => this.hideSearchIcon(text)
               }
               value={this.state.searchText}
             >

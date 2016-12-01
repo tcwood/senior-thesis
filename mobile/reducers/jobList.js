@@ -35,7 +35,7 @@ const jobListReducer = (state = initialState, action) => {
         filter: state.filter,
         showMap: false,
       };
-    case 'CHANGE_FILTER':
+    case ('CHANGE_FILTER'):
       return {
         jobList: state.jobList,
         filter: action.filter,

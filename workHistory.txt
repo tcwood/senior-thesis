@@ -18,7 +18,7 @@ Sam
 - Designs
 - ToDo: Add review shouldnt be on your own page (done), 
         You shouldn't be on worker list (done)
-        Search Worker List
+        Search Worker List (done)
         Plumber List is hardcoded
         Sort job postings by most recently created
         Centre map on current location

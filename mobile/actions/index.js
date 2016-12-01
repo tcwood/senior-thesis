@@ -121,6 +121,13 @@ export default class Actions {
     };
   }
 
+  static changeUserFilter(filter) {
+    return {
+      type: 'CHANGE_USER_FILTER',
+      filter,
+    };
+  }
+
   static updateJobList() {
     return (dispatch, getState) => {
       const latest = getState.jobList.latest;

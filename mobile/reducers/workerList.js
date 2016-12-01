@@ -12,6 +12,11 @@ const workerListReducer = (state = initialState, action) => {
         workers: [...state.workers, ...action.workers],
         latest: action.latest || state.latest,
       };
+    case ('CHANGE_USER_FILTER'):
+      return {
+        filter: action.filter,
+        workers: state.workers,
+      };
     default: return state;
   }
 };
