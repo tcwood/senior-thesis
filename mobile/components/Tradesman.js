@@ -3,6 +3,7 @@ import {
   Image,
   View,
   TouchableOpacity,
+  Text,
 } from 'react-native';
 import {
   FontAwesome,
@@ -10,16 +11,6 @@ import {
 
 import styles from '../styles/WorkerList';
 import TradieBanner from './TradieBanner';
-
-const renderIcon = (name, size = 15, isSelected) =>
-  (
-    <FontAwesome
-      name={name}
-      size={size}
-      color={isSelected ? '#395b91' : '#434343'}
-    />
-  );
-
 
 const Tradesman = ({ userInfo, pressUser }) => {
   return (
@@ -32,15 +23,14 @@ const Tradesman = ({ userInfo, pressUser }) => {
               source={{ uri: userInfo.profilePicUrl }}
             />
           </View>
-          <TradieBanner
-            expertise={userInfo.profession}
-            location={userInfo.location}
-            reviews={userInfo.Reviews}
-            styles={styles}
-            Icon={renderIcon}
-            name={userInfo.name}
-          />
         </View>
+        <Text style={{'textAlign': 'center'}}>{userInfo.name}</Text>
+          <TradieBanner
+            profession={userInfo.profession}
+            location={userInfo.location}
+            rating={userInfo.rating}
+            styles={styles}
+          />
       </View>
     </TouchableOpacity>
   );
