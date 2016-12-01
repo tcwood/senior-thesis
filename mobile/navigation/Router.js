@@ -11,7 +11,7 @@ import {
 import NavigationBar from './NavigationBar';
 import Entry from '../containers/Entry';
 import SignUp from '../containers/SignUp';
-import WorkerList from '../components/WorkerListScreen';
+import WorkerList from '../containers/WorkerList';
 import JobList from '../containers/CreateJobList';
 import AddJob from '../containers/AddJob';
 import AddJobWhatWhereWhen from '../components/AddJob/AddJobWhatWhereWhen';

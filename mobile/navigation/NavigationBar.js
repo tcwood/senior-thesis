@@ -17,7 +17,7 @@ import Router from './Router';
 
 const styles = StyleSheet.create({
   bar: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#f0f0f0',
     borderWidth: 0,
   },
   content: {

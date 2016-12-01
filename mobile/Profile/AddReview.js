@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderColor: '#155FAB',
     borderWidth: 1,
     borderRadius: 5,
-    height: 60 * vh,
+    height: 50 * vh,
     marginTop: 2 * vh,
     fontSize: 16,
     color: 'black',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     borderColor: '#E6E6E6',
   },
   recomendationHead: {
-    fontSize: 23,
+    fontSize: 20,
     fontWeight: '300',
     color: '#616060',
     marginTop: 6 * vh,
@@ -180,6 +180,7 @@ class AddReview extends React.Component {
     const navigator = this.props.navigator;
     const userInfo = this.props.userInfo;
     const name = this.props.name;
+    const profilePicUrl = this.props.userInfo.profilePicUrl;
     const currentLoggedInUser = this.props.currentLoggedInUser;
     return (
       <Image
@@ -191,11 +192,11 @@ class AddReview extends React.Component {
           <View style={styles.imageIconContainter}>
             <Image
               style={ styles.posterImageIcon }
-              source={{ uri: 'http://www.solotradie.com/wp-content/uploads/2015/04/tradesman_laptop.jpg' }}
+              source={{ uri: profilePicUrl }}
             />
           </View>
           <View style={styles.headerText}>
-            <Text style={styles.recomendationHead}>Write a recomendation</Text>
+            <Text style={styles.recomendationHead}>Write a recommendation</Text>
           </View>
         </View>
 

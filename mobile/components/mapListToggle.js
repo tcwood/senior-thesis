@@ -17,7 +17,7 @@ const vw = width / 100;
 
 const filterJobStyles = StyleSheet.create({
   outerBox: {
-    height: 10 * vh,
+    height: 7 * vh,
     width: 100 * vw,
     backgroundColor: '#ffffff',
     flexWrap: 'wrap',
@@ -30,41 +30,41 @@ const filterJobStyles = StyleSheet.create({
     marginLeft: 0.2 * vw,
   },
   onBg: {
-    height: 10 * vh,
-    width: 50 * vw,
-    backgroundColor: '#1F67A3',
+    height: 4 * vh,
+    width: 31 * vw,
+    backgroundColor: '#2B3647',
     color: '#ffffff',
-    marginLeft: 0 * vw,
   },
   offBg: {
-    height: 10 * vh,
-    width: 49.9 * vw,
-    marginRight: 0.1 * vw,
+    height: 4 * vh,
+    width: 31 * vw,
     backgroundColor: '#ffffff',
-    color: '#000000',
-    borderColor: '#F4F4F4',
+    borderColor: '#6B6B6B',
     borderWidth: 1,
-    marginLeft: 0 * vw,
+  },
+  leftButton: {
+    marginLeft: 19 * vw,
+    height: 6 * vh,
+  },
+  rightButton: {
+    marginLeft: 1 * vw,
+    height: 6 * vh,
   },
   onText: {
     textAlign: 'center',
-    marginTop: 4 * vh,
     color: 'white',
+    paddingTop: 1 * vh,
   },
   offText: {
     textAlign: 'center',
-    marginTop: 4 * vh,
-    color: '#1F67A3',
+    color: '#6B6B6B',
+    paddingTop: 1 * vh,
   },
   buttonText: {
     textAlign: 'center',
-    marginTop: 4 * vh,
   },
   buttonTextWords: {
     textAlign: 'center',
-    marginTop: 4 * vh,
-    paddingLeft: 10 * vw,
-    marginLeft: 10 * vw,
   },
 });
 
@@ -80,22 +80,22 @@ export default class MapListToggle extends React.Component {
     return (
       <View style={filterJobStyles.outerBox}>
         <TouchableOpacity
-          style={showMap ? filterJobStyles.offBg : filterJobStyles.onBg}
+          style={[showMap ? filterJobStyles.offBg : filterJobStyles.onBg, filterJobStyles.leftButton]}
           onPress={() => this.props.toggleShowMap(false)}
         >
           <Text style={filterJobStyles.buttonText}>
-            <FontAwesome name={'list'} size={15} style={filterJobStyles.buttonTextWords} color={showMap ? '#1F67A3' : 'white'} />
+            <FontAwesome name={'list'} size={15} style={filterJobStyles.buttonTextWords} color={showMap ? '#6B6B6B' : 'white'} />
             <Text style={showMap ? filterJobStyles.offText : filterJobStyles.onText}>  LIST</Text>
           </Text>
         </TouchableOpacity>
 
 
         <TouchableOpacity
-          style={showMap ? filterJobStyles.onBg : filterJobStyles.offBg}
+          style={[showMap ? filterJobStyles.onBg : filterJobStyles.offBg, filterJobStyles.rightButton]}
           onPress={() => this.props.toggleShowMap(true)}
         >
           <Text style={filterJobStyles.buttonText}>
-            <FontAwesome name={'map-marker'} size={15} style={filterJobStyles.buttonTextWords} color={showMap ? 'white' : '#1F67A3'} />
+            <FontAwesome name={'map-marker'} size={15} style={filterJobStyles.buttonTextWords} color={showMap ? 'white' : '#6B6B6B'} />
             <Text style={showMap ? filterJobStyles.onText : filterJobStyles.offText}> MAP</Text>
           </Text>
         </TouchableOpacity>
