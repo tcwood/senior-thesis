@@ -15,6 +15,7 @@ import background from '../styles/EntryBackground';
 import Router from '../navigation/Router';
 import Actions from '../actions/index';
 import settings from '../settings';
+import FBAuth from '../components/fbAuth';
 
 const { height, width } = Dimensions.get('window');
 
@@ -101,11 +102,9 @@ class Entry extends React.Component {
         });
       }
     };
-
     this.signup = () => {
       const username = this.state.user;
       const password = this.state.pass;
-      console.log('Sending', username);
       if (username !== '' && password !== '') {
         axios.get(`${settings.SERVER}/exists/${username}`)
         .then((response) => {
@@ -174,6 +173,7 @@ class Entry extends React.Component {
                 <Text style={{ color: colors.primary }}> SIGNUP </Text>
               </TouchableOpacity>
             </View>
+            <FBAuth navigator={this.props.navigator} dispatch={this.props.dispatch} />
           </View>
         </Image>
       </View>
