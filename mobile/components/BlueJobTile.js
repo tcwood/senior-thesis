@@ -23,7 +23,7 @@ const blueTile = StyleSheet.create({
   bluePanel: {
     height: 30 * vh,
     width: 100 * vw,
-    paddingTop: -0.5 * vh
+    paddingTop: -0.5 * vh,
   },
   bluePanelHeading: {
     marginTop: 5 * vh,
@@ -43,8 +43,8 @@ const blueTile = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     paddingLeft: 2 * vw,
     textAlign: 'center',
-    flex:1,
-    alignItems:'center' 
+    flex: 1,
+    alignItems: 'center',
   },
   rightIcon: {
     paddingLeft: 3 * vw,
@@ -89,8 +89,8 @@ const blueTile = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 12,
-    flex:1,
-    alignItems:'center'
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
