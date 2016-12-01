@@ -28,7 +28,7 @@ const blueTile = StyleSheet.create({
   bluePanelHeading: {
     marginTop: 5 * vh,
     color: 'white',
-    fontWeight: '200',
+    fontWeight: "600",
     textAlign: 'center',
     fontSize: 19,
     backgroundColor: 'rgba(0,0,0,0)',
@@ -74,7 +74,7 @@ const blueTile = StyleSheet.create({
   },
   posterNameText: {
     color: 'white',
-    fontWeight: '200',
+    fontWeight: '600',
     marginTop: 2.5 * vh,
   },
   jobPoster: {
