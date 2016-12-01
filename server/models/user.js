@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     experience: DataTypes.INTEGER,
     location: DataTypes.STRING,
     profilePicUrl: DataTypes.STRING,
+    facebookId: DataTypes.STRING,
   }, {
     classMethods: {
       associate: function(models) {
