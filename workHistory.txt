@@ -22,6 +22,4 @@ Sam
         Plumber List is hardcoded
         Sort job postings by most recently created
         Centre map on current location
-        Format Components
-
-        
+        Format Components (done)

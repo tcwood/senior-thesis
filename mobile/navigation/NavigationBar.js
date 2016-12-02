@@ -45,6 +45,7 @@ export default class RootNavigation extends React.Component {
         <FontAwesome
           name={name}
           size={32}
+          // size={35}
           color={color}
         />
         <Text style={styles.text}>

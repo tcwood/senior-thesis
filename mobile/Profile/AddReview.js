@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   headerRow: {
     width: 100 * vw,
     height: 14 * vh,
-
     flexWrap: 'wrap', 
     alignItems: 'flex-start',
     flexDirection:'row',
@@ -86,12 +85,15 @@ const styles = StyleSheet.create({
     borderRadius: 4 * vh,
     borderColor: 'white',
   },
+  chevronLeft: {
+    paddingRight: 1 * vw,
+  },
   posterImageIcon: {
     width: 11 * vh,
     height: 11 * vh,
     marginLeft: 8 * vw,
     marginRight: 2 * vw,
-    marginTop: 3 * vh,
+    marginTop: 2 * vh,
     borderRadius: 5.5 * vh,
     borderWidth: 1,
     borderColor: '#E6E6E6',
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '300',
     color: '#616060',
-    marginTop: 6 * vh,
+    marginTop: 5 * vh,
     marginLeft: 3 * vw,
   },
   submitTextBlue: {
@@ -117,9 +119,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 1.5 * vh,
   },
-  formText: {
-
-  },
+  back: {
+    color: '#155FAB',
+    width: 96 * vw,
+    marginTop: 5 * vh,
+    paddingLeft: 4 * vw,
+  }
 });
 
 const whiteImg = require('../assets/whiteTexturedBackground.png');
@@ -127,6 +132,13 @@ const whiteImg = require('../assets/whiteTexturedBackground.png');
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
+    this.goBack = () => {
+      if (this.props.navigator.getCurrentIndex() > 0) {
+        this.props.navigator.pop();
+      } else {
+        this.props.navigator.push(Router.getRoute('profile'));
+      }
+    };
     this.state = {
       text: '',
     };
@@ -187,7 +199,10 @@ class AddReview extends React.Component {
         style={ styles.background }
         source={ whiteImg }
       >
-        <BackButton navigator={this.props.navigator} text={"  Back to " + name }/>
+        <Text onPress={this.goBack} style={styles.back}>
+          <FontAwesome name={'chevron-left'} left={20} color={'#3E8CF1'} size={16} style={styles.chevronLeft}></FontAwesome>
+           Back to {this.props.userInfo.name}
+        </Text>
         <View style={styles.headerRow}>
           <View style={styles.imageIconContainter}>
             <Image

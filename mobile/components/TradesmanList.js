@@ -85,7 +85,7 @@ class TradesmanList extends React.Component {
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <TextInput
               style={searchStyles.searchBar}
-              placeholder="     Search projects"
+              placeholder="     Search by name, location, profession"
               placeholderTextColor="white"
               onChangeText={
                 (text) => this.hideSearchIcon(text)
@@ -97,7 +97,7 @@ class TradesmanList extends React.Component {
               {rightButton}
             </View>
           </Image>
-          <JobTypeFilter />
+          <JobTypeFilter text={"Tradesman"}/>
         <ScrollView
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}

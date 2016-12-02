@@ -5,12 +5,15 @@ import Actions from '../actions/index';
 
 
 const getFilteredUsers = (users, filter) => {
-  console.log('state.workerList.filter: ', filter)
-  console.log('state.workerList.users: ', users)
   if (!filter) {
     return users;
   }
-  return users.filter((user) => { return (user.name.indexOf(filter) >= 0); });
+  return users.filter(user => 
+      user.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
+      user.profession.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
+      user.location.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
+      user.description.toLowerCase().indexOf(filter.toLowerCase()) >= 0
+  );
 };
 
 const mapStateToProps = (state) => {

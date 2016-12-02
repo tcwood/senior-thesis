@@ -26,13 +26,14 @@ const whiteTile = StyleSheet.create({
   bluePanelHeading: {
     marginTop: 5 * vh,
     color: 'black',
-    fontWeight: '200',
+    fontWeight: '700',
     textAlign: 'center',
     fontSize: 19,
     backgroundColor: 'rgba(0,0,0,0)',
   },
   leftIcon: {
-    marginLeft: 10 * vw,
+    // marginLeft: 10 * vw,
+    marginLeft: 6 * vw,
     width: 20 * vw,
     backgroundColor: 'rgba(0,0,0,0)',
   },
@@ -40,9 +41,12 @@ const whiteTile = StyleSheet.create({
     width: 40 * vw,
     backgroundColor: 'rgba(0,0,0,0)',
     paddingLeft: 2 * vw,
+    // width: 44 * vw,
+    // backgroundColor: 'rgba(0,0,0,0)',
+    // paddingLeft: 0 * vw,
     textAlign: 'center',
     flex:1,
-    alignItems:'center' 
+    alignItems:'center',
   },
   rightIcon: {
     paddingLeft: 3 * vw,
@@ -72,7 +76,7 @@ const whiteTile = StyleSheet.create({
   },
   posterNameText: {
     color: 'black',
-    fontWeight: '200',
+    fontWeight: '600',
     marginTop: 2.5 * vh,
   },
   jobPoster: {

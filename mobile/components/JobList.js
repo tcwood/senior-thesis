@@ -62,7 +62,7 @@ class JobList extends React.Component {
         <View>
           <SearchBar filter={filter} changeFilter={changeFilter} rightButton={this.AddButton()} />
         </View>
-        <JobTypeFilter />
+        <JobTypeFilter text={"Jobs"}/>
         <MapListToggle toggleShowMap={toggleShowMap} showMap={showMap} />
         { !showMap &&
           <ScrollView>
@@ -72,6 +72,7 @@ class JobList extends React.Component {
                 key={i}
                 index={i}
                 pressJob={() => { goToJob(job.id, userId === job.User.id); }}
+                // pressJob={() => { goToJob(job); }}
               />))}
           </ScrollView>
         }

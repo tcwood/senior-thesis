@@ -17,7 +17,7 @@ const vw = width / 100;
 
 const filterJobStyles = StyleSheet.create({
   outerBox: {
-    height: 7 * vh,
+    height: 9 * vh,
     width: 100 * vw,
     backgroundColor: '#ffffff',
     flexWrap: 'wrap',
@@ -62,6 +62,8 @@ const filterJobStyles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
+    marginTop: 1.7 * vh,
+    fontWeight: '600'
   },
   buttonTextWords: {
     textAlign: 'center',
