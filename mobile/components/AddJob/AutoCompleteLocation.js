@@ -11,7 +11,7 @@ const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   textInputContainer: {
     backgroundColor: 'transparent',
-    height: 28,
+    height: 10,
     width: width * 0.7,
     borderTopColor: 'transparent',
     borderBottomColor: colors.secondary,
@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderBottomWidth: 1,
-    marginTop: height * 0.01,
     borderColor: colors.secondary,
     backgroundColor: 'transparent',
-    height: 30,
+    height: 20,
     borderRadius: 0,
     paddingTop: 0,
     paddingBottom: 0,
@@ -32,8 +31,10 @@ const styles = StyleSheet.create({
     paddingRight: 0,
     marginLeft: 0,
     marginRight: 0,
-    fontSize: 15,
     textAlign: 'center',
+    color: 'black',
+    fontSize: 16,
+    fontWeight: '400',
   },
   listView: {
     width: width * 0.7,
@@ -59,7 +60,7 @@ const AutoCompleteLocation = ({methods}) => {
   return (
     <GooglePlacesAutocomplete
       styles={styles}
-      placeholder="Where?"
+      placeholder="Enter address of job."
       id="location"
       minLength={1}
       autoFocus={false}

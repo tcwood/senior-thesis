@@ -55,7 +55,7 @@ class AddTimeFrame extends React.Component {
         />
         <View>
           <TouchableOpacity style={styles.bttn} onPress={() => methods.nextScene(nextFrame, { styles, methods, time: timeParam })}>
-            <Text style={{ color: colors.primary }}> NEXT </Text>
+            <Text style={{ color: 'white' }}> NEXT </Text>
           </TouchableOpacity>
         </View>
       </View>

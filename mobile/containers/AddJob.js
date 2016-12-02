@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Dimensions,
   Text,
+  Image
 } from 'react-native';
 import { connect } from 'react-redux';
 import Router from '../navigation/Router';
@@ -17,28 +18,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    //This is to offset the blue banner
     marginBottom: height * 0.05,
     alignItems: 'center',
   },
-
+  headerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  hardHat: {
+    width: width * 0.05,
+    height: height * 0.05,
+    flex: 1,
+  },
   bttn: {
-    width: width * 0.33,
-    height: 30,
+    width: width * 0.7,
+    height: width * 0.14,
     margin: width * 0.015,
     justifyContent: 'center',
     alignItems: 'center',
-
-    borderWidth: 0.5,
-    borderColor: colors.primary,
-    borderRadius: width * 0.33 * 0.02,
+    backgroundColor: colors.primary,
+    color: 'white',
+    fontWeight: '600',
+    fontSize: 15,
+    borderRadius: 3,
   },
-
   inputBox: {
     borderBottomWidth: 1,
-    marginBottom: width * 0.01,
-    marginTop: height * 0.01,
     borderColor: colors.secondary,
+  },
+  marginBelow: {
+    marginBottom: height * 0.1,
   },
   predefinedPlacesDescription: {
     color: '#1faadb',
@@ -48,14 +57,25 @@ const styles = StyleSheet.create({
   },
   input: {
     textAlign: 'center',
-    height: 30,
+    height: 20,
     width: width * 0.7,
+    marginTop: height * 0.0,
   },
   tallInput: {
     textAlign: 'center',
     height: 60,
     width: width * 0.7,
   },
+  newJob: {
+    color: '#155fab',
+    fontSize: 35,
+    fontWeight: '300',
+    marginTop: height * 0.0,
+    marginLeft: width * 0.04,
+  },
+  autoCompleteBox: {
+    height: height * 0.15,
+  }
 });
 
 class AddJob extends React.Component {
@@ -96,13 +116,15 @@ class AddJob extends React.Component {
       navigator: this.props.navigator,
     };
   }
+
+  // <Image source={require('../assets/hardhat.jpg')} style={styles.hardHat} />
+
   render() {
     return (
       <View style={styles.container}>
         <BackButton navigator={this.childMethods().navigator} />
-        <View>
-          <Text style={{color: '#155fab' }}>New Job</Text>
-        </View>
+          <Image source={require('../assets/hardhat.jpg')} style={{width: 35, height: 35, flexDirection: 'row'  }} />
+          <Text style={styles.newJob}>New Job</Text>
         <AddJobWhatWhereWhen methods={this.childMethods()} styles={styles} />
       </View>
     );

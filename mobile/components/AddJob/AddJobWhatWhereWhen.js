@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import colors from '../../constants/Colors';
 import BackButton from '../../reusableComponents/BackButton';
-<<<<<<< HEAD
 import AutoCompleteLocation from './AutoCompleteLocation';
 
 const { width, height } = Dimensions.get('window');
@@ -27,18 +26,16 @@ const condenseAddress = (address) => {
   });
   return address.split('').slice(0, result).join('');
 };
-=======
-import AutoCompleteLocation from './AutoCompleteLocation'
 
->>>>>>> pulled AutoCompleteLocationForm out into its own component to minimise merge conflicts later
+
 
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
   const userInput = (jobType, placeHolder) => {
     return (
-      <View style={styles.inputBox}>
+      <View style={[styles.inputBox, styles.marginBelow]}>
         <TextInput
           id={jobType}
-          style={styles.input}
+          style={[styles.input, {height: 20}]}
           autoFocus
           placeholder={placeHolder}
           onChangeText={text => methods.addJobDetail(jobType, text)}
@@ -48,12 +45,15 @@ const AddJobWhatWhereWhen = ({ styles, methods }) => {
   };
 
   return (
-    <View style={[styles.container, {marginTop: height * 0.3}]} >
-      {userInput('title', 'What is the Project?')}
-      <AutoCompleteLocation methods={methods} />
+
+    <View style={styles.container} >
+      {userInput('title', 'Enter title of job')}
+      <View style={styles.autoCompleteBox}>
+        <AutoCompleteLocation methods={methods} />
+      </View>
       <View>
         <TouchableOpacity style={styles.bttn} onPress={() => methods.nextScene('addTimeFrame', { styles, methods, time: 'from' })}>
-          <Text style={{ color: colors.primary }}> NEXT </Text>
+          <Text style={{ color: 'white' }}> NEXT </Text>
         </TouchableOpacity>
       </View>
     </View>
