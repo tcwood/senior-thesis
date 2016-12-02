@@ -47,10 +47,8 @@ class JobTypeFilter extends React.Component {
     return (
       <View style={filterJobStyles.jobTypeBar}>
         <Text style={filterJobStyles.jobTypeText}>
-          <FontAwesome name={'chevron-down'} left={20} style={filterJobStyles.chevron} color={'gray'} />
-          <Text style={filterJobStyles.filterJobStylesText}>
-            Plumbing Jobs
-          </Text>
+          <FontAwesome name={'globe'} left={20} style={filterJobStyles.chevron} color={'gray'} />
+          <Text style={filterJobStyles.filterJobStylesText}> {this.props.text} near you. </Text>
         </Text>
       </View>
     );

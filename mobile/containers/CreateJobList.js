@@ -7,7 +7,15 @@ const getFilteredJobs = (jobs, filter) => {
   if (!filter) {
     return jobs;
   }
-  return jobs.filter((job) => { return (job.title.indexOf(filter) >= 0); });
+  return jobs.filter((job) => { 
+
+    return (
+      job.title.toLowerCase().indexOf(filter.toLowerCase()) >= 0 || 
+      job.profession.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
+      job.description.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
+      job.address.toLowerCase().indexOf(filter.toLowerCase()) >= 0 
+    ); 
+  });
 };
 
 const mapStateToProps = (state) => {

@@ -60,7 +60,7 @@ const searchBar = ({ rightButton, changeFilter, filter }) => {
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <TextInput
           style={searchStyles.searchBar}
-          placeholder="     Search projects"
+          placeholder="     Search jobs, professions, locations"
           placeholderTextColor="white"
           onChangeText={changeFilter}
           value={filter}

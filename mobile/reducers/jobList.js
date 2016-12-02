@@ -17,12 +17,7 @@ const initialState = {
 
 const jobListReducer = (state = initialState, action) => {
   switch (action.type) {
-<<<<<<< HEAD
     case 'ADD_JOB':
-=======
-    case ('ADD_JOB'):
-    console.log('in ADD JOB reducer! action: ', action);
->>>>>>> addJob now gets saved in the store
       return {
         jobList: [...state.jobList, action.job],
         filter: state.filter,
