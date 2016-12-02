@@ -4,29 +4,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-  Image,
 } from 'react-native';
-import colors from '../../constants/Colors';
-import BackButton from '../../reusableComponents/BackButton';
 import AutoCompleteLocation from './AutoCompleteLocation';
-
-const { width, height } = Dimensions.get('window');
-const condenseAddress = (address) => {
-  let counter = 0;
-  let result;
-  address.split('').forEach( (character, index) => {
-    if (character === ',') {
-      counter += 1;
-    }
-    if (counter === 2 && character === ',') {
-      result = index;
-    }
-  });
-  return address.split('').slice(0, result).join('');
-};
-
 
 
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
@@ -35,7 +14,7 @@ const AddJobWhatWhereWhen = ({ styles, methods }) => {
       <View style={[styles.inputBox, styles.marginBelow]}>
         <TextInput
           id={jobType}
-          style={[styles.input, {height: 20}]}
+          style={[styles.input, { height: 20 }]}
           autoFocus
           placeholder={placeHolder}
           onChangeText={text => methods.addJobDetail(jobType, text)}

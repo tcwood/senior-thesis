@@ -12,13 +12,13 @@ import BackButton from '../../reusableComponents/BackButton';
 const AddJobWhatWhereWhen = ({ route }) => {
   const styles = route.params.styles;
   const methods = route.params.methods;
-  const userInput = (type, placeHolder, multiline, style) =>
+  const userInput = (type, placeHolder, multiline, style, focus) =>
     (
       <View style={[styles.inputBox, { height: 30, marginTop: 50}]}>
         <TextInput
           id={type}
           style={[styles.input, style]}
-          autoFocus
+          autoFocus={focus}
           placeholder={placeHolder}
           multiline={multiline}
           numberOfLine={2}
@@ -33,7 +33,7 @@ const AddJobWhatWhereWhen = ({ route }) => {
         <Image source={require('../../assets/hardhat.jpg')} style={{width: 35, height: 35}} />
         <Text style={{color: '#155fab', fontSize: 35, fontWeight: '300', marginLeft: 20}}>New Job</Text>
       </View>
-      {userInput('profession', 'What skills are needed?')}
+      {userInput('profession', 'What skills are needed?', null, null)}
       {userInput('hires', 'How many people?')}
       {userInput('pay', 'What will the pay be?')}
       {userInput('description', 'Describe the job.', true, styles.tallInput)}

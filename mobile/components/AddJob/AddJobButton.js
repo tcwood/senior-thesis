@@ -35,13 +35,13 @@ const AddJobButton = ({ navigator }) => {
     <View style={styles.add}>
       <TouchableOpacity onPress={addJob} >
         <FontAwesome
-          style={{ backgroundColor: 'transparent' }}
+          style={{ backgroundColor: 'transparent', marginLeft: 10, marginTop: -3 }}
           name={'plus'}
           left={20}
           color={'white'}
-          size={30}
+          size={25}
         />
-        <Text style={{ backgroundColor: 'transparent', color: 'white' }}>Add Job</Text>
+        <Text style={{ backgroundColor: 'transparent', color: 'white', fontSize: 10 }}>Add Job</Text>
       </TouchableOpacity>
     </View>
   );
