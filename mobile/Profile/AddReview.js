@@ -201,7 +201,7 @@ class AddReview extends React.Component {
       >
         <Text onPress={this.goBack} style={styles.back}>
           <FontAwesome name={'chevron-left'} left={20} color={'#3E8CF1'} size={16} style={styles.chevronLeft}></FontAwesome>
-           Back to {name}
+           Back to {this.props.userInfo.name}
         </Text>
         <View style={styles.headerRow}>
           <View style={styles.imageIconContainter}>
