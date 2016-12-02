@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   autoCompleteBox: {
     height: height * 0.15,
-  }
+  },
 });
 
 class AddJob extends React.Component {
