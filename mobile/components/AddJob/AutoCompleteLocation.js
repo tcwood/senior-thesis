@@ -5,9 +5,7 @@ import colors from '../../constants/Colors';
 import { StyleSheet, Dimensions } from 'react-native';
 // condenseAddress cuts off the address after the second comma
 // hiding the state & country.
-
 const { width, height } = Dimensions.get('window');
-
 const styles = StyleSheet.create({
   textInputContainer: {
     backgroundColor: 'transparent',
@@ -52,7 +50,6 @@ const condenseAddress = (address) => {
   });
   return address.split('').slice(0, result).join('');
 };
-
 const AutoCompleteLocation = ({methods}) => {
   const addJobDetail = methods.addJobDetail;
   return (
@@ -89,9 +86,7 @@ const AutoCompleteLocation = ({methods}) => {
     />
   );
 };
-
 AutoCompleteLocation.propTypes = {
   methods: React.PropTypes.object.isRequired,
 };
-
 export default AutoCompleteLocation;

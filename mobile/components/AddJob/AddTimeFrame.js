@@ -46,7 +46,7 @@ class AddTimeFrame extends React.Component {
     return (
       <View style={styles.container}>
         <BackButton navigator={methods.navigator} />
-        <Text>{timeContext}: {text} </Text>
+        <Text style={{marginTop: 100}}>{timeContext}: {text} </Text>
         <CalendarPicker
           selectedDate={this.state.date}
           onDateChange={date => this.onDateChange(date, time)}
@@ -55,7 +55,7 @@ class AddTimeFrame extends React.Component {
         />
         <View>
           <TouchableOpacity style={styles.bttn} onPress={() => methods.nextScene(nextFrame, { styles, methods, time: timeParam })}>
-            <Text style={{ color: colors.primary }}> NEXT </Text>
+            <Text style={{ color: 'white' }}> NEXT </Text>
           </TouchableOpacity>
         </View>
       </View>
