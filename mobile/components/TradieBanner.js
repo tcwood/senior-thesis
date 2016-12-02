@@ -3,38 +3,33 @@ import {
   View,
   Text,
 } from 'react-native';
-import TradiesExpertiseBanner from './bannerIcons/TradiesExpertiseBanner';
-import TradiesLocationBanner from './bannerIcons/TradiesLocationBanner';
-import TradiesReviewsBanner from './bannerIcons/TradiesReviewsBanner';
+import {
+  FontAwesome,
+} from '@exponent/vector-icons';
 import styles from '../styles/WorkerList';
 
-const TradieBanner = ({ expertise, location, reviews, Icon, name }) =>
+const TradieBanner = ({ profession, location, rating }) =>
   (
-    <View style={styles.banner}>
-      <Text style={styles.name}>{name}</Text>
-      <View className="tripleBanner" style={styles.tripleBanner}>
-        <TradiesExpertiseBanner
-          Icon={Icon('wrench')}
-          expertise={expertise}
-        />
-        <TradiesLocationBanner
-          Icon={Icon('location-arrow')}
-          location={location}
-        />
-        <TradiesReviewsBanner
-          Icon={Icon('star-o')}
-          reviews={reviews}
-        />
+    <View style={[styles.iconSection]}>
+      <View style={[styles.leftIcon, { alignItems: 'center', flexDirection: 'row' }]}>
+        <FontAwesome name={'wrench'} size={15} style={styles.iconFormat} color={'868686'} />
+          <Text style={[styles.iconText, { color: '868686' }]}> {profession}</Text>
+      </View>
+      <View style={[styles.middleIcon, { alignItems: 'center', flexDirection: 'row' }]}>
+        <FontAwesome name={'location-arrow'} size={15} style={styles.iconFormat} color={'868686'} />
+          <Text style={[styles.middleText, { color: '868686' }]}> {location}</Text>
+      </View>
+      <View style={[styles.rightIcon, { alignItems: 'center', flexDirection: 'row' }]}>
+        <FontAwesome name={'star-o'} size={15} style={styles.iconFormat} color={'868686'} />
+          <Text style={[styles.iconText, { color: '868686' }]}> {rating}</Text>
       </View>
     </View>
   );
 
 TradieBanner.propTypes = {
-  expertise: React.PropTypes.string,
+  profession: React.PropTypes.string,
   location: React.PropTypes.string,
-  reviews: React.PropTypes.array,
-  Icon: React.PropTypes.func,
-  name: React.PropTypes.string,
+  rating: React.PropTypes.number,
 };
 
 export default TradieBanner;

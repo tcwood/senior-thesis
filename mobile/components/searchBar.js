@@ -57,7 +57,7 @@ const searchBar = ({ rightButton, changeFilter, filter }) => {
       style={searchStyles.bluePattern}
       source={blueImg}
     >
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <TextInput
           style={searchStyles.searchBar}
           placeholder="     Search jobs, professions, locations"

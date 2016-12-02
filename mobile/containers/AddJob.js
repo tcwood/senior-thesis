@@ -3,20 +3,23 @@ import {
   View,
   StyleSheet,
   Dimensions,
+  Text,
 } from 'react-native';
 import { connect } from 'react-redux';
 import Router from '../navigation/Router';
 import colors from '../constants/Colors';
 import Actions from '../actions/index';
 import AddJobWhatWhereWhen from '../components/AddJob/AddJobWhatWhereWhen';
+import BackButton from '../reusableComponents/BackButton';
 
 const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: height * 0.05, //This is to offset the blue banner
+    //This is to offset the blue banner
+    marginBottom: height * 0.05,
+    alignItems: 'center',
   },
 
   bttn: {
@@ -37,7 +40,12 @@ const styles = StyleSheet.create({
     marginTop: height * 0.01,
     borderColor: colors.secondary,
   },
-
+  predefinedPlacesDescription: {
+    color: '#1faadb',
+  },
+  description: {
+    fontWeight: 'bold',
+  },
   input: {
     textAlign: 'center',
     height: 30,
@@ -91,6 +99,10 @@ class AddJob extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <BackButton navigator={this.childMethods().navigator} />
+        <View>
+          <Text style={{color: '#155fab' }}>New Job</Text>
+        </View>
         <AddJobWhatWhereWhen methods={this.childMethods()} styles={styles} />
       </View>
     );

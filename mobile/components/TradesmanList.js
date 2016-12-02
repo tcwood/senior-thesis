@@ -103,12 +103,22 @@ class TradesmanList extends React.Component {
           showsVerticalScrollIndicator={false}
           alwaysBounceVertical
         >
-          {users.map(user =>
-            (<Tradesman
-              key={user.name}
-              userInfo={user}
-              pressUser={() => { goToWorker(user); }}
-            />))}
+          {users.map((user, i) => {
+            let background;
+            if (i % 2 === 0) {
+              background = '#f4f4f4';
+            } else {
+              background = '#EDEDED';
+            }
+            return (
+              <Tradesman
+                background={background}
+                key={user.name}
+                userInfo={user}
+                pressUser={() => { goToWorker(user); }}
+              />
+            )
+          })}
         </ScrollView>
       </View>
     );

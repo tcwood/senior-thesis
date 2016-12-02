@@ -8,10 +8,8 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
-import Router from '../navigation/Router';
-
-const Dimensions = React.Dimensions || require('Dimensions');
 
 const { width, height } = Dimensions.get('window');
 const vh = height / 100;

@@ -92,6 +92,7 @@ module.exports = {
       location: req.body.location,
       mobile: req.body.mobile,
       profilePicUrl: req.body.profilePicUrl,
+      facebookId: req.body.facebookId,
     }
     User.create(newUser)
     .then(function(user) {
@@ -119,6 +120,22 @@ module.exports = {
     User.findAll({ 
       where: { 
         username: username,
+      },
+    })
+    .then(function(userRecord) {
+      console.log('userRecord', userRecord);
+      res.status(200).send(!!userRecord.length);
+    }).catch(function (error){
+      res.status(500).json(error);
+    });
+  },
+
+  facebookExists(req, res) {
+    const facebookId = req.params.facebookId;
+    console.log('Username!', facebookId);
+    User.findAll({ 
+      where: { 
+        facebookId: facebookId,
       },
     })
     .then(function(userRecord) {

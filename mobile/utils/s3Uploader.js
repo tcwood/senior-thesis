@@ -1,6 +1,10 @@
 import axios from 'axios';
 import settings from '../settings';
 
-const s3Uploader = picSrc => axios.get(`${settings.SERVER}/s3-uploader`, { params: { picSrc } });
+const s3Uploader = picSrc => {
+  const file = new FormData();
+  file.append('image', { uri: picSrc });
+  return axios.post(`${settings.SERVER}/s3-uploader`, file);
+}
 
 export default s3Uploader;

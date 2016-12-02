@@ -84,6 +84,7 @@ class SignUp extends React.Component {
       ));
 
     this.userInput = () => {
+      console.log(this.state);
       const questionIndex = this.props.route.params.questionIndex;
       // profession question
       if (questionIndex === 3) {
@@ -135,10 +136,13 @@ class SignUp extends React.Component {
 
       const diff = {};
       diff[key] = value;
+      console.log('rendering scene', this.state)
       // Last question
       if (questionIndex === 5) {
         diff.username = this.state.username;
         diff.password = this.state.password;
+        // potentially sensitive - find better way to get this data without exposing
+        diff.facebookId = this.state.facebookId;
         dispatch(Actions.updateProfile(diff, true));
         dispatch(Actions.grantAccess('some token from the server'));
       } else {
@@ -147,15 +151,18 @@ class SignUp extends React.Component {
           questionIndex: questionIndex + 1,
           username: this.state.username,
           password: this.state.password,
+          facebookId: this.state.facebookId,
         }));
       }
     };
   }
 
   componentWillMount() {
+    const { username, password, facebookId } = this.props.route.params;
     this.setState({
-      username: this.props.route.params.username,
-      password: this.props.route.params.password,
+      username,
+      password,
+      facebookId,
     });
   }
 

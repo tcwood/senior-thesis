@@ -19,7 +19,6 @@ const backButton = StyleSheet.create({
     width,
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
   },
 });
