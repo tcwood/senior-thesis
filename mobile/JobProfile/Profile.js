@@ -28,9 +28,10 @@ const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
-    height,
+    height: height - 60,
+    paddingLeft: 20,
+    paddingRight: 20,
     width,
-    paddingBottom: Navigator.NavigationBar.Styles.General.NavBarHeight,
   },
   backgroundImage: {
     resizeMode: 'cover',

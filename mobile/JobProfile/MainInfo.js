@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'flex-start',
     backgroundColor: 'transparent',
+    marginTop: 5,
   },
   title: {
     fontSize: 19,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     height: height - 106, // 64 is the size of the tab bar, 42 is the go back button
-    width,
+    width: width * 0.9,
     marginLeft: 15,
   },
   time: {
