@@ -14,9 +14,9 @@ const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     marginBottom: height * 0.05, //This is to offset the blue banner
+    alignItems: 'center',
   },
 
   bttn: {
@@ -37,7 +37,12 @@ const styles = StyleSheet.create({
     marginTop: height * 0.01,
     borderColor: colors.secondary,
   },
-
+  predefinedPlacesDescription: {
+    color: '#1faadb',
+  },
+  description: {
+    fontWeight: 'bold',
+  },
   input: {
     textAlign: 'center',
     height: 30,

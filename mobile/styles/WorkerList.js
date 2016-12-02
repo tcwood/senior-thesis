@@ -8,6 +8,11 @@ const vh = height / 100;
 const vw = width / 100;
 
 const styles = StyleSheet.create({
+  posterImageIcon: {
+    width: 12 * vh,
+    height: 12 * vh,
+    borderRadius: 4 * vh,
+  },
   iconText: {
     color: 'black',
     textAlign: 'center',
@@ -22,8 +27,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection: 'row',
-    marginTop: 3 * vh,
     width: 100 * vw,
+    justifyContent: 'space-around',
   },
   middleIcon: {
     width: 30 * vw,
@@ -40,11 +45,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   row: {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
     height: 150,
     justifyContent: 'center',
+    padding: 10,
   },
   leftRow: {
     flexDirection: 'row',

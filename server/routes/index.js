@@ -8,6 +8,9 @@ var jobController = require('../controllers/job');
 var chatController = require('../controllers/chat');
 var messageController = require('../controllers/message');
 var s3Uploader = require('../controllers/aws');
+var multer = require('multer')
+var upload = multer({ dest: './uploads/' })
+
 // USERS
 // Create a new user
 router.post('/user', userController.createUser);
@@ -49,7 +52,7 @@ router.get('/chat/:userId', chatController.findUsersChats);
 router.get('/chat/:userId1/:userId2', chatController.findChatIfExists);
 // Create a new message
 router.post('/message', messageController.createMessage);
-router.get('/s3-uploader', s3Uploader);
+router.post('/s3-uploader', upload.single('image'), s3Uploader);
 
 module.exports = router;
 

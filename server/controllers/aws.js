@@ -24,7 +24,6 @@ const client = new Upload('puffyshirts', {
     versions: true,
     original: false,
   },
-  
   original: {
     awsImageAcl: 'public-read',
   },

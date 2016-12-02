@@ -12,23 +12,26 @@ import {
 import styles from '../styles/WorkerList';
 import TradieBanner from './TradieBanner';
 
-const Tradesman = ({ userInfo, pressUser }) => {
+const Tradesman = ({ userInfo, pressUser, background }) => {
+  console.log(userInfo);
   return (
-    <TouchableOpacity onPress={pressUser}>
+    <TouchableOpacity onPress={pressUser} style={{ backgroundColor: `${background}`, borderRadius: 4, borderWidth: 0.5, borderColor: '#d6d7da', padding: 12 }}>
       <View className="tradieRow" style={styles.row}>
         <View style={styles.rightRow}>
           <View style={styles.rowUserPic}>
             <Image
-              style={styles.circularImage}
+              style={styles.posterImageIcon}
               source={{ uri: userInfo.profilePicUrl }}
             />
           </View>
         </View>
-        <Text style={{'textAlign': 'center'}}>{userInfo.name}</Text>
+        <View style={{ margin: 15 }}>
+          <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>{userInfo.name}</Text>
+        </View>
           <TradieBanner
             profession={userInfo.profession}
             location={userInfo.location}
-            rating={userInfo.rating}
+            rating={userInfo.Reviews.length}
             styles={styles}
           />
       </View>

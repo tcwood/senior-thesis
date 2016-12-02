@@ -4,10 +4,13 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
+  Dimensions,
 } from 'react-native';
 import colors from '../../constants/Colors';
 import BackButton from '../../reusableComponents/BackButton';
-import AutoCompleteLocation from './AutoCompleteLocation'
+import AutoCompleteLocation from './AutoCompleteLocation';
+
 
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
   const userInput = (jobType, placeHolder) => {
