@@ -16,7 +16,6 @@ import BackButton from '../reusableComponents/BackButton';
 const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     marginBottom: height * 0.05,
     alignItems: 'center',
@@ -123,8 +122,10 @@ class AddJob extends React.Component {
     return (
       <View style={styles.container}>
         <BackButton navigator={this.childMethods().navigator} />
-          <Image source={require('../assets/hardhat.jpg')} style={{width: 35, height: 35, flexDirection: 'row'  }} />
-          <Text style={styles.newJob}>New Job</Text>
+        <View style={{marginBottom: 90, marginTop: 90, flexDirection: 'row' }}>
+          <Image source={require('../assets/hardhat.jpg')} style={{width: 35, height: 35}} />
+          <Text style={[styles.newJob ]}>New Job</Text>
+        </View>
         <AddJobWhatWhereWhen methods={this.childMethods()} styles={styles} />
       </View>
     );

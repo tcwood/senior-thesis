@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Text,
+  View,
 } from 'react-native';
 import Router from '../../navigation/Router';
 
