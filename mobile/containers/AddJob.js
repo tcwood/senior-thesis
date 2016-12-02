@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     //This is to offset the blue banner
     marginBottom: height * 0.05,
+    alignItems: 'center',
   },
 
   bttn: {
