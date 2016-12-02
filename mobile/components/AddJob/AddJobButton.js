@@ -3,7 +3,6 @@ import {
   FontAwesome,
 } from '@exponent/vector-icons';
 import {
-  View,
   StyleSheet,
   TouchableOpacity,
   Dimensions,

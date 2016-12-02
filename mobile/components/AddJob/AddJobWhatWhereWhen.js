@@ -6,11 +6,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Image,
 } from 'react-native';
 import colors from '../../constants/Colors';
 import BackButton from '../../reusableComponents/BackButton';
 import AutoCompleteLocation from './AutoCompleteLocation';
 
+const { width, height } = Dimensions.get('window');
 
 const AddJobWhatWhereWhen = ({ styles, methods }) => {
   const userInput = (jobType, placeHolder) => {
@@ -29,7 +31,6 @@ const AddJobWhatWhereWhen = ({ styles, methods }) => {
 
   return (
     <View style={styles.container} >
-      <BackButton navigator={methods.navigator} />
       {userInput('title', 'What is the Project?')}
       <AutoCompleteLocation methods={methods} />
       <View>

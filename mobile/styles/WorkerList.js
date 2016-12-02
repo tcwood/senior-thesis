@@ -9,9 +9,11 @@ const vw = width / 100;
 
 const styles = StyleSheet.create({
   posterImageIcon: {
-    width: 12 * vh,
-    height: 12 * vh,
+    width: 8 * vh,
+    height: 8 * vh,
     borderRadius: 4 * vh,
+    borderColor: '#f5f5f5',
+    borderWidth: 1.5,
   },
   iconText: {
     color: 'black',
