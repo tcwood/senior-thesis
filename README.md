@@ -1,6 +1,12 @@
-# Project Name
+# Skillsmen
 
-> We help tradesman find jobs and help contractors find tradesman. The nature of contract work can be volatile as demand can vary heavily on seasonal conditions and variable project scopes. [name] hopes to remedy this by providing a collaborative network in which to create and enlist for trade work.
+<p align="center">
+  <img src="/screenshots/signin?raw=true"/>
+  <img src="/screenshots/profile?raw=true"/>
+  <img src="/screenshots/map?raw=true"/>
+</p>
+
+> We help tradesman find jobs and help contractors find tradesman. The nature of contract work can be volatile as demand can vary heavily on seasonal conditions and variable project scopes. Skillsmen hopes to remedy this by providing a collaborative network in which to create and enlist for trade work.
 
 ## Team
 
@@ -27,15 +33,24 @@
 - Node
 - Postgresql
 - ImageMagick
+- Exponent XDE
+- XCode
 
 ## Development
 
 ### Installing Dependencies
 
+Open the root directory with XDE
+
 From within the root directory:
 
 ```sh
+npm install
+```
+In a new terminal window:
 
+```sh
+nodemon server/server.js
 ```
 
 ### Roadmap
