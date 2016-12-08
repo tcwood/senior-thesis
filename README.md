@@ -1,9 +1,7 @@
 # Skillsmen
 
 <p align="center">
-  <img src="/screenshots/signin.png?raw=true"/>
-  <img src="/screenshots/profile.png?raw=true"/>
-  <img src="/screenshots/map.png?raw=true"/>
+  <img src="/screenshots/image.png?raw=true"/>
 </p>
 
 > We help tradesman find jobs and help contractors find tradesman. The nature of contract work can be volatile as demand can vary heavily on seasonal conditions and variable project scopes. Skillsmen hopes to remedy this by providing a collaborative network in which to create and enlist for trade work.
