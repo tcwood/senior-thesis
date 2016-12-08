@@ -6,6 +6,9 @@ Deployed server to heroku
 Added calendar picker for choosing start and end dates for jobs
 Built front end onboarding
 User form validation
+Refactored for Redux
+
+Todo: 
 user-centric features:
   Persistant user login
 
