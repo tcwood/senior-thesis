@@ -53,7 +53,7 @@ nodemon server/server.js
 
 ### Roadmap
 
-View the project roadmap [here](https://github.com/PuffyShirts/senior-thesis/issues)
+View the project roadmap [here](https://github.com/Skillsmen/skillsmen/issues)
 
 
 ## Contributing
