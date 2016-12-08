@@ -8,6 +8,11 @@ const getFilteredJobs = (jobs, filter) => {
     return jobs;
   }
   return jobs.filter((job) => { 
+    job.title = job.title || '';
+    job.description = job.description || '';
+    job.profession = job.profession || '';
+    job.address = job.address || '';
+
     return (
       job.title.toLowerCase().indexOf(filter.toLowerCase()) >= 0 || 
       job.profession.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
